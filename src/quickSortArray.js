@@ -1,11 +1,11 @@
 module.exports = function(list){
-  const sortType = typeof list[0];
-
-  if (sortType === 'number') {
+  // So more quick sorts can be added in the future
+  switch (typeof list[0]) {
+  case 'number':
     return list.sort((a, b) => {
       return a - b
     });
-  } else if (sortType === 'string') {
-    return list.sort();
+  default:
+    return list.sort()
   }
 };
