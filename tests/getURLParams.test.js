@@ -6,9 +6,9 @@ describe('getURLParams', () => {
     const expected = {
       height: "100",
       width: "200"
-    }
+    };
     const output = getURLParams(url);
 
     expect(output).toEqual(expected);
   })
-})
+});

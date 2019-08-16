@@ -1,15 +1,15 @@
 module.exports = (url) => {
-  if(!url){
-    return undefined;
-  } else {
-    const { search } = new URL(url);
-    const params = new URLSearchParams(search);
-    const entries = Array.from(params.entries());
-
-    return entries.reduce((accumulator, entry) => {
-      const [key, value] = entry;
-      accumulator[key] = value;
-      return accumulator;
-    }, {});
+  if (typeof url !== 'string' || !(url instanceof URL)) {
+    throw TypeError('url must be of type String or URL');
   }
+
+  const { search } = new URL(url);
+  const params = new URLSearchParams(search);
+
+  const paramsObj = {};
+  params.forEach(function(value, key) {
+    paramsObj[key] = value;
+  });
+
+  return paramsObj;
 };
