@@ -1,6 +1,7 @@
-module.exports = (url) => {
+module.exports = (url = undefined) => {
   const typeOfUrl = typeof url;
-  if (typeOfUrl === 'string' || url instanceof URL) {
+
+  if (typeOfUrl !== 'undefined' && (typeOfUrl === 'string' || url instanceof URL)) {
     if (typeOfUrl === 'string') {
       url = new URL(url);
     }
