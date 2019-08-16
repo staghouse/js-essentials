@@ -1,7 +1,7 @@
 language:
   node_js
 install:
-  - npm install -g codecov
+  - npm install -g codecov instanbul
 script:
   - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
   - codecov
