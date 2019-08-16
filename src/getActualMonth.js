@@ -1,13 +1,14 @@
 /**
  * getActualMonth
- * @param {number} number - number of the month from Date()
+ * @param {number} num - number of the month from Date()
  * @return String of month
  * @throws TypeError
  * @example
  * getActualMonth(6)
  */
-module.exports = (number = undefined) => {
-  if (typeof number !== 'undefined' && Number(number)) {
+module.exports = (num = undefined) => {
+  const number = Number(num);
+  if (!isNaN(number)) {
     const months = [
       'January',
       'February',
@@ -24,6 +25,6 @@ module.exports = (number = undefined) => {
     ];
     return months[number];
   } else {
-    throw TypeError('number must be of type Number');
+    throw TypeError('number must be of type string or number');
   }
 };
