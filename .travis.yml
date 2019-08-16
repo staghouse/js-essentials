@@ -3,7 +3,7 @@ language:
 node_js:
   - "12.8.0"
 install:
-  - npm install -g codecov
+  - npm install -g jest codecov
 script:
   - jest
   - codecov
