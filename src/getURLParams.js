@@ -8,15 +8,14 @@
  */
 module.exports = (url = undefined) => {
   const typeOfUrl = typeof url;
+  const paramsObj = {};
+  let params = undefined;
 
   if (typeOfUrl !== 'undefined' && (typeOfUrl === 'string' || url instanceof URL)) {
-    if (typeOfUrl === 'string') {
-      url = new URL(url);
-    }
+    url = new URL(url);
 
-    const params = new URLSearchParams(url.search);
+    params = new URLSearchParams(url.search);
 
-    const paramsObj = {};
     params.forEach(function(value, key) {
       paramsObj[key] = value;
     });
