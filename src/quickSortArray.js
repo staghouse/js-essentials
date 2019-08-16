@@ -1,11 +1,11 @@
 /**
- * quickSoryArray
+ * quickSortArray
  * @param {array} list - Array of values of a single type
  * @return Array
  * @throws TypeError
  * @example
- * quickSoryArray([10, 7, 1, 4])
- * quickSoryArray(['banana', 'orange', 'apple'])
+ * quickSortArray([10, 7, 1, 4])
+ * quickSortArray(['banana', 'orange', 'apple'])
  */
 module.exports = list => {
   if (Array.isArray(list)) {

@@ -683,7 +683,7 @@
     "__docId__": 52,
     "kind": "file",
     "name": "src/isFutureDate.js",
-    "content": "/**\n * isFutureDate\n * @param {string, number, Date} time - time to compare with: \"current time\"\n * @param {string, number, Date} comparison - time to compare again: \"not current time\"\n * @return Boolean\n * @throws TypeError\n * @example\n * isFutureDate('2019-10-10', '2020-01-01')\n */\nmodule.exports = (time, comparison) => {\n  let now;\n  let typeOfTime = typeof time;\n  let typeOfComparison = typeof comparison;\n\n  if (!comparison) {\n    now = new Date();\n  } else {\n    if (typeOfComparison === 'string' || typeOfComparison === 'number') {\n      now = new Date(comparison);\n    } else if (comparison instanceof Date) {\n      now = comparison;\n    } else {\n      throw TypeError('comparison must be of type String or Date');\n    }\n  }\n\n  if (typeOfTime === 'string' || typeOfTime === 'number') {\n    time = new Date(time);\n  } else if (!(time instanceof Date)) {\n    throw TypeError('time must be of type String or Date');\n  }\n\n  // This/next year and next month or\n  // This/next year and this/next month but not today\n  return (\n    time.getDate() > now.getDate() ||\n    time.getMonth() > now.getMonth() ||\n    time.getFullYear() > now.getFullYear()\n  );\n};\n",
+    "content": "/**\n * isFutureDate\n * @param {string|number|Date} time - time to compare with: \"current time\"\n * @param {string|number|Date} comparison - time to compare again: \"not current time\"\n * @return Boolean\n * @throws TypeError\n * @example\n * isFutureDate('2019-10-10', '2020-01-01')\n */\nmodule.exports = (time, comparison) => {\n  let now;\n  let typeOfTime = typeof time;\n  let typeOfComparison = typeof comparison;\n\n  if (!comparison) {\n    now = new Date();\n  } else {\n    if (typeOfComparison === 'string' || typeOfComparison === 'number') {\n      now = new Date(comparison);\n    } else if (comparison instanceof Date) {\n      now = comparison;\n    } else {\n      throw TypeError('comparison must be of type String or Date');\n    }\n  }\n\n  if (typeOfTime === 'string' || typeOfTime === 'number') {\n    time = new Date(time);\n  } else if (!(time instanceof Date)) {\n    throw TypeError('time must be of type String or Date');\n  }\n\n  // This/next year and next month or\n  // This/next year and this/next month but not today\n  return (\n    time.getDate() > now.getDate() ||\n    time.getMonth() > now.getMonth() ||\n    time.getFullYear() > now.getFullYear()\n  );\n};\n",
     "static": true,
     "longname": "/Users/Eric/Developer/js-essentials/src/isFutureDate.js",
     "access": "public",
@@ -712,7 +712,9 @@
       {
         "nullable": null,
         "types": [
-          "string, number, Date"
+          "string",
+          "number",
+          "Date"
         ],
         "spread": false,
         "optional": false,
@@ -722,7 +724,9 @@
       {
         "nullable": null,
         "types": [
-          "string, number, Date"
+          "string",
+          "number",
+          "Date"
         ],
         "spread": false,
         "optional": false,
@@ -809,7 +813,7 @@
     "__docId__": 56,
     "kind": "file",
     "name": "src/quickSortArray.js",
-    "content": "/**\n * quickSoryArray\n * @param {array} list - Array of values of a single type\n * @return Array\n * @throws TypeError\n * @example\n * quickSoryArray([10, 7, 1, 4])\n * quickSoryArray(['banana', 'orange', 'apple'])\n */\nmodule.exports = (list) => {\n  if (Array.isArray(list)) {\n    const listMap = list.map(item => typeof item);\n    const listSet = new Set(listMap);\n    const isValid = listSet.size < 2;\n\n    if (isValid) {\n      // So more quick sorts can be added in the future\n      switch (typeof list[0]) {\n        case 'number':\n          return list.sort((a, b) => {\n            return a - b;\n          });\n\n        case 'string':\n        default:\n          return list.sort();\n      }\n    } else {\n      throw TypeError('You must pass in an array containing a single type');\n    }\n  } else {\n    throw TypeError('You must pass in an array');\n  }\n};\n",
+    "content": "/**\n * quickSoryArray\n * @param {array} list - Array of values of a single type\n * @return Array\n * @throws TypeError\n * @example\n * quickSoryArray([10, 7, 1, 4])\n * quickSoryArray(['banana', 'orange', 'apple'])\n */\nmodule.exports = list => {\n  if (Array.isArray(list)) {\n    // Only want to sort on one type in a list\n    const isValid = new Set(list.map(item => typeof item)).size < 2;\n\n    if (isValid) {\n      // So more quick sorts can be added in the future\n      switch (typeof list[0]) {\n        case 'number':\n          return list.sort((a, b) => {\n            return a - b;\n          });\n\n        case 'string':\n        default:\n          return list.sort();\n      }\n    } else {\n      throw TypeError('You must pass in an array containing a single type');\n    }\n  } else {\n    throw TypeError('You must pass in an array');\n  }\n};\n",
     "static": true,
     "longname": "/Users/Eric/Developer/js-essentials/src/quickSortArray.js",
     "access": "public",
