@@ -1,7 +1,7 @@
 module.exports = el => {
   let $el = el;
 
-  if ($el && $el.indexOf('.') < 0) {
+  if ($el && $el[0] !== '.') {
     $el = `.${$el}`;
   }
 
