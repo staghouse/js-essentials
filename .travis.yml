@@ -1,7 +1,9 @@
 language:
   node_js
+node_js:
+  - "12.8.0"
 install:
-  - npm install -g codecov istanbul
+  - npm install -g codecov
 script:
-  - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
+  - jest
   - codecov
