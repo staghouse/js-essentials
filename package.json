@@ -6,8 +6,12 @@
   "repository": "git@github.com:staghouse/js-essentials.git",
   "author": "Eric Lakatos <lakatos.eric@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": "^12.8.0",
+    "npm": "^6.10.2"
+  },
   "scripts": {
-    "test": "jest && npm run lint",
+    "test": "jest && codecov && npm run lint",
     "lint": "eslint --fix --ext .js ./",
     "docs:build": "esdoc",
     "docs:open": "open ./docs/index.html",
@@ -18,12 +22,15 @@
     "@babel/preset-env": "^7.5.5",
     "babel-eslint": "^10.0.2",
     "babel-jest": "^24.8.0",
+    "codecov": "^3.5.0",
     "esdoc": "^1.1.0",
     "esdoc-node": "^1.0.4",
+    "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^6.1.0",
     "jest": "^24.8.0"
   },
-  "dependencies": {
-    "esdoc-standard-plugin": "^1.0.0"
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   }
 }
