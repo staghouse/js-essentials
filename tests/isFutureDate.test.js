@@ -5,8 +5,8 @@ describe('isFutureDate', () => {
     const now = new Date();
     const year = now.getFullYear();
     const month = now.getMonth() + 1; // Buffer the date as January is 0
-    const date = now.getDate();
-    const time = `${year}-${month}-${date}`;
+    const day = now.getDate();
+    const time = `${year}-${month}-${day}`;
     const isInFuture = await isFutureDate(time);
 
     expect(isInFuture).toBe(false);
@@ -16,8 +16,8 @@ describe('isFutureDate', () => {
     const now = new Date();
     const year = now.getFullYear();
     const month = now.getMonth() + 1; // Buffer the date as January is 0
-    const date = now.getDate() - 1;
-    const time = `${year}-${month}-${date}`;
+    const day = now.getDate() - 1;
+    const time = `${year}-${month}-${day}`;
     const isInFuture = await isFutureDate(time);
 
     expect(isInFuture).toBe(false);
@@ -27,8 +27,8 @@ describe('isFutureDate', () => {
     const now = new Date();
     const year = now.getFullYear();
     const month = now.getMonth() + 2; // Buffer the date as January is 0
-    const date = now.getDate();
-    const time = `${year}-${month}-${date}`;
+    const day = now.getDate();
+    const time = `${year}-${month}-${day}`;
     const isInFuture = await isFutureDate(time);
 
     expect(isInFuture).toBe(true);
@@ -38,8 +38,8 @@ describe('isFutureDate', () => {
     const now = new Date();
     const year = now.getFullYear() + 1;
     const month = now.getMonth() + 1; // Buffer the date as January is 0
-    const date = now.getDate();
-    const time = `${year}-${month}-${date}`;
+    const day = now.getDate();
+    const time = `${year}-${month}-${day}`;
     const isInFuture = await isFutureDate(time);
 
     expect(isInFuture).toBe(true);
