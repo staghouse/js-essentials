@@ -1,3 +1,11 @@
+/**
+ * getURLParams
+ * @param {number} url - string or URL instance
+ * @return object with key/val
+ * @throws TypeError
+ * @example
+ * getURLParmas('http://www.placecage.com?height=100&width=200')
+ */
 module.exports = (url = undefined) => {
   const typeOfUrl = typeof url;
 
@@ -10,7 +18,6 @@ module.exports = (url = undefined) => {
 
     const paramsObj = {};
     params.forEach(function(value, key) {
-      console.log(value, key);
       paramsObj[key] = value;
     });
 

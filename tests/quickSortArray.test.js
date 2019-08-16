@@ -9,7 +9,15 @@ describe('quickSortArray', () => {
     expect(output).toEqual(expected);
   });
 
-  it('should return a the only value in an array', () => {
+  it('should return a sorted array of strings', () => {
+    const input = ['March', 'Jan', 'Feb', 'Dec'];
+    const expected = ['Dec', 'Feb', 'Jan', 'March'];
+    const output = quickSortArray(input);
+
+    expect(output).toEqual(expected);
+  });
+
+  it('should return the only value in an array', () => {
     const input = [3];
     const expected = [3];
     const output = quickSortArray(input);
@@ -17,11 +25,4 @@ describe('quickSortArray', () => {
     expect(output).toEqual(expected);
   });
 
-  it('should return a the only value in an array', () => {
-    const input = ['March', 'Jan', 'Feb', 'Dec'];
-    const expected = ['Dec', 'Feb', 'Jan', 'March'];
-    const output = quickSortArray(input);
-
-    expect(output).toEqual(expected);
-  });
 });

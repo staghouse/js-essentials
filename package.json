@@ -9,6 +9,8 @@
   "scripts": {
     "test": "jest && npm run lint",
     "lint": "eslint --fix --ext .js ./",
+    "docs:build": "esdoc",
+    "docs:open": "open ./docs/index.html",
     "purge": "rm -rf node_modules && yarn cache clean"
   },
   "devDependencies": {
@@ -16,7 +18,12 @@
     "@babel/preset-env": "^7.5.5",
     "babel-eslint": "^10.0.2",
     "babel-jest": "^24.8.0",
+    "esdoc": "^1.1.0",
+    "esdoc-node": "^1.0.4",
     "eslint": "^6.1.0",
     "jest": "^24.8.0"
+  },
+  "dependencies": {
+    "esdoc-standard-plugin": "^1.0.0"
   }
 }

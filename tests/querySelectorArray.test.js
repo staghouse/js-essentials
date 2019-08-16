@@ -15,10 +15,9 @@ describe('querySelectorArray', () => {
     expect(output).toHaveProperty(expected);
   });
 
-  it('should return an empty array when no args are passed', () => {
-    const expected = 0;
-    const output = querySelectorArray();
-
-    expect(output).toHaveLength(expected);
+  it('should throw an error when no string is passed', () => {
+    expect(() => {
+      querySelectorArray();
+    }).toThrow(TypeError);
   });
 });

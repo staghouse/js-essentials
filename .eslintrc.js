@@ -5,7 +5,8 @@ module.exports = {
     node: true,
     browser: true,
     commonjs: true,
-    jest: 'true',
+    jest: true,
+    es6: true,
   },
   extends: [
     // add more generic rulesets here, such as:
