@@ -1,20 +1,27 @@
 module.exports = (time, comparison) => {
-  let now = new Date();
-  let compYear = now.getFullYear();
-  let compMonth = now.getMonth() + 1; // Buffer the date as January is 0
-  let compDate = now.getDate();
+  let now;
+  let typeOfTime = typeof time;
+  let typeOfComparison = typeof comparison;
 
-  if (comparison) {
-    [compYear, compMonth, compDate] = comparison.split('-').map(c => Number(c));
+  if (!comparison) {
+    now = new Date();
+  } else {
+    if (typeOfComparison === 'string' || typeOfComparison === 'number') {
+      now = new Date(comparison);
+    } else if (comparison instanceof Date) {
+      now = comparison;
+    } else {
+      throw TypeError('comparison must be of type String or Date');
+    }
   }
 
-  const [year, month, date] = time.split('-').map(c => Number(c));
+  if (typeOfTime === 'string' || typeOfTime === 'number') {
+    time = new Date(time);
+  } else if (!(time instanceof Date)) {
+    throw TypeError('time must be of type String or Date');
+  }
 
   // This/next year and next month or
   // This/next year and this/next month but not today
-  return (
-    year > compYear ||
-    (year === compYear &&
-      (month > compMonth || (month == compMonth && date > compDate)))
-  );
+  return time.getDate() > now.getDate() || time.getMonth() > now.getMonth() || time.getFullYear() > now.getFullYear();
 };
