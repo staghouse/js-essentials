@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1565983565048" clover="3.2.0">
-  <project timestamp="1565983565049" name="All files">
-    <metrics statements="55" coveredstatements="51" conditionals="45" coveredconditionals="38" methods="8" coveredmethods="8" elements="108" coveredelements="97" complexity="0" loc="55" ncloc="55" packages="2" files="6" classes="6"/>
+<coverage generated="1565987918749" clover="3.2.0">
+  <project timestamp="1565987918749" name="All files">
+    <metrics statements="62" coveredstatements="59" conditionals="45" coveredconditionals="39" methods="8" coveredmethods="8" elements="115" coveredelements="106" complexity="0" loc="62" ncloc="62" packages="2" files="6" classes="6"/>
     <package name="js-essentials">
       <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.js" path="/Users/Eric/Developer/js-essentials/index.js">
@@ -15,7 +15,7 @@
       </file>
     </package>
     <package name="js-essentials.src">
-      <metrics statements="49" coveredstatements="45" conditionals="45" coveredconditionals="38" methods="8" coveredmethods="8"/>
+      <metrics statements="56" coveredstatements="53" conditionals="45" coveredconditionals="39" methods="8" coveredmethods="8"/>
       <file name="getActualMonth.js" path="/Users/Eric/Developer/js-essentials/src/getActualMonth.js">
         <metrics statements="5" coveredstatements="4" conditionals="5" coveredconditionals="3" methods="1" coveredmethods="1"/>
         <line num="9" count="5" type="cond" truecount="0" falsecount="1"/>
@@ -39,22 +39,29 @@
         <line num="26" count="2" type="stmt"/>
       </file>
       <file name="isFutureDate.js" path="/Users/Eric/Developer/js-essentials/src/isFutureDate.js">
-        <metrics statements="15" coveredstatements="14" conditionals="17" coveredconditionals="16" methods="1" coveredmethods="1"/>
+        <metrics statements="22" coveredstatements="22" conditionals="17" coveredconditionals="17" methods="1" coveredmethods="1"/>
         <line num="10" count="5" type="stmt"/>
-        <line num="12" count="9" type="stmt"/>
-        <line num="13" count="9" type="stmt"/>
-        <line num="15" count="9" type="cond" truecount="2" falsecount="0"/>
-        <line num="16" count="7" type="stmt"/>
-        <line num="18" count="2" type="cond" truecount="3" falsecount="1"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="27" count="8" type="cond" truecount="4" falsecount="0"/>
-        <line num="28" count="5" type="stmt"/>
-        <line num="29" count="3" type="cond" truecount="2" falsecount="0"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="35" count="7" type="stmt"/>
+        <line num="11" count="10" type="stmt"/>
+        <line num="12" count="10" type="stmt"/>
+        <line num="13" count="10" type="stmt"/>
+        <line num="14" count="10" type="stmt"/>
+        <line num="16" count="10" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="7" type="stmt"/>
+        <line num="19" count="3" type="cond" truecount="4" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="28" count="9" type="cond" truecount="4" falsecount="0"/>
+        <line num="29" count="6" type="stmt"/>
+        <line num="30" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="34" count="8" type="stmt"/>
+        <line num="35" count="8" type="stmt"/>
+        <line num="36" count="8" type="stmt"/>
+        <line num="41" count="8" type="stmt"/>
+        <line num="43" count="8" type="cond" truecount="3" falsecount="0"/>
+        <line num="45" count="8" type="stmt"/>
       </file>
       <file name="querySelectorArray.js" path="/Users/Eric/Developer/js-essentials/src/querySelectorArray.js">
         <metrics statements="8" coveredstatements="8" conditionals="8" coveredconditionals="7" methods="1" coveredmethods="1"/>

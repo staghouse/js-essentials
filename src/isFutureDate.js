@@ -1,40 +1,41 @@
 /**
  * isFutureDate
- * @param {string|number|Date} time - time to compare with: "current time"
- * @param {string|number|Date} comparison - time to compare again: "not current time"
+ * @param {string|number|Date} now - now to comparison with: "current now"
+ * @param {string|number|Date} future - now to comparison again: "not current now"
  * @return Boolean
  * @throws TypeError
  * @example
  * isFutureDate('2019-10-10', '2020-01-01')
  */
-module.exports = (time, comparison) => {
-  let now;
-  let typeOfTime = typeof time;
-  let typeOfComparison = typeof comparison;
+module.exports = (now, future) => {
+  let isFuture = undefined;
+  let comparison = undefined;
+  let typeOfNow = typeof now;
+  let typeOfFuture = typeof future;
 
-  if (!comparison) {
-    now = new Date();
+  if (!future) {
+    comparison = new Date();
   } else {
-    if (typeOfComparison === 'string' || typeOfComparison === 'number') {
-      now = new Date(comparison);
-    } else if (comparison instanceof Date) {
-      now = comparison;
+    if (typeOfFuture === 'string' || typeOfFuture === 'number') {
+      comparison = new Date(future);
+    } else if (future instanceof Date) {
+      comparison = future;
     } else {
-      throw TypeError('comparison must be of type String or Date');
+      throw TypeError('future must be of type String or Date');
     }
   }
 
-  if (typeOfTime === 'string' || typeOfTime === 'number') {
-    time = new Date(time);
-  } else if (!(time instanceof Date)) {
-    throw TypeError('time must be of type String or Date');
+  if (typeOfNow === 'string' || typeOfNow === 'number') {
+    now = new Date(now);
+  } else if (!(now instanceof Date)) {
+    throw TypeError('now must be of type string, number or Date');
   }
 
-  // This/next year and next month or
-  // This/next year and this/next month but not today
-  return (
-    time.getDate() > now.getDate() ||
-    time.getMonth() > now.getMonth() ||
-    time.getFullYear() > now.getFullYear()
-  );
+  const futureYear = now.getUTCFullYear() > comparison.getUTCFullYear();
+  const futureMonth = now.getUTCMonth() > comparison.getUTCMonth();
+  const futureDate = now.getUTCDate() > comparison.getUTCDate();
+
+  isFuture = (futureYear || futureMonth || futureDate);
+
+  return isFuture;
 };

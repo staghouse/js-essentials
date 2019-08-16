@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">93.33% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>14/15</span>
+        <span class='fraction'>22/22</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">94.12% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>16/17</span>
+        <span class='fraction'>17/17</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">93.33% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>14/15</span>
+        <span class='fraction'>22/22</span>
       </div>
     </div>
     <p class="quiet">
@@ -86,7 +86,13 @@
 <a name='L38'></a><a href='#L38'>38</a>
 <a name='L39'></a><a href='#L39'>39</a>
 <a name='L40'></a><a href='#L40'>40</a>
-<a name='L41'></a><a href='#L41'>41</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -96,15 +102,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -112,59 +119,70 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
  * isFutureDate
- * @param {string|number|Date} time - time to compare with: "current time"
- * @param {string|number|Date} comparison - time to compare again: "not current time"
+ * @param {string|number|Date} now - now to comparison with: "current now"
+ * @param {string|number|Date} future - now to comparison again: "not current now"
  * @return Boolean
  * @throws TypeError
  * @example
  * isFutureDate('2019-10-10', '2020-01-01')
  */
-module.exports = (time, comparison) =&gt; {
-  let now;
-  let typeOfTime = typeof time;
-  let typeOfComparison = typeof comparison;
+module.exports = (now, future) =&gt; {
+  let isFuture = undefined;
+  let comparison = undefined;
+  let typeOfNow = typeof now;
+  let typeOfFuture = typeof future;
 &nbsp;
-  if (!comparison) {
-    now = new Date();
+  if (!future) {
+    comparison = new Date();
   } else {
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (typeOfComparison === 'string' || typeOfComparison === 'number') {
-<span class="cstat-no" title="statement not covered" >      now = new Date(comparison);</span>
-    } else if (comparison instanceof Date) {
-      now = comparison;
+    if (typeOfFuture === 'string' || typeOfFuture === 'number') {
+      comparison = new Date(future);
+    } else if (future instanceof Date) {
+      comparison = future;
     } else {
-      throw TypeError('comparison must be of type String or Date');
+      throw TypeError('future must be of type String or Date');
     }
   }
 &nbsp;
-  if (typeOfTime === 'string' || typeOfTime === 'number') {
-    time = new Date(time);
-  } else if (!(time instanceof Date)) {
-    throw TypeError('time must be of type String or Date');
+  if (typeOfNow === 'string' || typeOfNow === 'number') {
+    now = new Date(now);
+  } else if (!(now instanceof Date)) {
+    throw TypeError('now must be of type string, number or Date');
   }
 &nbsp;
-  // This/next year and next month or
-  // This/next year and this/next month but not today
-  return (
-    time.getDate() &gt; now.getDate() ||
-    time.getMonth() &gt; now.getMonth() ||
-    time.getFullYear() &gt; now.getFullYear()
-  );
+  const futureYear = now.getUTCFullYear() &gt; comparison.getUTCFullYear();
+  const futureMonth = now.getUTCMonth() &gt; comparison.getUTCMonth();
+  const futureDate = now.getUTCDate() &gt; comparison.getUTCDate();
+  // const yesterYear = now.getUTCFullYear() &lt; comparison.getUTCFullYear();
+  // const yesterMonth = now.getUTCMonth() &lt; comparison.getUTCMonth();
+  // const yesterDate = now.getUTCDate() &lt; comparison.getUTCDate();
+&nbsp;
+  console.log(futureMonth)
+&nbsp;
+  isFuture = (futureYear || futureMonth || futureDate);
+&nbsp;
+  return isFuture;
 };
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -172,7 +190,7 @@ module.exports = (time, comparison) =&gt; {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Aug 16 2019 15:26:04 GMT-0400 (Eastern Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Aug 16 2019 16:38:38 GMT-0400 (Eastern Daylight Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>
