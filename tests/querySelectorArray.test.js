@@ -20,5 +20,5 @@ describe('querySelectorArray', () => {
     const output = querySelectorArray();
 
     expect(output).toHaveLength(expected);
-  })
+  });
 });

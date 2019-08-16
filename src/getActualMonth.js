@@ -11,8 +11,8 @@ module.exports = (num = undefined) => {
     'September',
     'October',
     'November',
-    'December'
+    'December',
   ];
 
   return months[num];
-}
+};

@@ -13,10 +13,14 @@ describe('getURLParams', () => {
   });
 
   it('should return an a TypeError when not passing in nothing', () => {
-    expect(() => {getURLParams()}).toThrow(TypeError);
+    expect(() => {
+      getURLParams();
+    }).toThrow(TypeError);
   });
 
   it('should return an a TypeError when not passing in a string or URL instance', () => {
-    expect(() => {getURLParams({})}).toThrow(TypeError);
+    expect(() => {
+      getURLParams({});
+    }).toThrow(TypeError);
   });
 });

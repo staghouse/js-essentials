@@ -75,10 +75,14 @@ describe('isFutureDate', () => {
   });
 
   it('should raise error when time argument is not a valid type', async () => {
-    expect(() => {isFutureDate({})}).toThrow(TypeError);
+    expect(() => {
+      isFutureDate({});
+    }).toThrow(TypeError);
   });
 
   it('should raise error when compare argument is not a valid type', async () => {
-    expect(() => {isFutureDate(new Date(), {})}).toThrow(TypeError);
+    expect(() => {
+      isFutureDate(new Date(), {});
+    }).toThrow(TypeError);
   });
 });

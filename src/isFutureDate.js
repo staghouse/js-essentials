@@ -23,5 +23,9 @@ module.exports = (time, comparison) => {
 
   // This/next year and next month or
   // This/next year and this/next month but not today
-  return time.getDate() > now.getDate() || time.getMonth() > now.getMonth() || time.getFullYear() > now.getFullYear();
+  return (
+    time.getDate() > now.getDate() ||
+    time.getMonth() > now.getMonth() ||
+    time.getFullYear() > now.getFullYear()
+  );
 };
