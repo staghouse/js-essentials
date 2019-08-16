@@ -1,24 +1,11 @@
-let quickSortArray;
-
-quickSortArray = function(list){
-  if (list.length < 2) {return list;}
-
-  let pivot = list[0];
-  let left = [];
-  let right = [];
-
-  for (let i = 1, total = list.length; i < total; i++){
-    if (list[i] < pivot)
-    {left.push(list[i]);}
-    else
-    {right.push(list[i]);}
+module.exports = function(list){
+  // So more quick sorts can be added in the future
+  switch (typeof list[0]) {
+  case 'number':
+    return list.sort((a, b) => {
+      return a - b
+    });
+  default:
+    return list.sort()
   }
-
-  return [
-    ...quickSortArray(left),
-    pivot,
-    ...quickSortArray(right)
-  ];
-}
-
-module.exports = quickSortArray;
+};
