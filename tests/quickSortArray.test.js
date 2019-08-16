@@ -25,4 +25,16 @@ describe('quickSortArray', () => {
     expect(output).toEqual(expected);
   });
 
+  it('should return a TypeError from mis-matching array contents', () => {
+    const input = ['March', 8, 'April'];
+    expect(() => {
+      quickSortArray(input);
+    }).toThrow(TypeError);
+  });
+
+  it('should return a TypeError for incorrect array argument', () => {
+    expect(() => {
+      quickSortArray();
+    }).toThrow(TypeError);
+  });
 });
