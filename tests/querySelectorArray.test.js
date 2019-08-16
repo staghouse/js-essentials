@@ -8,7 +8,7 @@ describe('querySelectorArray', () => {
     expect(output).toHaveProperty(expected);
   });
 
-  it('should return an array even without a . selector', () => {
+  it('should return an array even without a period prepended to the selector', () => {
     const expected = 'length'; // array has length but not object
     const output = querySelectorArray('test');
 

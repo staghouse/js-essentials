@@ -15,7 +15,7 @@ module.exports = el => {
       $el = `.${$el}`;
     }
 
-    if (document) {
+    if (typeof document === 'object') {
       return Array.from(document.querySelectorAll($el));
     }
   } else {
