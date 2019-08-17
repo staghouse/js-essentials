@@ -3,7 +3,7 @@ const getURLParams = require('./src/getURLParams');
 const getActualMonth = require('./src/getActualMonth');
 const quickSortArray = require('./src/quickSortArray');
 const quickSortArrayObjects = require('./src/quickSortArrayObjects');
-const querySelectorArray = require('./src/querySelectorArray');
+const querySelectorAllArray = require('./src/querySelectorAllArray');
 
 module.exports = {
   isFutureDate,
@@ -11,5 +11,5 @@ module.exports = {
   getActualMonth,
   quickSortArray,
   quickSortArrayObjects,
-  querySelectorArray,
+  querySelectorAllArray,
 };
