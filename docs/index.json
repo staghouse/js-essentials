@@ -754,10 +754,10 @@
   {
     "__docId__": 54,
     "kind": "file",
-    "name": "src/querySelectorArray.js",
-    "content": "/**\n * quickSoryArray\n * @param {string} el - DOM element class name\n * @return Array of class based elements\n * @throws TypeError\n * @example\n * querySelectorArray('.my-element')\n * querySelectorArray('my-element')\n */\nmodule.exports = el => {\n  if (typeof el === 'string') {\n    let $el = el;\n\n    if ($el && $el[0] !== '.') {\n      $el = `.${$el}`;\n    }\n\n    if (typeof document === 'object') {\n      return Array.from(document.querySelectorAll($el));\n    }\n  } else {\n    throw TypeError('el must be of type string');\n  }\n};\n",
+    "name": "src/querySelectorAllArray.js",
+    "content": "/**\n * querySelectorAllArray\n * @param {string} el - DOM element class name\n * @return Array of class based elements\n * @throws TypeError\n * @example\n * querySelectorArray('.my-element')\n */\nmodule.exports = el => {\n  if (typeof el !== 'string') {\n    throw TypeError('el must be of type string');\n  }\n\n  if (el[0] !== '.') {\n    throw TypeError('el must include a period prepended to the selector');\n  }\n\n  if (document) {\n    return Array.from(document.querySelectorAll(el));\n  }\n};\n",
     "static": true,
-    "longname": "/Users/Eric/Developer/js-essentials/src/querySelectorArray.js",
+    "longname": "/Users/Eric/Developer/js-essentials/src/querySelectorAllArray.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -765,21 +765,21 @@
   {
     "__docId__": 55,
     "kind": "function",
-    "name": "querySelectorArray",
-    "memberof": "src/querySelectorArray.js",
+    "name": "querySelectorAllArray",
+    "memberof": "src/querySelectorAllArray.js",
     "generator": false,
     "async": false,
     "static": true,
-    "longname": "src/querySelectorArray.js~querySelectorArray",
+    "longname": "src/querySelectorAllArray.js~querySelectorAllArray",
     "access": "public",
     "export": true,
-    "importPath": "js-essentials/src/querySelectorArray.js",
-    "importStyle": "querySelectorArray",
-    "description": "quickSoryArray",
+    "importPath": "js-essentials/src/querySelectorAllArray.js",
+    "importStyle": "querySelectorAllArray",
+    "description": "querySelectorAllArray",
     "examples": [
-      "querySelectorArray('.my-element')\nquerySelectorArray('my-element')"
+      "querySelectorArray('.my-element')"
     ],
-    "lineNumber": 10,
+    "lineNumber": 9,
     "params": [
       {
         "nullable": null,

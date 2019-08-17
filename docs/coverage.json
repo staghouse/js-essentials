@@ -18,7 +18,7 @@
       "actualCount": 1,
       "undocumentLines": []
     },
-    "src/querySelectorArray.js": {
+    "src/querySelectorAllArray.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []

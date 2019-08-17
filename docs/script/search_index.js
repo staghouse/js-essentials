@@ -18,9 +18,9 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "js-essentials/src/queryselectorarray.js~queryselectorarray",
-    "function/index.html#static-function-querySelectorArray",
-    "<span>querySelectorArray</span> <span class=\"search-result-import-path\">js-essentials/src/querySelectorArray.js</span>",
+    "js-essentials/src/queryselectorallarray.js~queryselectorallarray",
+    "function/index.html#static-function-querySelectorAllArray",
+    "<span>querySelectorAllArray</span> <span class=\"search-result-import-path\">js-essentials/src/querySelectorAllArray.js</span>",
     "function"
   ],
   [
@@ -336,9 +336,9 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/queryselectorarray.js",
-    "file/src/querySelectorArray.js.html",
-    "src/querySelectorArray.js",
+    "src/queryselectorallarray.js",
+    "file/src/querySelectorAllArray.js.html",
+    "src/querySelectorAllArray.js",
     "file"
   ],
   [
