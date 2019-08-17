@@ -34,6 +34,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFutureDate">isFutureDate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-querySelectorArray">querySelectorArray</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-quickSortArray">quickSortArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-quickSortArrayObjects">quickSortArrayObjects</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -41,14 +42,15 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/getActualMonth.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
  * getActualMonth
- * @param {number} number - number of the month from Date()
+ * @param {number} num - number of the month from Date()
  * @return String of month
  * @throws TypeError
  * @example
  * getActualMonth(6)
  */
-module.exports = (number = undefined) =&gt; {
-  if (typeof number !== &apos;undefined&apos; &amp;&amp; Number(number)) {
+module.exports = (num = undefined) =&gt; {
+  const number = Number(num);
+  if (!isNaN(number)) {
     const months = [
       &apos;January&apos;,
       &apos;February&apos;,
@@ -65,7 +67,7 @@ module.exports = (number = undefined) =&gt; {
     ];
     return months[number];
   } else {
-    throw TypeError(&apos;number must be of type Number&apos;);
+    throw TypeError(&apos;number must be of type string or number&apos;);
   }
 };
 </code></pre>

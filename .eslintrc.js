@@ -19,6 +19,7 @@ module.exports = {
     'no-unused-vars': 'off',
     'no-console': 'off',
     'no-empty': 'off',
+    'no-prototype-builtins': 'off',
     // Rules to warn
     indent: ['warn', 2, { SwitchCase: 1 }],
     // Rules to error

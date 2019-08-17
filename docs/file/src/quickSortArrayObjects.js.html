@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">src/isFutureDate.js | js-essentials</title>
+  <title data-ice="title">src/quickSortArrayObjects.js | js-essentials</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -39,47 +39,52 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/isFutureDate.js</h1>
+<div class="content" data-ice="content"><h1 data-ice="title">src/quickSortArrayObjects.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
- * isFutureDate
- * @param {string|number|Date} now - now to comparison with: &quot;current now&quot;
- * @param {string|number|Date} future - now to comparison again: &quot;not current now&quot;
- * @return Boolean
+ * quickSortArrayObjects
+ * @param {array} list - Array of values of a single type
+ * @param {object} config - object of values to change for list value types
+ * @return Array
  * @throws TypeError
  * @example
- * isFutureDate(&apos;2019-10-10&apos;, &apos;2020-01-01&apos;)
+ * quickSortArrayObjects([
+ *  {date: &apos;2099-01-01&apos;}, {date: &apos;1099-01-01&apos;}],
+ *  {type: &apos;date&apos;, property: &apos;releaseDate&apos;})
  */
-module.exports = (now, future) =&gt; {
-  let isFuture = undefined;
-  let comparison = undefined;
-  let typeOfNow = typeof now;
-  let typeOfFuture = typeof future;
+module.exports = (list, { type, property, asc = true } = {}) =&gt; {
+  let options = {
+    type,
+    property,
+    asc,
+  };
 
-  if (!future) {
-    comparison = new Date();
-  } else {
-    if (typeOfFuture === &apos;string&apos; || typeOfFuture === &apos;number&apos;) {
-      comparison = new Date(future);
-    } else if (future instanceof Date) {
-      comparison = future;
-    } else {
-      throw TypeError(&apos;future must be of type String or Date&apos;);
+  if (!Array.isArray(list)) {
+    throw TypeError(&apos;You must pass in an array&apos;);
+  }
+
+  if (list.length === 1) {
+    return list;
+  }
+
+  const filtered = list.filter(item =&gt; Object.keys(item).includes(property));
+
+  if (filtered.length &gt; 0) {
+    switch (options.type) {
+      case &apos;date&apos;:
+        return filtered.sort(function(a, b) {
+          if (options.asc) {
+            return new Date(b[options.property]) - new Date(a[options.property]);
+          } else {
+            return new Date(a[options.property]) - new Date(b[options.property]);
+          }
+        });
+
+      default:
+        throw TypeError(&apos;You must pass in valid configuration&apos;);
     }
+  } else {
+    throw TypeError(&apos;You must pass in objects literals to sort&apos;);
   }
-
-  if (typeOfNow === &apos;string&apos; || typeOfNow === &apos;number&apos;) {
-    now = new Date(now);
-  } else if (!(now instanceof Date)) {
-    throw TypeError(&apos;now must be of type string, number or Date&apos;);
-  }
-
-  const futureYear = now.getUTCFullYear() &gt; comparison.getUTCFullYear();
-  const futureMonth = now.getUTCMonth() &gt; comparison.getUTCMonth();
-  const futureDate = now.getUTCDate() &gt; comparison.getUTCDate();
-
-  isFuture = (futureYear || futureMonth || futureDate);
-
-  return isFuture;
 };
 </code></pre>
 
