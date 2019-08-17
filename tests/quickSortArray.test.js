@@ -17,9 +17,9 @@ describe('quickSortArray', () => {
     expect(output).toEqual(expected);
   });
 
-  it('should return the only value in an array', () => {
+  it('should return the same array if there is one value', () => {
     const input = [3];
-    const expected = [3];
+    const expected = input;
     const output = quickSortArray(input);
 
     expect(output).toEqual(expected);

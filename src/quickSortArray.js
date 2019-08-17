@@ -1,6 +1,7 @@
 /**
  * quickSortArray
  * @param {array} list - Array of values of a single type
+ * @param {object} config - object of values to change for list value types
  * @return Array
  * @throws TypeError
  * @example
@@ -9,6 +10,9 @@
  */
 module.exports = list => {
   if (Array.isArray(list)) {
+    if (list.length === 1) {
+      return list;
+    }
     // Only want to sort on one type in a list
     const isValid = new Set(list.map(item => typeof item)).size < 2;
 
