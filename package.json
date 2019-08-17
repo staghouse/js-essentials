@@ -2,7 +2,7 @@
   "name": "js-essentials",
   "version": "0.0.1",
   "description": "Essential tools/helpers to use in any JS project.",
-  "main": "index.js",
+  "main": "build/index.js",
   "repository": "git@github.com:staghouse/js-essentials.git",
   "author": "Eric Lakatos <lakatos.eric@gmail.com>",
   "license": "MIT",
@@ -11,13 +11,16 @@
     "npm": "^6.10.2"
   },
   "scripts": {
+    "bootstrap": "npm install && npm audit fix",
     "test": "jest && codecov && npm run lint",
     "lint": "eslint --fix --ext .js ./",
+    "build": "babel src -d dist && uglifyjs-folder dist/ -ex .js -yo dist/",
     "docs:build": "rm -rf ./docs && esdoc",
     "docs:open": "open ./docs/index.html",
-    "purge": "rm -rf node_modules && yarn cache clean"
+    "purge": "rm -rf node_modules"
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "babel-eslint": "^10.0.2",
@@ -27,7 +30,9 @@
     "esdoc-node": "^1.0.4",
     "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^6.1.0",
-    "jest": "^24.8.0"
+    "jest": "^24.8.0",
+    "uglify-es": "^3.3.9",
+    "uglifyjs-folder": "^1.5.1"
   },
   "jest": {
     "coverageDirectory": "./coverage/",

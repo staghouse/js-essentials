@@ -7,7 +7,7 @@
  * @example
  * isFutureDate('2019-10-10', '2020-01-01')
  */
-module.exports = (now, future) => {
+export function isFutureDate(now, future) {
   let isFuture = undefined;
   let comparison = undefined;
   let typeOfNow = typeof now;
@@ -35,7 +35,7 @@ module.exports = (now, future) => {
   const futureMonth = now.getUTCMonth() > comparison.getUTCMonth();
   const futureDate = now.getUTCDate() > comparison.getUTCDate();
 
-  isFuture = (futureYear || futureMonth || futureDate);
+  isFuture = futureYear || futureMonth || futureDate;
 
   return isFuture;
-};
+}

@@ -1,4 +1,4 @@
-const { querySelectorAllArray } = require('../index');
+import { querySelectorAllArray } from '../src/index';
 
 describe('querySelectorArray', () => {
   it('should return an array', () => {

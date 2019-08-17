@@ -17,6 +17,7 @@ yarn-error.log*
 
 # Node modules
 node_modules/
+coverage/
 
 # Token
 .env

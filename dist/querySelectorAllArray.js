@@ -1,0 +1,1 @@
+"use strict";function querySelectorAllArray(e){if("string"!=typeof e)throw TypeError("el must be of type string");if("."!==e[0])throw TypeError("el must include a period prepended to the selector");if(document)return Array.from(document.querySelectorAll(e))}Object.defineProperty(exports,"__esModule",{value:!0}),exports.querySelectorAllArray=querySelectorAllArray;

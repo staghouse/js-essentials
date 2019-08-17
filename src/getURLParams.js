@@ -6,7 +6,7 @@
  * @example
  * getURLParmas('http://www.placecage.com?height=100&width=200')
  */
-module.exports = (url = undefined) => {
+export function getURLParams(url = undefined) {
   const typeOfUrl = typeof url;
   const paramsObj = {};
   let params = undefined;
@@ -24,4 +24,4 @@ module.exports = (url = undefined) => {
   } else {
     throw TypeError('url must be of type String or URL');
   }
-};
+}

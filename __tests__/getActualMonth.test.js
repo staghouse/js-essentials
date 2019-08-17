@@ -1,4 +1,4 @@
-const { getActualMonth } = require('../index');
+import { getActualMonth } from '../src/index';
 
 describe('getActualMonth', () => {
   it('should take a number return the proper string month', () => {

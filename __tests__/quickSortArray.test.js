@@ -1,4 +1,4 @@
-const { quickSortArray } = require('../index');
+import { quickSortArray } from '../src/index';
 
 describe('quickSortArray', () => {
   it('should return a sorted array of numbers', () => {

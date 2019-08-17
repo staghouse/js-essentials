@@ -7,7 +7,7 @@
  * quickSortArray([10, 7, 1, 4])
  * quickSortArray(['banana', 'orange', 'apple'])
  */
-module.exports = list => {
+export function quickSortArray(list) {
   if (!Array.isArray(list)) {
     throw TypeError('You must pass in an array');
   }
@@ -29,4 +29,4 @@ module.exports = list => {
     default:
       return list.sort();
   }
-};
+}

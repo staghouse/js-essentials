@@ -1,4 +1,4 @@
-const { quickSortArrayObjects } = require('../index');
+import { quickSortArrayObjects } from '../src/index';
 
 describe('quickSortArrayObjects', () => {
   it('should return the only value in an array', () => {
@@ -64,7 +64,7 @@ describe('quickSortArrayObjects', () => {
 
   it('should return a TypeError for passing in no objects', () => {
     expect(() => {
-      quickSortArrayObjects([[], '', Date, String, Number, 5, 0.5 ]);
+      quickSortArrayObjects([[], '', Date, String, Number, 5, 0.5]);
     }).toThrow(TypeError);
   });
 
