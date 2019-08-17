@@ -9,7 +9,7 @@
  *  {date: '2099-01-01'}, {date: '1099-01-01'}],
  *  {type: 'date', property: 'releaseDate'})
  */
-module.exports = (list, { type, property, asc = true } = {}) => {
+export function quickSortArrayObjects(list, { type, property, asc = true } = {}) {
   let options = {
     type,
     property,
@@ -43,4 +43,4 @@ module.exports = (list, { type, property, asc = true } = {}) => {
   } else {
     throw TypeError('You must pass in objects literals to sort');
   }
-};
+}

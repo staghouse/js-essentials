@@ -6,7 +6,7 @@
  * @example
  * querySelectorArray('.my-element')
  */
-module.exports = el => {
+export function querySelectorAllArray(el) {
   if (typeof el !== 'string') {
     throw TypeError('el must be of type string');
   }
@@ -18,4 +18,4 @@ module.exports = el => {
   if (document) {
     return Array.from(document.querySelectorAll(el));
   }
-};
+}

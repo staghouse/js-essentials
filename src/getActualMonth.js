@@ -6,8 +6,9 @@
  * @example
  * getActualMonth(6)
  */
-module.exports = (num = undefined) => {
+export function getActualMonth(num = undefined) {
   const number = Number(num);
+
   if (!isNaN(number)) {
     const months = [
       'January',
@@ -27,4 +28,4 @@ module.exports = (num = undefined) => {
   } else {
     throw TypeError('number must be of type string or number');
   }
-};
+}

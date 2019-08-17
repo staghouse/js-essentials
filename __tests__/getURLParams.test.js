@@ -1,4 +1,4 @@
-const { getURLParams } = require('../index');
+import { getURLParams } from '../src/index';
 
 describe('getURLParams', () => {
   it('should return an object of URL query params', () => {

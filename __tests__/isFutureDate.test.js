@@ -1,4 +1,4 @@
-const { isFutureDate } = require('../index');
+import { isFutureDate } from '../src/index';
 
 describe('isFutureDate', () => {
   it('should return false today is in the future', async () => {
