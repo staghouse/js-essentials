@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">94.74% </span>
+        <span class="strong">93.75% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>18/19</span>
+        <span class='fraction'>15/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">92.31% </span>
+        <span class="strong">91.67% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>12/13</span>
+        <span class='fraction'>11/12</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">94.44% </span>
+        <span class="strong">93.33% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>17/18</span>
+        <span class='fraction'>14/15</span>
       </div>
     </div>
     <p class="quiet">
@@ -90,12 +90,7 @@
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -112,15 +107,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
@@ -141,9 +134,6 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
  * quickSortArray
  * @param {array} list - Array of values of a single type
@@ -153,44 +143,39 @@
  * @example
  * quickSortArrayObjects([{date: '2099-01-01'}, {date: '1099-01-01'}], {type: 'date', 'property': 'releaseDate'})
  */
-module.exports = (list, config = undefined) =&gt; {
-  const options = {
-    type: undefined,
-    property: undefined,
-    asc: true,
+module.exports = (list, { type, property, asc = true } = {}) =&gt; {
+  let options = {
+    type,
+    property,
+    asc,
   };
 &nbsp;
-  if (Array.isArray(list)) {
-    if (list.length === 1) {
-      return list;
-    }
+  if (!Array.isArray(list)) {
+    throw TypeError('You must pass in an array');
+  }
 &nbsp;
-    if (config) {
-      Object.assign(options, config);
-    }
+  if (list.length === 1) {
+    return list;
+  }
 &nbsp;
-    const { type, property, asc } = options;
-    const filtered = list.filter(item =&gt; Object.keys(item).includes(property));
+  const filtered = list.filter(item =&gt; Object.keys(item).includes(property));
 &nbsp;
-    if (filtered.length &gt; 0) {
-      switch (type) {
-        case 'date':
-          return list.sort(function(a, b) {
-            if (asc) {
-              return new Date(b[property]) - new Date(a[property]);
-            } else {
-              return new Date(a[property]) - new Date(b[property]);
-            }
-          });
+  if (filtered.length &gt; 0) {
+    switch (options.type) {
+      case 'date':
+        return list.sort(function(a, b) {
+          if (options.asc) {
+            return new Date(b[options.property]) - new Date(a[options.property]);
+          } else {
+            return new Date(a[options.property]) - new Date(b[options.property]);
+          }
+        });
 &nbsp;
-<span class="branch-1 cbranch-no" title="branch not covered" >        default:</span>
-<span class="cstat-no" title="statement not covered" >          throw TypeError('supplied config did not match available sorting');</span>
-      }
-    } else {
-      throw TypeError('no objects were passed in to sort');
+<span class="branch-1 cbranch-no" title="branch not covered" >      default:</span>
+<span class="cstat-no" title="statement not covered" >        throw TypeError('supplied config did not match available sorting');</span>
     }
   } else {
-    throw TypeError('You must pass in an array');
+    throw TypeError('no objects were passed in to sort');
   }
 };
 &nbsp;</pre></td></tr>
@@ -199,7 +184,7 @@ module.exports = (list, config = undefined) =&gt; {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Aug 17 2019 01:52:39 GMT-0400 (Eastern Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Aug 17 2019 02:09:36 GMT-0400 (Eastern Daylight Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

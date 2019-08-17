@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1566021159805" clover="3.2.0">
-  <project timestamp="1566021159805" name="All files">
-    <metrics statements="83" coveredstatements="82" conditionals="56" coveredconditionals="54" methods="11" coveredmethods="11" elements="150" coveredelements="147" complexity="0" loc="83" ncloc="83" packages="2" files="7" classes="7"/>
+<coverage generated="1566022176922" clover="3.2.0">
+  <project timestamp="1566022176922" name="All files">
+    <metrics statements="78" coveredstatements="77" conditionals="53" coveredconditionals="51" methods="11" coveredmethods="11" elements="142" coveredelements="139" complexity="0" loc="78" ncloc="78" packages="2" files="7" classes="7"/>
     <package name="js-essentials">
       <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.js" path="/Users/Eric/Developer/js-essentials/index.js">
@@ -16,7 +16,7 @@
       </file>
     </package>
     <package name="js-essentials.src">
-      <metrics statements="76" coveredstatements="75" conditionals="56" coveredconditionals="54" methods="11" coveredmethods="11"/>
+      <metrics statements="71" coveredstatements="70" conditionals="53" coveredconditionals="51" methods="11" coveredmethods="11"/>
       <file name="getActualMonth.js" path="/Users/Eric/Developer/js-essentials/src/getActualMonth.js">
         <metrics statements="6" coveredstatements="6" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
         <line num="9" count="6" type="cond" truecount="1" falsecount="0"/>
@@ -76,40 +76,35 @@
         <line num="22" count="1" type="stmt"/>
       </file>
       <file name="quickSortArray.js" path="/Users/Eric/Developer/js-essentials/src/quickSortArray.js">
-        <metrics statements="12" coveredstatements="12" conditionals="9" coveredconditionals="9" methods="3" coveredmethods="3"/>
+        <metrics statements="10" coveredstatements="10" conditionals="7" coveredconditionals="7" methods="3" coveredmethods="3"/>
         <line num="11" count="6" type="stmt"/>
         <line num="12" count="5" type="cond" truecount="2" falsecount="0"/>
-        <line num="13" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="17" count="18" type="stmt"/>
-        <line num="19" count="3" type="cond" truecount="2" falsecount="0"/>
-        <line num="21" count="2" type="cond" truecount="3" falsecount="0"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="24" count="27" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="35" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="16" count="19" type="stmt"/>
+        <line num="18" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="23" count="3" type="cond" truecount="3" falsecount="0"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="26" count="27" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
       </file>
       <file name="quickSortArrayObjects.js" path="/Users/Eric/Developer/js-essentials/src/quickSortArrayObjects.js">
-        <metrics statements="18" coveredstatements="17" conditionals="13" coveredconditionals="12" methods="3" coveredmethods="3"/>
-        <line num="10" count="6" type="cond" truecount="1" falsecount="0"/>
+        <metrics statements="15" coveredstatements="14" conditionals="12" coveredconditionals="11" methods="3" coveredmethods="3"/>
+        <line num="10" count="6" type="cond" truecount="2" falsecount="0"/>
         <line num="11" count="6" type="stmt"/>
         <line num="17" count="6" type="cond" truecount="2" falsecount="0"/>
-        <line num="18" count="5" type="cond" truecount="2" falsecount="0"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="22" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="23" count="3" type="stmt"/>
-        <line num="26" count="4" type="stmt"/>
-        <line num="27" count="13" type="stmt"/>
-        <line num="29" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="30" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="32" count="2" type="stmt"/>
-        <line num="33" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="21" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="25" count="13" type="stmt"/>
+        <line num="27" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="28" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="31" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="32" count="1" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
-        <line num="36" count="1" type="stmt"/>
-        <line num="41" count="0" type="stmt"/>
-        <line num="44" count="2" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
       </file>
     </package>
   </project>
