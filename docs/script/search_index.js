@@ -30,6 +30,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "js-essentials/src/quicksortarrayobjects.js~quicksortarrayobjects",
+    "function/index.html#static-function-quickSortArrayObjects",
+    "<span>quickSortArrayObjects</span> <span class=\"search-result-import-path\">js-essentials/src/quickSortArrayObjects.js</span>",
+    "function"
+  ],
+  [
     "src/.external-ecmascript.js~array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
     "src/.external-ecmascript.js~Array",
@@ -339,6 +345,12 @@ window.esdocSearchIndex = [
     "src/quicksortarray.js",
     "file/src/quickSortArray.js.html",
     "src/quickSortArray.js",
+    "file"
+  ],
+  [
+    "src/quicksortarrayobjects.js",
+    "file/src/quickSortArrayObjects.js.html",
+    "src/quickSortArrayObjects.js",
     "file"
   ]
 ]

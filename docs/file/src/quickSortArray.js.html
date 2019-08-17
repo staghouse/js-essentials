@@ -34,42 +34,42 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFutureDate">isFutureDate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-querySelectorArray">querySelectorArray</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-quickSortArray">quickSortArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-quickSortArrayObjects">quickSortArrayObjects</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/quickSortArray.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
- * quickSoryArray
+ * quickSortArray
  * @param {array} list - Array of values of a single type
  * @return Array
  * @throws TypeError
  * @example
- * quickSoryArray([10, 7, 1, 4])
- * quickSoryArray([&apos;banana&apos;, &apos;orange&apos;, &apos;apple&apos;])
+ * quickSortArray([10, 7, 1, 4])
+ * quickSortArray([&apos;banana&apos;, &apos;orange&apos;, &apos;apple&apos;])
  */
 module.exports = list =&gt; {
-  if (Array.isArray(list)) {
-    // Only want to sort on one type in a list
-    const isValid = new Set(list.map(item =&gt; typeof item)).size &lt; 2;
-
-    if (isValid) {
-      // So more quick sorts can be added in the future
-      switch (typeof list[0]) {
-        case &apos;number&apos;:
-          return list.sort((a, b) =&gt; {
-            return a - b;
-          });
-
-        case &apos;string&apos;:
-        default:
-          return list.sort();
-      }
-    } else {
-      throw TypeError(&apos;You must pass in an array containing a single type&apos;);
-    }
-  } else {
+  if (!Array.isArray(list)) {
     throw TypeError(&apos;You must pass in an array&apos;);
+  }
+  // Only want to sort on one type in a list
+  const isValid = new Set(list.map(item =&gt; typeof item)).size &lt; 2;
+
+  if (!isValid) {
+    throw TypeError(&apos;You must pass in an array containing a single type&apos;);
+  }
+
+  // So more quick sorts can be added in the future
+  switch (typeof list[0]) {
+    case &apos;number&apos;:
+      return list.sort((a, b) =&gt; {
+        return a - b;
+      });
+
+    case &apos;string&apos;:
+    default:
+      return list.sort();
   }
 };
 </code></pre>

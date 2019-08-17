@@ -1,11 +1,13 @@
 /**
- * quickSortArray
+ * quickSortArrayObjects
  * @param {array} list - Array of values of a single type
  * @param {object} config - object of values to change for list value types
  * @return Array
  * @throws TypeError
  * @example
- * quickSortArrayObjects([{date: '2099-01-01'}, {date: '1099-01-01'}], {type: 'date', 'property': 'releaseDate'})
+ * quickSortArrayObjects([
+ *  {date: '2099-01-01'}, {date: '1099-01-01'}],
+ *  {type: 'date', property: 'releaseDate'})
  */
 module.exports = (list, { type, property, asc = true } = {}) => {
   let options = {
@@ -36,9 +38,9 @@ module.exports = (list, { type, property, asc = true } = {}) => {
         });
 
       default:
-        throw TypeError('supplied config did not match available sorting');
+        throw TypeError('You must pass in valid configuration');
     }
   } else {
-    throw TypeError('no objects were passed in to sort');
+    throw TypeError('You must pass in objects literals to sort');
   }
 };

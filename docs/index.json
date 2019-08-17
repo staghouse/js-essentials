@@ -567,7 +567,7 @@
     "__docId__": 48,
     "kind": "file",
     "name": "src/getActualMonth.js",
-    "content": "/**\n * getActualMonth\n * @param {number} number - number of the month from Date()\n * @return String of month\n * @throws TypeError\n * @example\n * getActualMonth(6)\n */\nmodule.exports = (number = undefined) => {\n  if (typeof number !== 'undefined' && Number(number)) {\n    const months = [\n      'January',\n      'February',\n      'March',\n      'April',\n      'May',\n      'June',\n      'July',\n      'August',\n      'September',\n      'October',\n      'November',\n      'December',\n    ];\n    return months[number];\n  } else {\n    throw TypeError('number must be of type Number');\n  }\n};\n",
+    "content": "/**\n * getActualMonth\n * @param {number} num - number of the month from Date()\n * @return String of month\n * @throws TypeError\n * @example\n * getActualMonth(6)\n */\nmodule.exports = (num = undefined) => {\n  const number = Number(num);\n  if (!isNaN(number)) {\n    const months = [\n      'January',\n      'February',\n      'March',\n      'April',\n      'May',\n      'June',\n      'July',\n      'August',\n      'September',\n      'October',\n      'November',\n      'December',\n    ];\n    return months[number];\n  } else {\n    throw TypeError('number must be of type string or number');\n  }\n};\n",
     "static": true,
     "longname": "/Users/Eric/Developer/js-essentials/src/getActualMonth.js",
     "access": "public",
@@ -600,7 +600,7 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "number",
+        "name": "num",
         "description": "number of the month from Date()"
       }
     ],
@@ -625,7 +625,7 @@
     "__docId__": 50,
     "kind": "file",
     "name": "src/getURLParams.js",
-    "content": "/**\n * getURLParams\n * @param {number} url - string or URL instance\n * @return object with key/val\n * @throws TypeError\n * @example\n * getURLParmas('http://www.placecage.com?height=100&width=200')\n */\nmodule.exports = (url = undefined) => {\n  const typeOfUrl = typeof url;\n\n  if (typeOfUrl !== 'undefined' && (typeOfUrl === 'string' || url instanceof URL)) {\n    if (typeOfUrl === 'string') {\n      url = new URL(url);\n    }\n\n    const params = new URLSearchParams(url.search);\n\n    const paramsObj = {};\n    params.forEach(function(value, key) {\n      paramsObj[key] = value;\n    });\n\n    return paramsObj;\n  } else {\n    throw TypeError('url must be of type String or URL');\n  }\n};\n",
+    "content": "/**\n * getURLParams\n * @param {number} url - string or URL instance\n * @return object with key/val\n * @throws TypeError\n * @example\n * getURLParmas('http://www.placecage.com?height=100&width=200')\n */\nmodule.exports = (url = undefined) => {\n  const typeOfUrl = typeof url;\n  const paramsObj = {};\n  let params = undefined;\n\n  if (typeOfUrl !== 'undefined' && (typeOfUrl === 'string' || url instanceof URL)) {\n    url = new URL(url);\n\n    params = new URLSearchParams(url.search);\n\n    params.forEach(function(value, key) {\n      paramsObj[key] = value;\n    });\n\n    return paramsObj;\n  } else {\n    throw TypeError('url must be of type String or URL');\n  }\n};\n",
     "static": true,
     "longname": "/Users/Eric/Developer/js-essentials/src/getURLParams.js",
     "access": "public",
@@ -683,7 +683,7 @@
     "__docId__": 52,
     "kind": "file",
     "name": "src/isFutureDate.js",
-    "content": "/**\n * isFutureDate\n * @param {string|number|Date} time - time to compare with: \"current time\"\n * @param {string|number|Date} comparison - time to compare again: \"not current time\"\n * @return Boolean\n * @throws TypeError\n * @example\n * isFutureDate('2019-10-10', '2020-01-01')\n */\nmodule.exports = (time, comparison) => {\n  let now;\n  let typeOfTime = typeof time;\n  let typeOfComparison = typeof comparison;\n\n  if (!comparison) {\n    now = new Date();\n  } else {\n    if (typeOfComparison === 'string' || typeOfComparison === 'number') {\n      now = new Date(comparison);\n    } else if (comparison instanceof Date) {\n      now = comparison;\n    } else {\n      throw TypeError('comparison must be of type String or Date');\n    }\n  }\n\n  if (typeOfTime === 'string' || typeOfTime === 'number') {\n    time = new Date(time);\n  } else if (!(time instanceof Date)) {\n    throw TypeError('time must be of type String or Date');\n  }\n\n  // This/next year and next month or\n  // This/next year and this/next month but not today\n  return (\n    time.getDate() > now.getDate() ||\n    time.getMonth() > now.getMonth() ||\n    time.getFullYear() > now.getFullYear()\n  );\n};\n",
+    "content": "/**\n * isFutureDate\n * @param {string|number|Date} now - now to comparison with: \"current now\"\n * @param {string|number|Date} future - now to comparison again: \"not current now\"\n * @return Boolean\n * @throws TypeError\n * @example\n * isFutureDate('2019-10-10', '2020-01-01')\n */\nmodule.exports = (now, future) => {\n  let isFuture = undefined;\n  let comparison = undefined;\n  let typeOfNow = typeof now;\n  let typeOfFuture = typeof future;\n\n  if (!future) {\n    comparison = new Date();\n  } else {\n    if (typeOfFuture === 'string' || typeOfFuture === 'number') {\n      comparison = new Date(future);\n    } else if (future instanceof Date) {\n      comparison = future;\n    } else {\n      throw TypeError('future must be of type String or Date');\n    }\n  }\n\n  if (typeOfNow === 'string' || typeOfNow === 'number') {\n    now = new Date(now);\n  } else if (!(now instanceof Date)) {\n    throw TypeError('now must be of type string, number or Date');\n  }\n\n  const futureYear = now.getUTCFullYear() > comparison.getUTCFullYear();\n  const futureMonth = now.getUTCMonth() > comparison.getUTCMonth();\n  const futureDate = now.getUTCDate() > comparison.getUTCDate();\n\n  isFuture = (futureYear || futureMonth || futureDate);\n\n  return isFuture;\n};\n",
     "static": true,
     "longname": "/Users/Eric/Developer/js-essentials/src/isFutureDate.js",
     "access": "public",
@@ -718,8 +718,8 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "time",
-        "description": "time to compare with: \"current time\""
+        "name": "now",
+        "description": "now to comparison with: \"current now\""
       },
       {
         "nullable": null,
@@ -730,8 +730,8 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "comparison",
-        "description": "time to compare again: \"not current time\""
+        "name": "future",
+        "description": "now to comparison again: \"not current now\""
       }
     ],
     "return": {
@@ -755,7 +755,7 @@
     "__docId__": 54,
     "kind": "file",
     "name": "src/querySelectorArray.js",
-    "content": "/**\n * quickSoryArray\n * @param {string} el - DOM element class name\n * @return Array of class based elements\n * @throws TypeError\n * @example\n * querySelectorArray('.my-element')\n * querySelectorArray('my-element')\n */\nmodule.exports = el => {\n  if (typeof el === 'string') {\n    let $el = el;\n\n    if ($el && $el[0] !== '.') {\n      $el = `.${$el}`;\n    }\n\n    if (document) {\n      return Array.from(document.querySelectorAll($el));\n    }\n  } else {\n    throw TypeError('el must be of type string');\n  }\n};\n",
+    "content": "/**\n * quickSoryArray\n * @param {string} el - DOM element class name\n * @return Array of class based elements\n * @throws TypeError\n * @example\n * querySelectorArray('.my-element')\n * querySelectorArray('my-element')\n */\nmodule.exports = el => {\n  if (typeof el === 'string') {\n    let $el = el;\n\n    if ($el && $el[0] !== '.') {\n      $el = `.${$el}`;\n    }\n\n    if (typeof document === 'object') {\n      return Array.from(document.querySelectorAll($el));\n    }\n  } else {\n    throw TypeError('el must be of type string');\n  }\n};\n",
     "static": true,
     "longname": "/Users/Eric/Developer/js-essentials/src/querySelectorArray.js",
     "access": "public",
@@ -813,7 +813,7 @@
     "__docId__": 56,
     "kind": "file",
     "name": "src/quickSortArray.js",
-    "content": "/**\n * quickSoryArray\n * @param {array} list - Array of values of a single type\n * @return Array\n * @throws TypeError\n * @example\n * quickSoryArray([10, 7, 1, 4])\n * quickSoryArray(['banana', 'orange', 'apple'])\n */\nmodule.exports = list => {\n  if (Array.isArray(list)) {\n    // Only want to sort on one type in a list\n    const isValid = new Set(list.map(item => typeof item)).size < 2;\n\n    if (isValid) {\n      // So more quick sorts can be added in the future\n      switch (typeof list[0]) {\n        case 'number':\n          return list.sort((a, b) => {\n            return a - b;\n          });\n\n        case 'string':\n        default:\n          return list.sort();\n      }\n    } else {\n      throw TypeError('You must pass in an array containing a single type');\n    }\n  } else {\n    throw TypeError('You must pass in an array');\n  }\n};\n",
+    "content": "/**\n * quickSortArray\n * @param {array} list - Array of values of a single type\n * @return Array\n * @throws TypeError\n * @example\n * quickSortArray([10, 7, 1, 4])\n * quickSortArray(['banana', 'orange', 'apple'])\n */\nmodule.exports = list => {\n  if (!Array.isArray(list)) {\n    throw TypeError('You must pass in an array');\n  }\n  // Only want to sort on one type in a list\n  const isValid = new Set(list.map(item => typeof item)).size < 2;\n\n  if (!isValid) {\n    throw TypeError('You must pass in an array containing a single type');\n  }\n\n  // So more quick sorts can be added in the future\n  switch (typeof list[0]) {\n    case 'number':\n      return list.sort((a, b) => {\n        return a - b;\n      });\n\n    case 'string':\n    default:\n      return list.sort();\n  }\n};\n",
     "static": true,
     "longname": "/Users/Eric/Developer/js-essentials/src/quickSortArray.js",
     "access": "public",
@@ -833,9 +833,9 @@
     "export": true,
     "importPath": "js-essentials/src/quickSortArray.js",
     "importStyle": "quickSortArray",
-    "description": "quickSoryArray",
+    "description": "quickSortArray",
     "examples": [
-      "quickSoryArray([10, 7, 1, 4])\nquickSoryArray(['banana', 'orange', 'apple'])"
+      "quickSortArray([10, 7, 1, 4])\nquickSortArray(['banana', 'orange', 'apple'])"
     ],
     "lineNumber": 10,
     "params": [
@@ -868,8 +868,76 @@
     ]
   },
   {
+    "__docId__": 58,
+    "kind": "file",
+    "name": "src/quickSortArrayObjects.js",
+    "content": "/**\n * quickSortArrayObjects\n * @param {array} list - Array of values of a single type\n * @param {object} config - object of values to change for list value types\n * @return Array\n * @throws TypeError\n * @example\n * quickSortArrayObjects([\n *  {date: '2099-01-01'}, {date: '1099-01-01'}],\n *  {type: 'date', property: 'releaseDate'})\n */\nmodule.exports = (list, { type, property, asc = true } = {}) => {\n  let options = {\n    type,\n    property,\n    asc,\n  };\n\n  if (!Array.isArray(list)) {\n    throw TypeError('You must pass in an array');\n  }\n\n  if (list.length === 1) {\n    return list;\n  }\n\n  const filtered = list.filter(item => Object.keys(item).includes(property));\n\n  if (filtered.length > 0) {\n    switch (options.type) {\n      case 'date':\n        return filtered.sort(function(a, b) {\n          if (options.asc) {\n            return new Date(b[options.property]) - new Date(a[options.property]);\n          } else {\n            return new Date(a[options.property]) - new Date(b[options.property]);\n          }\n        });\n\n      default:\n        throw TypeError('You must pass in valid configuration');\n    }\n  } else {\n    throw TypeError('You must pass in objects literals to sort');\n  }\n};\n",
+    "static": true,
+    "longname": "/Users/Eric/Developer/js-essentials/src/quickSortArrayObjects.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 59,
+    "kind": "function",
+    "name": "quickSortArrayObjects",
+    "memberof": "src/quickSortArrayObjects.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/quickSortArrayObjects.js~quickSortArrayObjects",
+    "access": "public",
+    "export": true,
+    "importPath": "js-essentials/src/quickSortArrayObjects.js",
+    "importStyle": "quickSortArrayObjects",
+    "description": "quickSortArrayObjects",
+    "examples": [
+      "quickSortArrayObjects([\n {date: '2099-01-01'}, {date: '1099-01-01'}],\n {type: 'date', property: 'releaseDate'})"
+    ],
+    "lineNumber": 12,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "list",
+        "description": "Array of values of a single type"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": "object of values to change for list value types"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": "Array"
+    },
+    "throws": [
+      {
+        "types": [
+          "*"
+        ],
+        "description": "TypeError"
+      }
+    ]
+  },
+  {
     "kind": "index",
-    "content": "# JS Essentials\nA collection of JS tools to help you develop JS projects. See the JSDoc for more information.\n",
+    "content": "[![Build Status](https://travis-ci.org/staghouse/js-essentials.png?branch=master)](https://travis-ci.org/staghouse/js-essentials)\n[![codecov](https://codecov.io/gh/staghouse/js-essentials/branch/master/graph/badge.svg)](https://codecov.io/gh/staghouse/js-essentials)\n\n# JS Essentials\nA collection of JS tools to help you develop JS projects. See the ESDoc files for more information.\n",
     "longname": "/Users/Eric/Developer/js-essentials/README.md",
     "name": "./README.md",
     "static": true,
@@ -877,7 +945,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"js-essentials\",\n  \"version\": \"0.0.1\",\n  \"description\": \"Essential tools/helpers to use in any JS project.\",\n  \"main\": \"index.js\",\n  \"repository\": \"git@github.com:staghouse/js-essentials.git\",\n  \"author\": \"Eric Lakatos <lakatos.eric@gmail.com>\",\n  \"license\": \"MIT\",\n  \"scripts\": {\n    \"test\": \"jest && npm run lint\",\n    \"lint\": \"eslint --fix --ext .js ./\",\n    \"docs:build\": \"esdoc\",\n    \"docs:open\": \"open ./docs/index.html\",\n    \"purge\": \"rm -rf node_modules && yarn cache clean\"\n  },\n  \"devDependencies\": {\n    \"@babel/core\": \"^7.5.5\",\n    \"@babel/preset-env\": \"^7.5.5\",\n    \"babel-eslint\": \"^10.0.2\",\n    \"babel-jest\": \"^24.8.0\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-node\": \"^1.0.4\",\n    \"eslint\": \"^6.1.0\",\n    \"jest\": \"^24.8.0\"\n  },\n  \"dependencies\": {\n    \"esdoc-standard-plugin\": \"^1.0.0\"\n  }\n}\n",
+    "content": "{\n  \"name\": \"js-essentials\",\n  \"version\": \"0.0.1\",\n  \"description\": \"Essential tools/helpers to use in any JS project.\",\n  \"main\": \"index.js\",\n  \"repository\": \"git@github.com:staghouse/js-essentials.git\",\n  \"author\": \"Eric Lakatos <lakatos.eric@gmail.com>\",\n  \"license\": \"MIT\",\n  \"engines\": {\n    \"node\": \"^12.8.0\",\n    \"npm\": \"^6.10.2\"\n  },\n  \"scripts\": {\n    \"test\": \"jest && codecov && npm run lint\",\n    \"lint\": \"eslint --fix --ext .js ./\",\n    \"docs:build\": \"esdoc\",\n    \"docs:open\": \"open ./docs/index.html\",\n    \"purge\": \"rm -rf node_modules && yarn cache clean\"\n  },\n  \"devDependencies\": {\n    \"@babel/core\": \"^7.5.5\",\n    \"@babel/preset-env\": \"^7.5.5\",\n    \"babel-eslint\": \"^10.0.2\",\n    \"babel-jest\": \"^24.8.0\",\n    \"codecov\": \"^3.5.0\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-node\": \"^1.0.4\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^6.1.0\",\n    \"jest\": \"^24.8.0\"\n  },\n  \"jest\": {\n    \"coverageDirectory\": \"./coverage/\",\n    \"collectCoverage\": true\n  }\n}\n",
     "longname": "/Users/Eric/Developer/js-essentials/package.json",
     "name": "package.json",
     "static": true,

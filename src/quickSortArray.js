@@ -1,7 +1,6 @@
 /**
  * quickSortArray
  * @param {array} list - Array of values of a single type
- * @param {object} config - object of values to change for list value types
  * @return Array
  * @throws TypeError
  * @example

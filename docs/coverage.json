@@ -1,7 +1,7 @@
 {
   "coverage": "100%",
-  "expectCount": 5,
-  "actualCount": 5,
+  "expectCount": 6,
+  "actualCount": 6,
   "files": {
     "src/getActualMonth.js": {
       "expectCount": 1,
@@ -24,6 +24,11 @@
       "undocumentLines": []
     },
     "src/quickSortArray.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/quickSortArrayObjects.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
