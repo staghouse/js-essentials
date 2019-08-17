@@ -68,6 +68,12 @@ describe('quickSortArrayObjects', () => {
     }).toThrow(TypeError);
   });
 
+  it('should return a TypeError for not passing in an array', () => {
+    expect(() => {
+      quickSortArrayObjects();
+    }).toThrow(TypeError);
+  });
+
   it('should return a TypeError for passing in invalid configuration', () => {
     const config = {
       type: 'array',
@@ -82,12 +88,6 @@ describe('quickSortArrayObjects', () => {
     ];
     expect(() => {
       quickSortArrayObjects(input, config);
-    }).toThrow(TypeError);
-  });
-
-  it('should return a TypeError for not passing in an array', () => {
-    expect(() => {
-      quickSortArrayObjects();
     }).toThrow(TypeError);
   });
 });

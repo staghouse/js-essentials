@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1566022176922" clover="3.2.0">
-  <project timestamp="1566022176922" name="All files">
+<coverage generated="1566022828917" clover="3.2.0">
+  <project timestamp="1566022828917" name="All files">
     <metrics statements="78" coveredstatements="77" conditionals="53" coveredconditionals="51" methods="11" coveredmethods="11" elements="142" coveredelements="139" complexity="0" loc="78" ncloc="78" packages="2" files="7" classes="7"/>
     <package name="js-essentials">
       <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>

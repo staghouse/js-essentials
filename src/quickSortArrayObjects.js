@@ -27,7 +27,7 @@ module.exports = (list, { type, property, asc = true } = {}) => {
   if (filtered.length > 0) {
     switch (options.type) {
       case 'date':
-        return list.sort(function(a, b) {
+        return filtered.sort(function(a, b) {
           if (options.asc) {
             return new Date(b[options.property]) - new Date(a[options.property]);
           } else {
