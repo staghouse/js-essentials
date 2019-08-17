@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1566020536074" clover="3.2.0">
-  <project timestamp="1566020536075" name="All files">
-    <metrics statements="84" coveredstatements="83" conditionals="54" coveredconditionals="52" methods="11" coveredmethods="11" elements="149" coveredelements="146" complexity="0" loc="84" ncloc="84" packages="2" files="7" classes="7"/>
+<coverage generated="1566021159805" clover="3.2.0">
+  <project timestamp="1566021159805" name="All files">
+    <metrics statements="83" coveredstatements="82" conditionals="56" coveredconditionals="54" methods="11" coveredmethods="11" elements="150" coveredelements="147" complexity="0" loc="83" ncloc="83" packages="2" files="7" classes="7"/>
     <package name="js-essentials">
       <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.js" path="/Users/Eric/Developer/js-essentials/index.js">
@@ -16,7 +16,7 @@
       </file>
     </package>
     <package name="js-essentials.src">
-      <metrics statements="77" coveredstatements="76" conditionals="54" coveredconditionals="52" methods="11" coveredmethods="11"/>
+      <metrics statements="76" coveredstatements="75" conditionals="56" coveredconditionals="54" methods="11" coveredmethods="11"/>
       <file name="getActualMonth.js" path="/Users/Eric/Developer/js-essentials/src/getActualMonth.js">
         <metrics statements="6" coveredstatements="6" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
         <line num="9" count="6" type="cond" truecount="1" falsecount="0"/>
@@ -91,7 +91,7 @@
         <line num="35" count="1" type="stmt"/>
       </file>
       <file name="quickSortArrayObjects.js" path="/Users/Eric/Developer/js-essentials/src/quickSortArrayObjects.js">
-        <metrics statements="19" coveredstatements="18" conditionals="11" coveredconditionals="10" methods="3" coveredmethods="3"/>
+        <metrics statements="18" coveredstatements="17" conditionals="13" coveredconditionals="12" methods="3" coveredmethods="3"/>
         <line num="10" count="6" type="cond" truecount="1" falsecount="0"/>
         <line num="11" count="6" type="stmt"/>
         <line num="17" count="6" type="cond" truecount="2" falsecount="0"/>
@@ -100,15 +100,14 @@
         <line num="22" count="4" type="cond" truecount="2" falsecount="0"/>
         <line num="23" count="3" type="stmt"/>
         <line num="26" count="4" type="stmt"/>
-        <line num="27" count="4" type="stmt"/>
-        <line num="28" count="13" type="stmt"/>
-        <line num="30" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="31" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="33" count="2" type="stmt"/>
-        <line num="34" count="2" type="stmt"/>
-        <line num="36" count="2" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="42" count="2" type="stmt"/>
+        <line num="27" count="13" type="stmt"/>
+        <line num="29" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="30" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="33" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
         <line num="44" count="2" type="stmt"/>
         <line num="47" count="1" type="stmt"/>
       </file>

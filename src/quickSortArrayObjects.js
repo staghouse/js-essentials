@@ -23,14 +23,18 @@ module.exports = (list, config = undefined) => {
       Object.assign(options, config);
     }
 
-    const { type, property } = options;
+    const { type, property, asc } = options;
     const filtered = list.filter(item => Object.keys(item).includes(property));
 
     if (filtered.length > 0) {
       switch (type) {
         case 'date':
           return list.sort(function(a, b) {
-            return new Date(a[property]) - new Date(b[property]);
+            if (asc) {
+              return new Date(b[property]) - new Date(a[property]);
+            } else {
+              return new Date(a[property]) - new Date(b[property]);
+            }
           });
 
         default:
