@@ -15,7 +15,5 @@ export function querySelectorAllArray(el) {
     throw TypeError('el must include a period prepended to the selector');
   }
 
-  if (document) {
-    return Array.from(document.querySelectorAll(el));
-  }
+  return Array.from(document.querySelectorAll(el));
 }
