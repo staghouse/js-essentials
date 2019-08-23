@@ -1,7 +1,7 @@
 import { isFutureDate } from '../src/index';
 
 describe('isFutureDate', () => {
-  it('should return false today is in the future', async () => {
+  it('should return false if today is in the future', async () => {
     const now = new Date();
     const year = now.getUTCFullYear();
     const month = now.getUTCMonth() + 1;
@@ -12,7 +12,7 @@ describe('isFutureDate', () => {
     expect(isInFuture).toBe(false);
   });
 
-  it('should return false today is in the future when compared against new Date', async () => {
+  it('should return false if today is in the future when compared against new Date', async () => {
     const now = new Date();
     const year = now.getUTCFullYear();
     const month = now.getUTCMonth() + 1;
@@ -58,6 +58,39 @@ describe('isFutureDate', () => {
     const date = now.getUTCDate();
     const time = `${year}-${month}-${date}`;
     const isInFuture = await isFutureDate(time);
+
+    expect(isInFuture).toBe(true);
+  });
+
+  it('should return false that last year but next month is in the future', async () => {
+    const now = new Date();
+    const year = now.getUTCFullYear() - 1;
+    const month = now.getUTCMonth() + 2;
+    const date = now.getUTCDate();
+    const time = `${year}-${month}-${date}`;
+    const isInFuture = await isFutureDate(time, new Date());
+
+    expect(isInFuture).toBe(false);
+  });
+
+  it('should return true that this year but this month and tomorrow is in the future', async () => {
+    const now = new Date();
+    const year = now.getUTCFullYear();
+    const month = now.getUTCMonth() + 1;
+    const date = now.getUTCDate() + 1;
+    const time = `${year}-${month}-${date}`;
+    const isInFuture = await isFutureDate(time, new Date());
+
+    expect(isInFuture).toBe(true);
+  });
+
+  it('should return true that this year but last month and a future date is in the future', async () => {
+    const now = new Date();
+    const year = now.getUTCFullYear();
+    const month = now.getUTCMonth() + 1;
+    const date = now.getUTCDate() + 1;
+    const time = `${year}-${month}-${date}`;
+    const isInFuture = await isFutureDate(time, new Date());
 
     expect(isInFuture).toBe(true);
   });
