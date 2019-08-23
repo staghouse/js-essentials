@@ -30,6 +30,7 @@
     "esdoc-node": "^1.0.4",
     "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^6.1.0",
+    "husky": "^3.0.4",
     "jest": "^24.8.0",
     "uglify-es": "^3.3.9",
     "uglifyjs-folder": "^1.5.1"
