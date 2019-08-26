@@ -34,7 +34,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFutureDate">isFutureDate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-querySelectorAllArray">querySelectorAllArray</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-quickSortArray">quickSortArray</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-quickSortArrayObjects">quickSortArrayObjects</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sortArrayOfObjects">sortArrayOfObjects</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -57,9 +57,7 @@ export function querySelectorAllArray(el) {
     throw TypeError(&apos;el must include a period prepended to the selector&apos;);
   }
 
-  if (document) {
-    return Array.from(document.querySelectorAll(el));
-  }
+  return Array.from(document.querySelectorAll(el));
 }
 </code></pre>
 

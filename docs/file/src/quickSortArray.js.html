@@ -34,7 +34,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFutureDate">isFutureDate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-querySelectorAllArray">querySelectorAllArray</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-quickSortArray">quickSortArray</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-quickSortArrayObjects">quickSortArrayObjects</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sortArrayOfObjects">sortArrayOfObjects</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -42,34 +42,34 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/quickSortArray.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
  * quickSortArray
- * @param {array} list - Array of values of a single type
+ * @param {array} arr - Array of values of a single type
  * @return Array
  * @throws TypeError
  * @example
  * quickSortArray([10, 7, 1, 4])
  * quickSortArray([&apos;banana&apos;, &apos;orange&apos;, &apos;apple&apos;])
  */
-export function quickSortArray(list) {
-  if (!Array.isArray(list)) {
+export function quickSortArray(arr) {
+  if (!Array.isArray(arr)) {
     throw TypeError(&apos;You must pass in an array&apos;);
   }
-  // Only want to sort on one type in a list
-  const isValid = new Set(list.map(item =&gt; typeof item)).size &lt; 2;
+  // Only want to sort on one type in a arr
+  const isValid = new Set(arr.map(item =&gt; typeof item)).size &lt; 2;
 
   if (!isValid) {
     throw TypeError(&apos;You must pass in an array containing a single type&apos;);
   }
 
   // So more quick sorts can be added in the future
-  switch (typeof list[0]) {
+  switch (typeof arr[0]) {
     case &apos;number&apos;:
-      return list.sort((a, b) =&gt; {
+      return arr.sort((a, b) =&gt; {
         return a - b;
       });
 
     case &apos;string&apos;:
     default:
-      return list.sort();
+      return arr.sort();
   }
 }
 </code></pre>
