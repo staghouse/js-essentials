@@ -28,7 +28,7 @@
       "actualCount": 1,
       "undocumentLines": []
     },
-    "src/quickSortArrayObjects.js": {
+    "src/sortArrayOfObjects.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []

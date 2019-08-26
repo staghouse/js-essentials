@@ -34,7 +34,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFutureDate">isFutureDate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-querySelectorAllArray">querySelectorAllArray</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-quickSortArray">quickSortArray</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-quickSortArrayObjects">quickSortArrayObjects</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sortArrayOfObjects">sortArrayOfObjects</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -50,10 +50,14 @@
  * isFutureDate(&apos;2019-10-10&apos;, &apos;2020-01-01&apos;)
  */
 export function isFutureDate(now, future) {
+  const typeOfNow = typeof now;
+  const typeOfFuture = typeof future;
+  const today = new Date();
+
+  let isFutureDate = undefined;
   let isFuture = undefined;
+  let isPast = undefined;
   let comparison = undefined;
-  let typeOfNow = typeof now;
-  let typeOfFuture = typeof future;
 
   if (!future) {
     comparison = new Date();
@@ -73,13 +77,21 @@ export function isFutureDate(now, future) {
     throw TypeError(&apos;now must be of type string, number or Date&apos;);
   }
 
+  const pastYear = today.getUTCFullYear() &gt; now.getUTCFullYear();
+  const pastMonth = today.getUTCMonth() &gt; now.getUTCMonth();
+  const pastDate = today.getUTCDate() &gt; now.getUTCDate();
+  isPast = pastYear || pastMonth || pastDate;
+
   const futureYear = now.getUTCFullYear() &gt; comparison.getUTCFullYear();
   const futureMonth = now.getUTCMonth() &gt; comparison.getUTCMonth();
   const futureDate = now.getUTCDate() &gt; comparison.getUTCDate();
-
   isFuture = futureYear || futureMonth || futureDate;
 
-  return isFuture;
+  isFutureDate = isPast
+    ? false
+    : !!isFuture // ESLint likes to do this :shrug:
+
+  return isFutureDate;
 }
 </code></pre>
 

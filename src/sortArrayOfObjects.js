@@ -1,5 +1,16 @@
+/**
+ * sortArrayOfObjects
+ * @param {string} property - name of property to sort objects by
+ * @param {array} arr - Array of objects to sort over
+ * @param {boolean} desc - optional, default to descending order of objects
+ * @return Array of objects, sorted by property
+ * @throws TypeError
+ * @example
+ * sortArrayOfObjects('name', [{'name': 'Charles'}, {'name': 'Scott'}, {'name': 'Erik'}], true)
+ */
 export function sortArrayOfObjects(property = undefined, arr = undefined, desc = false) {
   const isArray = Array.isArray(arr);
+  let arrTypes = undefined;
 
   if (isArray && arr.length === 1) {
     return arr;
@@ -7,11 +18,11 @@ export function sortArrayOfObjects(property = undefined, arr = undefined, desc =
 
   if (!isArray) {
     throw TypeError('You must pass in an array to sort');
+  } else {
+    arrTypes = Array.from(new Set(arr.map(obj => typeof obj)));
   }
 
-  const arrTypes = Array.from(new Set(arr.map(obj => typeof obj)));
-
-  if (arrTypes[0] !== 'object') {
+  if (arrTypes.length > 1 || !arrTypes.includes('object')) {
     throw TypeError('You must pass in an array of only objects');
   }
 
@@ -22,9 +33,10 @@ export function sortArrayOfObjects(property = undefined, arr = undefined, desc =
   const order = desc ? -1 : 1;
 
   return arr.sort((a, b) => {
-    a = a[property] || a;
-    b = b[property] || b;
+    const x = a[property];
+    const y = b[property];
 
-    return order * (a < b ? -1 : +(a > b));
+    // Magical stuff.
+    return order * (x < y ? -1 : +(x > y));
   });
 }
