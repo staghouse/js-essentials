@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1566834710249" clover="3.2.0">
-  <project timestamp="1566834710249" name="All files">
-    <metrics statements="73" coveredstatements="73" conditionals="61" coveredconditionals="61" methods="11" coveredmethods="11" elements="145" coveredelements="145" complexity="0" loc="73" ncloc="73" packages="1" files="7" classes="7"/>
-    <file name="getActualMonth.js" path="/Users/elakatos/Public/Development/js-essentials/src/getActualMonth.js">
+<coverage generated="1566975858077" clover="3.2.0">
+  <project timestamp="1566975858077" name="All files">
+    <metrics statements="64" coveredstatements="64" conditionals="51" coveredconditionals="51" methods="11" coveredmethods="11" elements="126" coveredelements="126" complexity="0" loc="64" ncloc="64" packages="1" files="7" classes="7"/>
+    <file name="getActualMonth.js" path="/Users/Eric/Developer/js-essentials/src/getActualMonth.js">
       <metrics statements="5" coveredstatements="5" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
       <line num="10" count="3" type="stmt"/>
       <line num="12" count="3" type="cond" truecount="2" falsecount="0"/>
@@ -10,7 +10,7 @@
       <line num="27" count="2" type="stmt"/>
       <line num="29" count="1" type="stmt"/>
     </file>
-    <file name="getURLParams.js" path="/Users/elakatos/Public/Development/js-essentials/src/getURLParams.js">
+    <file name="getURLParams.js" path="/Users/Eric/Developer/js-essentials/src/getURLParams.js">
       <metrics statements="10" coveredstatements="10" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
       <line num="10" count="3" type="stmt"/>
       <line num="11" count="3" type="stmt"/>
@@ -23,41 +23,32 @@
       <line num="23" count="1" type="stmt"/>
       <line num="25" count="2" type="stmt"/>
     </file>
-    <file name="index.js" path="/Users/elakatos/Public/Development/js-essentials/src/index.js">
+    <file name="index.js" path="/Users/Eric/Developer/js-essentials/src/index.js">
       <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
     </file>
-    <file name="isFutureDate.js" path="/Users/elakatos/Public/Development/js-essentials/src/isFutureDate.js">
-      <metrics statements="28" coveredstatements="28" conditionals="22" coveredconditionals="22" methods="1" coveredmethods="1"/>
-      <line num="11" count="13" type="stmt"/>
-      <line num="12" count="13" type="stmt"/>
-      <line num="13" count="13" type="stmt"/>
-      <line num="15" count="13" type="stmt"/>
-      <line num="16" count="13" type="stmt"/>
-      <line num="17" count="13" type="stmt"/>
-      <line num="18" count="13" type="stmt"/>
-      <line num="20" count="13" type="cond" truecount="2" falsecount="0"/>
-      <line num="21" count="7" type="stmt"/>
-      <line num="23" count="6" type="cond" truecount="4" falsecount="0"/>
-      <line num="24" count="1" type="stmt"/>
-      <line num="25" count="5" type="cond" truecount="2" falsecount="0"/>
-      <line num="26" count="4" type="stmt"/>
-      <line num="28" count="1" type="stmt"/>
-      <line num="32" count="12" type="cond" truecount="4" falsecount="0"/>
-      <line num="33" count="9" type="stmt"/>
-      <line num="34" count="3" type="cond" truecount="2" falsecount="0"/>
-      <line num="35" count="1" type="stmt"/>
-      <line num="38" count="11" type="stmt"/>
-      <line num="39" count="11" type="stmt"/>
-      <line num="40" count="11" type="stmt"/>
-      <line num="41" count="11" type="cond" truecount="3" falsecount="0"/>
-      <line num="43" count="11" type="stmt"/>
-      <line num="44" count="11" type="stmt"/>
-      <line num="45" count="11" type="stmt"/>
-      <line num="46" count="11" type="cond" truecount="3" falsecount="0"/>
-      <line num="48" count="11" type="cond" truecount="2" falsecount="0"/>
-      <line num="52" count="11" type="stmt"/>
+    <file name="isFutureDate.js" path="/Users/Eric/Developer/js-essentials/src/isFutureDate.js">
+      <metrics statements="19" coveredstatements="19" conditionals="12" coveredconditionals="12" methods="1" coveredmethods="1"/>
+      <line num="11" count="15" type="stmt"/>
+      <line num="12" count="15" type="stmt"/>
+      <line num="14" count="15" type="stmt"/>
+      <line num="15" count="15" type="stmt"/>
+      <line num="17" count="15" type="cond" truecount="2" falsecount="0"/>
+      <line num="18" count="1" type="stmt"/>
+      <line num="20" count="14" type="cond" truecount="2" falsecount="0"/>
+      <line num="21" count="10" type="stmt"/>
+      <line num="22" count="4" type="cond" truecount="2" falsecount="0"/>
+      <line num="23" count="3" type="stmt"/>
+      <line num="25" count="1" type="stmt"/>
+      <line num="28" count="13" type="cond" truecount="2" falsecount="0"/>
+      <line num="29" count="7" type="stmt"/>
+      <line num="31" count="6" type="cond" truecount="2" falsecount="0"/>
+      <line num="32" count="1" type="stmt"/>
+      <line num="33" count="5" type="cond" truecount="2" falsecount="0"/>
+      <line num="34" count="4" type="stmt"/>
+      <line num="36" count="1" type="stmt"/>
+      <line num="41" count="12" type="stmt"/>
     </file>
-    <file name="querySelectorAllArray.js" path="/Users/elakatos/Public/Development/js-essentials/src/querySelectorAllArray.js">
+    <file name="querySelectorAllArray.js" path="/Users/Eric/Developer/js-essentials/src/querySelectorAllArray.js">
       <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
       <line num="10" count="3" type="cond" truecount="2" falsecount="0"/>
       <line num="11" count="1" type="stmt"/>
@@ -65,7 +56,7 @@
       <line num="15" count="1" type="stmt"/>
       <line num="18" count="1" type="stmt"/>
     </file>
-    <file name="quickSortArray.js" path="/Users/elakatos/Public/Development/js-essentials/src/quickSortArray.js">
+    <file name="quickSortArray.js" path="/Users/Eric/Developer/js-essentials/src/quickSortArray.js">
       <metrics statements="9" coveredstatements="9" conditionals="7" coveredconditionals="7" methods="3" coveredmethods="3"/>
       <line num="11" count="5" type="cond" truecount="2" falsecount="0"/>
       <line num="12" count="1" type="stmt"/>
@@ -77,24 +68,24 @@
       <line num="25" count="27" type="stmt"/>
       <line num="30" count="1" type="stmt"/>
     </file>
-    <file name="sortArrayOfObjects.js" path="/Users/elakatos/Public/Development/js-essentials/src/sortArrayOfObjects.js">
+    <file name="sortArrayOfObjects.js" path="/Users/Eric/Developer/js-essentials/src/sortArrayOfObjects.js">
       <metrics statements="16" coveredstatements="16" conditionals="19" coveredconditionals="19" methods="3" coveredmethods="3"/>
-      <line num="12" count="8" type="stmt"/>
-      <line num="13" count="8" type="stmt"/>
-      <line num="15" count="8" type="cond" truecount="4" falsecount="0"/>
-      <line num="16" count="1" type="stmt"/>
-      <line num="19" count="7" type="cond" truecount="2" falsecount="0"/>
-      <line num="20" count="1" type="stmt"/>
-      <line num="22" count="17" type="stmt"/>
-      <line num="25" count="6" type="cond" truecount="4" falsecount="0"/>
+      <line num="12" count="13" type="stmt"/>
+      <line num="13" count="13" type="stmt"/>
+      <line num="15" count="13" type="cond" truecount="4" falsecount="0"/>
+      <line num="16" count="2" type="stmt"/>
+      <line num="19" count="11" type="cond" truecount="2" falsecount="0"/>
+      <line num="20" count="3" type="stmt"/>
+      <line num="22" count="21" type="stmt"/>
+      <line num="25" count="8" type="cond" truecount="4" falsecount="0"/>
       <line num="26" count="1" type="stmt"/>
-      <line num="29" count="5" type="cond" truecount="2" falsecount="0"/>
+      <line num="29" count="7" type="cond" truecount="2" falsecount="0"/>
       <line num="30" count="1" type="stmt"/>
-      <line num="33" count="4" type="cond" truecount="2" falsecount="0"/>
-      <line num="35" count="4" type="stmt"/>
-      <line num="36" count="4" type="stmt"/>
-      <line num="37" count="4" type="stmt"/>
-      <line num="40" count="4" type="cond" truecount="2" falsecount="0"/>
+      <line num="33" count="6" type="cond" truecount="2" falsecount="0"/>
+      <line num="35" count="6" type="stmt"/>
+      <line num="36" count="6" type="stmt"/>
+      <line num="37" count="6" type="stmt"/>
+      <line num="40" count="6" type="cond" truecount="2" falsecount="0"/>
     </file>
   </project>
 </coverage>

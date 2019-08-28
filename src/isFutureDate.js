@@ -1,53 +1,42 @@
 /**
  * isFutureDate
- * @param {string|number|Date} now - now to comparison with: "current now"
- * @param {string|number|Date} future - now to comparison again: "not current now"
+ * @param {string|Date} when - when to compare against now
+ * @param {string|Date} against - when to compare against the first argument
  * @return Boolean
  * @throws TypeError
  * @example
  * isFutureDate('2019-10-10', '2020-01-01')
  */
-export function isFutureDate(now, future) {
-  const typeOfNow = typeof now;
-  const typeOfFuture = typeof future;
-  const today = new Date();
+export function isFutureDate(when, against) {
+  const typeOfWhen = typeof when;
+  const typeOfAgainst = typeof against;
 
-  let isFutureDate = undefined;
-  let isFuture = undefined;
-  let isPast = undefined;
-  let comparison = undefined;
+  let now = undefined
+  let then = undefined;
 
-  if (!future) {
-    comparison = new Date();
+  if(!when){
+    throw TypeError('You must pass in a primary comparison type of Date or String');
   } else {
-    if (typeOfFuture === 'string' || typeOfFuture === 'number') {
-      comparison = new Date(future);
-    } else if (future instanceof Date) {
-      comparison = future;
+    if (typeOfWhen === 'string') {
+      now = new Date(when);
+    } else if (when instanceof Date) {
+      now = when;
     } else {
-      throw TypeError('future must be of type String or Date');
+      throw TypeError('You must pass in an primary comparison type of Date or String');
+    }
+
+    if (!against) {
+      then = new Date();
+    } else {
+      if (typeOfAgainst === 'string') {
+        then = new Date(against);
+      } else if (against instanceof Date) {
+        then = against;
+      } else {
+        throw TypeError('You must pass in a secondary comparison type of Date or String');
+      }
     }
   }
 
-  if (typeOfNow === 'string' || typeOfNow === 'number') {
-    now = new Date(now);
-  } else if (!(now instanceof Date)) {
-    throw TypeError('now must be of type string, number or Date');
-  }
-
-  const pastYear = today.getUTCFullYear() > now.getUTCFullYear();
-  const pastMonth = today.getUTCMonth() > now.getUTCMonth();
-  const pastDate = today.getUTCDate() > now.getUTCDate();
-  isPast = pastYear || pastMonth || pastDate;
-
-  const futureYear = now.getUTCFullYear() > comparison.getUTCFullYear();
-  const futureMonth = now.getUTCMonth() > comparison.getUTCMonth();
-  const futureDate = now.getUTCDate() > comparison.getUTCDate();
-  isFuture = futureYear || futureMonth || futureDate;
-
-  isFutureDate = isPast
-    ? false
-    : !!isFuture // ESLint likes to do this :shrug:
-
-  return isFutureDate;
+  return then < now;
 }
