@@ -38,7 +38,7 @@
     "uglifyjs-folder": "^1.5.1"
   },
   "jest": {
-    "coverageDirectory": "./coverage/",
+    "coverageDirectory": "./__coverage__/",
     "collectCoverage": true
   }
 }
