@@ -8,13 +8,15 @@
   "license": "MIT",
   "engines": {
     "node": "^12.8.0",
-    "npm": "^6.10.2"
+    "yarn": "^1.17.3"
   },
   "scripts": {
     "bootstrap": "npm install && npm audit fix",
-    "test": "jest && codecov && npm run lint",
+    "test": "yarn lint && jest",
+    "test:full": "yarn test && yarn build:full",
     "lint": "eslint --fix --ext .js ./",
     "build": "babel src -d dist && uglifyjs-folder dist/ -ex .js -yo dist/",
+    "build:full": "yarn build && yarn docs:build",
     "docs:build": "rm -rf ./docs && esdoc",
     "docs:open": "open ./docs/index.html",
     "purge": "rm -rf node_modules"

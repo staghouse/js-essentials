@@ -42,56 +42,45 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/isFutureDate.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
  * isFutureDate
- * @param {string|number|Date} now - now to comparison with: &quot;current now&quot;
- * @param {string|number|Date} future - now to comparison again: &quot;not current now&quot;
+ * @param {string|Date} when - when to compare against now
+ * @param {string|Date} against - when to compare against the first argument
  * @return Boolean
  * @throws TypeError
  * @example
  * isFutureDate(&apos;2019-10-10&apos;, &apos;2020-01-01&apos;)
  */
-export function isFutureDate(now, future) {
-  const typeOfNow = typeof now;
-  const typeOfFuture = typeof future;
-  const today = new Date();
+export function isFutureDate(when, against) {
+  const typeOfWhen = typeof when;
+  const typeOfAgainst = typeof against;
 
-  let isFutureDate = undefined;
-  let isFuture = undefined;
-  let isPast = undefined;
-  let comparison = undefined;
+  let now = undefined
+  let then = undefined;
 
-  if (!future) {
-    comparison = new Date();
+  if(!when){
+    throw TypeError(&apos;You must pass in a primary comparison type of Date or String&apos;);
   } else {
-    if (typeOfFuture === &apos;string&apos; || typeOfFuture === &apos;number&apos;) {
-      comparison = new Date(future);
-    } else if (future instanceof Date) {
-      comparison = future;
+    if (typeOfWhen === &apos;string&apos;) {
+      now = new Date(when);
+    } else if (when instanceof Date) {
+      now = when;
     } else {
-      throw TypeError(&apos;future must be of type String or Date&apos;);
+      throw TypeError(&apos;You must pass in an primary comparison type of Date or String&apos;);
+    }
+
+    if (!against) {
+      then = new Date();
+    } else {
+      if (typeOfAgainst === &apos;string&apos;) {
+        then = new Date(against);
+      } else if (against instanceof Date) {
+        then = against;
+      } else {
+        throw TypeError(&apos;You must pass in a secondary comparison type of Date or String&apos;);
+      }
     }
   }
 
-  if (typeOfNow === &apos;string&apos; || typeOfNow === &apos;number&apos;) {
-    now = new Date(now);
-  } else if (!(now instanceof Date)) {
-    throw TypeError(&apos;now must be of type string, number or Date&apos;);
-  }
-
-  const pastYear = today.getUTCFullYear() &gt; now.getUTCFullYear();
-  const pastMonth = today.getUTCMonth() &gt; now.getUTCMonth();
-  const pastDate = today.getUTCDate() &gt; now.getUTCDate();
-  isPast = pastYear || pastMonth || pastDate;
-
-  const futureYear = now.getUTCFullYear() &gt; comparison.getUTCFullYear();
-  const futureMonth = now.getUTCMonth() &gt; comparison.getUTCMonth();
-  const futureDate = now.getUTCDate() &gt; comparison.getUTCDate();
-  isFuture = futureYear || futureMonth || futureDate;
-
-  isFutureDate = isPast
-    ? false
-    : !!isFuture // ESLint likes to do this :shrug:
-
-  return isFutureDate;
+  return then &lt; now;
 }
 </code></pre>
 
