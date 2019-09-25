@@ -12,8 +12,9 @@
   },
   "scripts": {
     "bootstrap": "npm install && npm audit fix",
-    "test": "yarn lint && jest",
+    "test": "yarn lint && jest --coverage --coverageDirectory='__coverage__'",
     "test:full": "yarn test && yarn build:full",
+    "coverage": "codecov -t CODECOV_TOKEN",
     "lint": "eslint --fix --ext .js ./",
     "build": "babel src -d dist && uglifyjs-folder dist/ -ex .js -yo dist/",
     "build:full": "yarn build && yarn docs:build",
@@ -36,9 +37,5 @@
     "jest": "^24.8.0",
     "uglify-es": "^3.3.9",
     "uglifyjs-folder": "^1.5.1"
-  },
-  "jest": {
-    "coverageDirectory": "./__coverage__/",
-    "collectCoverage": true
   }
 }
