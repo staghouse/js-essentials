@@ -5,6 +5,7 @@ import { quickSortArray } from './quickSortArray';
 import { sortArrayOfObjects } from './sortArrayOfObjects';
 import { querySelectorAllArray } from './querySelectorAllArray';
 import { convertToDate } from './convertToDate';
+import { isOdd } from "./isOdd";
 
 export {
   isFutureDate,
@@ -14,4 +15,5 @@ export {
   sortArrayOfObjects,
   querySelectorAllArray,
   convertToDate,
+  isOdd,
 }
