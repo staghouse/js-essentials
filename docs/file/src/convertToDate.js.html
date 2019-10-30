@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">src/getURLParams.js | js-essentials</title>
+  <title data-ice="title">src/convertToDate.js | js-essentials</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -40,33 +40,25 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/getURLParams.js</h1>
+<div class="content" data-ice="content"><h1 data-ice="title">src/convertToDate.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
- * getURLParams
- * @param {number} url - string or URL instance
- * @return object with key/val
+ * isFutureDate
+ * @param {number|string|Date} date - Date you want to cast
+ * @return Date
  * @throws TypeError
  * @example
- * getURLParmas(&apos;http://www.placecage.com?height=100&amp;width=200&apos;)
+ * isFutureDate(&apos;2019-10-10&apos;, &apos;2020-01-01&apos;)
  */
-export function getURLParams(url = undefined) {
-  const typeOfUrl = typeof url;
-  const paramsObj = {};
-  let params = undefined;
-
-  if (typeOfUrl !== &apos;undefined&apos; &amp;&amp; (typeOfUrl === &apos;string&apos; || url instanceof URL)) {
-    url = new URL(url);
-
-    params = new URLSearchParams(url.search);
-
-    params.forEach(function(value, key) {
-      paramsObj[key] = value;
-    });
-
-    return paramsObj;
-  } else {
-    throw TypeError(&apos;url must be of type String or URL&apos;);
+export function convertToDate(date) {
+  if (date instanceof Date) {
+    return date;
   }
+
+  if (typeof date === &apos;string&apos; || typeof date === &apos;number&apos;) {
+    return new Date(date);
+  }
+
+  throw TypeError(&apos;You must pass in a primary comparison type of Date, String, or Int&apos;);
 }
 </code></pre>
 
