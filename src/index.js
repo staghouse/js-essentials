@@ -4,6 +4,7 @@ import { getActualMonth } from './getActualMonth';
 import { quickSortArray } from './quickSortArray';
 import { sortArrayOfObjects } from './sortArrayOfObjects';
 import { querySelectorAllArray } from './querySelectorAllArray';
+import { castToDate } from './castToDate';
 
 export {
   isFutureDate,
@@ -12,4 +13,5 @@ export {
   quickSortArray,
   sortArrayOfObjects,
   querySelectorAllArray,
+  castToDate,
 }
