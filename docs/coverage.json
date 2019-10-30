@@ -1,8 +1,13 @@
 {
   "coverage": "100%",
-  "expectCount": 6,
-  "actualCount": 6,
+  "expectCount": 7,
+  "actualCount": 7,
   "files": {
+    "src/convertToDate.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
     "src/getActualMonth.js": {
       "expectCount": 1,
       "actualCount": 1,

@@ -1,5 +1,11 @@
 window.esdocSearchIndex = [
   [
+    "js-essentials/src/converttodate.js~converttodate",
+    "function/index.html#static-function-convertToDate",
+    "<span>convertToDate</span> <span class=\"search-result-import-path\">js-essentials/src/convertToDate.js</span>",
+    "function"
+  ],
+  [
     "js-essentials/src/getactualmonth.js~getactualmonth",
     "function/index.html#static-function-getActualMonth",
     "<span>getActualMonth</span> <span class=\"search-result-import-path\">js-essentials/src/getActualMonth.js</span>",
@@ -316,6 +322,12 @@ window.esdocSearchIndex = [
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
     "src/.external-ecmascript.js~undefined",
     "external"
+  ],
+  [
+    "src/converttodate.js",
+    "file/src/convertToDate.js.html",
+    "src/convertToDate.js",
+    "file"
   ],
   [
     "src/getactualmonth.js",
