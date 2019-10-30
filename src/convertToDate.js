@@ -6,7 +6,7 @@
  * @example
  * isFutureDate('2019-10-10', '2020-01-01')
  */
-export function castToDate(date) {
+export function convertToDate(date) {
   if (date instanceof Date) {
     return date;
   }
