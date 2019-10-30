@@ -24,6 +24,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "js-essentials/src/isodd.js~isodd",
+    "function/index.html#static-function-isOdd",
+    "<span>isOdd</span> <span class=\"search-result-import-path\">js-essentials/src/isOdd.js</span>",
+    "function"
+  ],
+  [
     "js-essentials/src/queryselectorallarray.js~queryselectorallarray",
     "function/index.html#static-function-querySelectorAllArray",
     "<span>querySelectorAllArray</span> <span class=\"search-result-import-path\">js-essentials/src/querySelectorAllArray.js</span>",
@@ -351,6 +357,12 @@ window.esdocSearchIndex = [
     "src/isfuturedate.js",
     "file/src/isFutureDate.js.html",
     "src/isFutureDate.js",
+    "file"
+  ],
+  [
+    "src/isodd.js",
+    "file/src/isOdd.js.html",
+    "src/isOdd.js",
     "file"
   ],
   [

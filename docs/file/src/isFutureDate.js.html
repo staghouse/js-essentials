@@ -33,6 +33,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getActualMonth">getActualMonth</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getURLParams">getURLParams</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFutureDate">isFutureDate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isOdd">isOdd</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-querySelectorAllArray">querySelectorAllArray</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-quickSortArray">quickSortArray</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sortArrayOfObjects">sortArrayOfObjects</a></span></span></li>
@@ -51,34 +52,32 @@
  * isFutureDate(&apos;2019-10-10&apos;, &apos;2020-01-01&apos;)
  */
 export function isFutureDate(when, against) {
+  if (!when) {
+    throw TypeError(&apos;You must pass in a primary comparison type of Date or String&apos;);
+  }
+
   const typeOfWhen = typeof when;
   const typeOfAgainst = typeof against;
 
-  let now = undefined
+  let now = undefined;
   let then = undefined;
 
-  if(!when){
-    throw TypeError(&apos;You must pass in a primary comparison type of Date or String&apos;);
+  if (typeOfWhen === &apos;string&apos;) {
+    now = new Date(when);
+  } else if (when instanceof Date) {
+    now = when;
   } else {
-    if (typeOfWhen === &apos;string&apos;) {
-      now = new Date(when);
-    } else if (when instanceof Date) {
-      now = when;
-    } else {
-      throw TypeError(&apos;You must pass in an primary comparison type of Date or String&apos;);
-    }
+    throw TypeError(&apos;You must pass in an primary comparison type of Date or String&apos;);
+  }
 
-    if (!against) {
-      then = new Date();
-    } else {
-      if (typeOfAgainst === &apos;string&apos;) {
-        then = new Date(against);
-      } else if (against instanceof Date) {
-        then = against;
-      } else {
-        throw TypeError(&apos;You must pass in a secondary comparison type of Date or String&apos;);
-      }
-    }
+  if (!against) {
+    then = new Date();
+  } else if (typeOfAgainst === &apos;string&apos;) {
+    then = new Date(against);
+  } else if (against instanceof Date) {
+    then = against;
+  } else {
+    throw TypeError(&apos;You must pass in a secondary comparison type of Date or String&apos;);
   }
 
   return then &lt; now;
