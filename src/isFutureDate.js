@@ -6,34 +6,36 @@
  * @throws TypeError
  * @example
  * isFutureDate('2019-10-10', '2020-01-01')
+ * isFutureDate(new Date('2019-10-10'), '2020-01-01')
  */
-export function isFutureDate(when, against) {
+
+export const isFutureDate = (when, against) => {
+  let now = undefined;
+  let then = undefined;
+
   if (!when) {
     throw TypeError('You must pass in a primary comparison type of Date or String');
   }
 
-  const typeOfWhen = typeof when;
-  const typeOfAgainst = typeof against;
+  if (!against) {
+    then = new Date();
+  } else {
+    then = against;
+  }
 
-  let now = undefined;
-  let then = undefined;
+  const isValidNow = typeof when === 'string' || when instanceof Date;
+  const isValidThen = typeof then === 'string' || then instanceof Date;
 
-  if (typeOfWhen === 'string') {
+  if (isValidNow && isValidThen) {
     now = new Date(when);
-  } else if (when instanceof Date) {
-    now = when;
+    then = new Date(then);
   } else {
     throw TypeError('You must pass in an primary comparison type of Date or String');
   }
 
-  if (!against) {
-    then = new Date();
-  } else if (typeOfAgainst === 'string') {
-    then = new Date(against);
-  } else if (against instanceof Date) {
-    then = against;
-  } else {
-    throw TypeError('You must pass in a secondary comparison type of Date or String');
+  // Check if valid Date
+  if (isNaN(now.getTime()) || isNaN(then.getTime())) {
+    throw SyntaxError('You must pass in a valid date time with a type of Date');
   }
 
   return then < now;
