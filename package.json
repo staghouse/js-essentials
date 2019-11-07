@@ -8,15 +8,16 @@
   "license": "MIT",
   "engines": {
     "node": "^12.8.0",
-    "yarn": "^1.17.3"
+    "yarn": "^1.19.1"
   },
   "scripts": {
-    "bootstrap": "npm install && npm audit fix",
+    "bootstrap": "yarn install && yarn audit fix",
     "test": "yarn lint && jest --coverage --coverageDirectory='__coverage__'",
+    "test:watch": "yarn lint && jest --watchAll --coverage --coverageDirectory='__coverage__'",
     "test:full": "yarn test && yarn build:full",
     "coverage": "codecov -t CODECOV_TOKEN",
     "lint": "eslint --fix --ext .js ./",
-    "build": "babel src -d dist && uglifyjs-folder dist/ -ex .js -yo dist/",
+    "build": "pika build",
     "build:full": "yarn build && yarn docs:build",
     "docs:build": "rm -rf ./docs && esdoc",
     "docs:open": "open ./docs/index.html",
@@ -26,6 +27,10 @@
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "@pika/pack": "^0.5.0",
+    "@pika/plugin-build-node": "^0.7.1",
+    "@pika/plugin-build-web": "^0.7.1",
+    "@pika/plugin-standard-pkg": "^0.7.1",
     "babel-eslint": "^10.0.2",
     "babel-jest": "^24.8.0",
     "codecov": "^3.5.0",
@@ -34,8 +39,26 @@
     "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^6.1.0",
     "husky": "^3.0.4",
-    "jest": "^24.8.0",
-    "uglify-es": "^3.3.9",
-    "uglifyjs-folder": "^1.5.1"
+    "jest": "^24.9.0",
+    "jsdom": "^15.2.1"
+  },
+  "type": "module",
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-standard-pkg",
+        {
+          "exclude": [
+            "__schemas__/**/*"
+          ]
+        }
+      ],
+      [
+        "@pika/plugin-build-web"
+      ],
+      [
+        "@pika/plugin-build-node"
+      ]
+    ]
   }
 }

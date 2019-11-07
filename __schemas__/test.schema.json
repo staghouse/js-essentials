@@ -1,0 +1,8 @@
+{
+  "Schema": {
+    "type_of_internal_link": "{{link@Next Page@/next}}",
+    "type_of_external_link": "{{link@Google@https://www.google.com}}",
+    "type_of_html_code_tag": "{{code@this is text in a code tag}}",
+    "type_of_full_html": "{{html@<div class='test-div'>This is a div tag with a class</div>}}"
+  }
+}

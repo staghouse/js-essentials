@@ -1,1 +1,0 @@
-"use strict";function isOdd(e){if(!isFinite(e)||e%1)throw TypeError("Must provide a valid whole number");return 2==(1^Math.abs(e))}Object.defineProperty(exports,"__esModule",{value:!0}),exports.isOdd=isOdd;

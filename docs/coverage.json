@@ -1,7 +1,7 @@
 {
-  "coverage": "100%",
-  "expectCount": 8,
-  "actualCount": 8,
+  "coverage": "70.58%",
+  "expectCount": 17,
+  "actualCount": 12,
   "files": {
     "src/convertToDate.js": {
       "expectCount": 1,
@@ -27,6 +27,17 @@
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
+    },
+    "src/jsonMustaches.js": {
+      "expectCount": 9,
+      "actualCount": 4,
+      "undocumentLines": [
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
     },
     "src/querySelectorAllArray.js": {
       "expectCount": 1,
