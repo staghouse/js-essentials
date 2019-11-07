@@ -20,6 +20,7 @@ module.exports = {
     'no-console': 'off',
     'no-empty': 'off',
     'no-prototype-builtins': 'off',
+    'guard-for-in': 'off',
     // Rules to warn
     indent: ['warn', 2, { SwitchCase: 1 }],
     // Rules to error
@@ -29,7 +30,6 @@ module.exports = {
     'no-useless-concat': 'error',
     'no-useless-return': 'error',
     'no-multi-spaces': 'error',
-    'guard-for-in': 'error',
     'no-alert': 'error',
     'no-eq-null': 'error',
     'no-eval': 'error',
