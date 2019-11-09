@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">src/index.js | js-essentials</title>
+  <title data-ice="title">src/commonDenominators.js | js-essentials</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -43,29 +43,44 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/index.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { isOdd } from &quot;./isOdd&quot;;
-import { isFutureDate } from &apos;./isFutureDate&apos;;
-import { getURLParams } from &apos;./getURLParams&apos;;
-import { convertToDate } from &apos;./convertToDate&apos;;
-import { JSONMustaches } from &apos;./jsonMustaches&apos;;
-import { getActualMonth } from &apos;./getActualMonth&apos;;
-import { quickSortArray } from &apos;./quickSortArray&apos;;
-import { commonDenominators } from &apos;./commonDenominators&apos;;
-import { sortArrayOfObjects } from &apos;./sortArrayOfObjects&apos;;
-import { querySelectorAllArray } from &apos;./querySelectorAllArray&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">src/commonDenominators.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">export function commonDenominators(...args){
+  const numerators = args.filter(numerator =&gt; Number.isInteger(numerator) &amp;&amp; numerator &gt; 0);
+  const denominators = [Math.min(...numerators)];
+  let minimum = Math.ceil(denominators[0] / 2);
 
-export {
-  isOdd,
-  isFutureDate,
-  getURLParams,
-  convertToDate,
-  JSONMustaches,
-  getActualMonth,
-  quickSortArray,
-  commonDenominators,
-  sortArrayOfObjects,
-  querySelectorAllArray
+  if (!numerators.length) {
+    return [];
+  }
+  if (minimum &lt; 2) {
+    return [1];
+  }
+
+  while (minimum &gt; 0) {
+    if (denominators[0] % minimum === 0) {
+      denominators.push(minimum);
+    }
+    minimum--;
+  }
+
+  denominators.reverse();
+
+  if (numerators.length === 1) {
+    return [...denominators];
+  }
+
+  numerators.splice(1, numerators.length - 1).map(numerator =&gt; {
+    let denominator = denominators.length - 1;
+
+    while (denominator &gt;= 0) {
+      if (numerator % denominators[denominator] !== 0) {
+        denominators.splice(denominator, 1);
+      }
+      denominator--;
+    }
+  });
+
+  return denominators;
 }
 </code></pre>
 

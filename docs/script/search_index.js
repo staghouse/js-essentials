@@ -6,6 +6,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "js-essentials/src/commondenominators.js~commondenominators",
+    "function/index.html#static-function-commonDenominators",
+    "<span>commonDenominators</span> <span class=\"search-result-import-path\">js-essentials/src/commonDenominators.js</span>",
+    "function"
+  ],
+  [
     "js-essentials/src/converttodate.js~converttodate",
     "function/index.html#static-function-convertToDate",
     "<span>convertToDate</span> <span class=\"search-result-import-path\">js-essentials/src/convertToDate.js</span>",
@@ -334,6 +340,12 @@ window.esdocSearchIndex = [
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
     "src/.external-ecmascript.js~undefined",
     "external"
+  ],
+  [
+    "src/commondenominators.js",
+    "file/src/commonDenominators.js.html",
+    "src/commonDenominators.js",
+    "file"
   ],
   [
     "src/converttodate.js",

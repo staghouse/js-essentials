@@ -30,6 +30,7 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/jsonMustaches.js~JSONMustaches.html">JSONMustaches</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-commonDenominators">commonDenominators</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-convertToDate">convertToDate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getActualMonth">getActualMonth</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getURLParams">getURLParams</a></span></span></li>
@@ -45,46 +46,64 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/isFutureDate.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
  * isFutureDate
- * @param {string|Date} when - when to compare against now
- * @param {string|Date} against - when to compare against the first argument
+ * @param {String|Date} when - when to compare against now
+ * @param {String|Date} against - when to compare against the first argument
  * @return Boolean
  * @throws TypeError
+ * @throws SyntaxError
  * @example
  * isFutureDate(&apos;2019-10-10&apos;, &apos;2020-01-01&apos;)
  * isFutureDate(new Date(&apos;2019-10-10&apos;), &apos;2020-01-01&apos;)
  */
 
-export const isFutureDate = (when, against) =&gt; {
-  let now = undefined;
-  let then = undefined;
-
-  if (!when) {
-    throw TypeError(&apos;You must pass in a primary comparison type of Date or String&apos;);
+export const isFutureDate = (when, against = new Date()) =&gt; {
+  // Check on our types, we only want String and Date for comparison.
+  const typesAreValid =
+    (typeof when === &apos;string&apos; || when instanceof Date) &amp;&amp;
+    (typeof against === &apos;string&apos; || against instanceof Date);
+  if (!typesAreValid) {
+    throw TypeError(&apos;You must pass in at leasy one primary argument of type Date or String&apos;);
   }
 
-  if (!against) {
-    then = new Date();
-  } else {
-    then = against;
-  }
+  // Its important to remember that when we pass in just a String date
+  // that we wont get a time. So we set this up to do checks later.
+  let now = new Date(when);
+  let then = new Date(against);
 
-  const isValidNow = typeof when === &apos;string&apos; || when instanceof Date;
-  const isValidThen = typeof then === &apos;string&apos; || then instanceof Date;
-
-  if (isValidNow &amp;&amp; isValidThen) {
-    now = new Date(when);
-    then = new Date(then);
-  } else {
-    throw TypeError(&apos;You must pass in an primary comparison type of Date or String&apos;);
-  }
-
-  // Check if valid Date
-  if (isNaN(now.getTime()) || isNaN(then.getTime())) {
+  /**
+   * Check if valid Date. String with improper formats return `Invalid Date`
+   * which is literal non-sense. Its not an Error of any kind, Number, String, Date or
+   * truthy undefined. Just a typeof Object which no public keys.
+   * In fact, the prototype returns undefined but when chcking for it,
+   * we get not comparison validation at all
+   */
+  if (!isFinite(now) || !isFinite(then)) {
     throw SyntaxError(&apos;You must pass in a valid date time with a type of Date&apos;);
   }
 
+  // Check if simply today is not the future.
+  const isToday = now.toDateString() === then.toDateString();
+  if (isToday) {
+    return false;
+  }
+
+  // Store UTC miliseconds.
+  if (typeof when === &apos;string&apos;) {
+    now = Date.parse(when);
+  } else {
+    now = when.getTime();
+  }
+
+  // Store UTC miliseconds.
+  if (typeof against === &apos;string&apos;) {
+    then = Date.parse(against);
+  } else {
+    then = against.getTime();
+  }
+
+  // Compare the miliseconds. It&apos;s the only way to be sure.
   return then &lt; now;
-}
+};
 </code></pre>
 
 </div>

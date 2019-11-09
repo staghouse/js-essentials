@@ -566,8 +566,50 @@
   {
     "__docId__": 48,
     "kind": "file",
+    "name": "src/commonDenominators.js",
+    "content": "export function commonDenominators(...args){\n  const numerators = args.filter(numerator => Number.isInteger(numerator) && numerator > 0);\n  const denominators = [Math.min(...numerators)];\n  let minimum = Math.ceil(denominators[0] / 2);\n\n  if (!numerators.length) {\n    return [];\n  }\n  if (minimum < 2) {\n    return [1];\n  }\n\n  while (minimum > 0) {\n    if (denominators[0] % minimum === 0) {\n      denominators.push(minimum);\n    }\n    minimum--;\n  }\n\n  denominators.reverse();\n\n  if (numerators.length === 1) {\n    return [...denominators];\n  }\n\n  numerators.splice(1, numerators.length - 1).map(numerator => {\n    let denominator = denominators.length - 1;\n\n    while (denominator >= 0) {\n      if (numerator % denominators[denominator] !== 0) {\n        denominators.splice(denominator, 1);\n      }\n      denominator--;\n    }\n  });\n\n  return denominators;\n}\n",
+    "static": true,
+    "longname": "/Users/Eric/Developer/js-essentials/src/commonDenominators.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "function",
+    "name": "commonDenominators",
+    "memberof": "src/commonDenominators.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/commonDenominators.js~commonDenominators",
+    "access": "public",
+    "export": true,
+    "importPath": "js-essentials/src/commonDenominators.js",
+    "importStyle": "{commonDenominators}",
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "params": [
+      {
+        "name": "args",
+        "types": [
+          "...*"
+        ],
+        "spread": true
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 50,
+    "kind": "file",
     "name": "src/convertToDate.js",
-    "content": "/**\n * isFutureDate\n * @param {number|string|Date} date - Date you want to cast\n * @return Date\n * @throws TypeError\n * @example\n * isFutureDate('2019-10-10', '2020-01-01')\n */\nexport function convertToDate(date) {\n  if (date instanceof Date) {\n    return date;\n  }\n\n  if (typeof date === 'string' || typeof date === 'number') {\n    return new Date(date);\n  }\n\n  throw TypeError('You must pass in a primary comparison type of Date, String, or Int');\n}\n",
+    "content": "/**\n * convertToDate\n * @param {number|string|Date} date - Date you want to cast\n * @return Date\n * @throws TypeError\n * @example\n * convertToDate(number|string|date)\n */\nexport function convertToDate(date) {\n  if (date instanceof Date) {\n    return date;\n  }\n\n  if (typeof date === 'string' || typeof date === 'number') {\n    return new Date(date);\n  }\n\n  throw TypeError('You must pass in a primary argument of type Date, String, or Number');\n}\n",
     "static": true,
     "longname": "/Users/Eric/Developer/js-essentials/src/convertToDate.js",
     "access": "public",
@@ -575,7 +617,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 49,
+    "__docId__": 51,
     "kind": "function",
     "name": "convertToDate",
     "memberof": "src/convertToDate.js",
@@ -587,9 +629,9 @@
     "export": true,
     "importPath": "js-essentials/src/convertToDate.js",
     "importStyle": "{convertToDate}",
-    "description": "isFutureDate",
+    "description": "convertToDate",
     "examples": [
-      "isFutureDate('2019-10-10', '2020-01-01')"
+      "convertToDate(number|string|date)"
     ],
     "lineNumber": 9,
     "params": [
@@ -624,7 +666,7 @@
     ]
   },
   {
-    "__docId__": 50,
+    "__docId__": 52,
     "kind": "file",
     "name": "src/getActualMonth.js",
     "content": "/**\n * getActualMonth\n * @param {number} num - number of the month from Date()\n * @return String of month\n * @throws TypeError\n * @example\n * getActualMonth(6)\n */\nexport function getActualMonth(num = undefined) {\n  const number = Number(num);\n\n  if (!isNaN(number)) {\n    const months = [\n      'January',\n      'February',\n      'March',\n      'April',\n      'May',\n      'June',\n      'July',\n      'August',\n      'September',\n      'October',\n      'November',\n      'December',\n    ];\n    return months[number];\n  } else {\n    throw TypeError('number must be of type string or number');\n  }\n}\n",
@@ -635,7 +677,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 51,
+    "__docId__": 53,
     "kind": "function",
     "name": "getActualMonth",
     "memberof": "src/getActualMonth.js",
@@ -682,7 +724,7 @@
     ]
   },
   {
-    "__docId__": 52,
+    "__docId__": 54,
     "kind": "file",
     "name": "src/getURLParams.js",
     "content": "/**\n * getURLParams\n * @param {number} url - string or URL instance\n * @return object with key/val\n * @throws TypeError\n * @example\n * getURLParmas('http://www.placecage.com?height=100&width=200')\n */\nexport function getURLParams(url = undefined) {\n  const typeOfUrl = typeof url;\n  const paramsObj = {};\n  let params = undefined;\n\n  if (typeOfUrl !== 'undefined' && (typeOfUrl === 'string' || url instanceof URL)) {\n    url = new URL(url);\n\n    params = new URLSearchParams(url.search);\n\n    params.forEach(function(value, key) {\n      paramsObj[key] = value;\n    });\n\n    return paramsObj;\n  } else {\n    throw TypeError('url must be of type String or URL');\n  }\n}\n",
@@ -693,7 +735,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 53,
+    "__docId__": 55,
     "kind": "function",
     "name": "getURLParams",
     "memberof": "src/getURLParams.js",
@@ -740,10 +782,10 @@
     ]
   },
   {
-    "__docId__": 54,
+    "__docId__": 56,
     "kind": "file",
     "name": "src/index.js",
-    "content": "import { isFutureDate } from './isFutureDate';\nimport { getURLParams } from './getURLParams';\nimport { JSONMustaches } from './jsonMustaches';\nimport { getActualMonth } from './getActualMonth';\nimport { quickSortArray } from './quickSortArray';\nimport { sortArrayOfObjects } from './sortArrayOfObjects';\nimport { querySelectorAllArray } from './querySelectorAllArray';\nimport { convertToDate } from './convertToDate';\nimport { isOdd } from \"./isOdd\";\n\nexport {\n  isFutureDate,\n  getURLParams,\n  JSONMustaches,\n  getActualMonth,\n  quickSortArray,\n  sortArrayOfObjects,\n  querySelectorAllArray,\n  convertToDate,\n  isOdd,\n}\n",
+    "content": "import { isOdd } from \"./isOdd\";\nimport { isFutureDate } from './isFutureDate';\nimport { getURLParams } from './getURLParams';\nimport { convertToDate } from './convertToDate';\nimport { JSONMustaches } from './jsonMustaches';\nimport { getActualMonth } from './getActualMonth';\nimport { quickSortArray } from './quickSortArray';\nimport { commonDenominators } from './commonDenominators';\nimport { sortArrayOfObjects } from './sortArrayOfObjects';\nimport { querySelectorAllArray } from './querySelectorAllArray';\n\nexport {\n  isOdd,\n  isFutureDate,\n  getURLParams,\n  convertToDate,\n  JSONMustaches,\n  getActualMonth,\n  quickSortArray,\n  commonDenominators,\n  sortArrayOfObjects,\n  querySelectorAllArray\n}\n",
     "static": true,
     "longname": "/Users/Eric/Developer/js-essentials/src/index.js",
     "access": "public",
@@ -751,10 +793,10 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 55,
+    "__docId__": 57,
     "kind": "file",
     "name": "src/isFutureDate.js",
-    "content": "/**\n * isFutureDate\n * @param {string|Date} when - when to compare against now\n * @param {string|Date} against - when to compare against the first argument\n * @return Boolean\n * @throws TypeError\n * @example\n * isFutureDate('2019-10-10', '2020-01-01')\n * isFutureDate(new Date('2019-10-10'), '2020-01-01')\n */\n\nexport const isFutureDate = (when, against) => {\n  let now = undefined;\n  let then = undefined;\n\n  if (!when) {\n    throw TypeError('You must pass in a primary comparison type of Date or String');\n  }\n\n  if (!against) {\n    then = new Date();\n  } else {\n    then = against;\n  }\n\n  const isValidNow = typeof when === 'string' || when instanceof Date;\n  const isValidThen = typeof then === 'string' || then instanceof Date;\n\n  if (isValidNow && isValidThen) {\n    now = new Date(when);\n    then = new Date(then);\n  } else {\n    throw TypeError('You must pass in an primary comparison type of Date or String');\n  }\n\n  // Check if valid Date\n  if (isNaN(now.getTime()) || isNaN(then.getTime())) {\n    throw SyntaxError('You must pass in a valid date time with a type of Date');\n  }\n\n  return then < now;\n}\n",
+    "content": "/**\n * isFutureDate\n * @param {String|Date} when - when to compare against now\n * @param {String|Date} against - when to compare against the first argument\n * @return Boolean\n * @throws TypeError\n * @throws SyntaxError\n * @example\n * isFutureDate('2019-10-10', '2020-01-01')\n * isFutureDate(new Date('2019-10-10'), '2020-01-01')\n */\n\nexport const isFutureDate = (when, against = new Date()) => {\n  // Check on our types, we only want String and Date for comparison.\n  const typesAreValid =\n    (typeof when === 'string' || when instanceof Date) &&\n    (typeof against === 'string' || against instanceof Date);\n  if (!typesAreValid) {\n    throw TypeError('You must pass in at leasy one primary argument of type Date or String');\n  }\n\n  // Its important to remember that when we pass in just a String date\n  // that we wont get a time. So we set this up to do checks later.\n  let now = new Date(when);\n  let then = new Date(against);\n\n  /**\n   * Check if valid Date. String with improper formats return `Invalid Date`\n   * which is literal non-sense. Its not an Error of any kind, Number, String, Date or\n   * truthy undefined. Just a typeof Object which no public keys.\n   * In fact, the prototype returns undefined but when chcking for it,\n   * we get not comparison validation at all\n   */\n  if (!isFinite(now) || !isFinite(then)) {\n    throw SyntaxError('You must pass in a valid date time with a type of Date');\n  }\n\n  // Check if simply today is not the future.\n  const isToday = now.toDateString() === then.toDateString();\n  if (isToday) {\n    return false;\n  }\n\n  // Store UTC miliseconds.\n  if (typeof when === 'string') {\n    now = Date.parse(when);\n  } else {\n    now = when.getTime();\n  }\n\n  // Store UTC miliseconds.\n  if (typeof against === 'string') {\n    then = Date.parse(against);\n  } else {\n    then = against.getTime();\n  }\n\n  // Compare the miliseconds. It's the only way to be sure.\n  return then < now;\n};\n",
     "static": true,
     "longname": "/Users/Eric/Developer/js-essentials/src/isFutureDate.js",
     "access": "public",
@@ -762,7 +804,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 56,
+    "__docId__": 58,
     "kind": "function",
     "name": "isFutureDate",
     "memberof": "src/isFutureDate.js",
@@ -778,12 +820,12 @@
     "examples": [
       "isFutureDate('2019-10-10', '2020-01-01')\nisFutureDate(new Date('2019-10-10'), '2020-01-01')"
     ],
-    "lineNumber": 12,
+    "lineNumber": 13,
     "params": [
       {
         "nullable": null,
         "types": [
-          "string",
+          "String",
           "Date"
         ],
         "spread": false,
@@ -794,7 +836,7 @@
       {
         "nullable": null,
         "types": [
-          "string",
+          "String",
           "Date"
         ],
         "spread": false,
@@ -817,11 +859,17 @@
           "*"
         ],
         "description": "TypeError"
+      },
+      {
+        "types": [
+          "*"
+        ],
+        "description": "SyntaxError"
       }
     ]
   },
   {
-    "__docId__": 57,
+    "__docId__": 59,
     "kind": "file",
     "name": "src/isOdd.js",
     "content": "/**\n * isOdd\n * @param {number} number - Value to check if odd\n * @return Boolean\n * @example\n * isOdd(3)\n */\nexport function isOdd(number) {\n  if (!isFinite(number) || !!(number % 1)) {\n    throw TypeError('Must provide a valid whole number');\n  }\n\n  return (Math.abs(number) ^ 1) === 2;\n}\n",
@@ -832,7 +880,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 58,
+    "__docId__": 60,
     "kind": "function",
     "name": "isOdd",
     "memberof": "src/isOdd.js",
@@ -871,7 +919,7 @@
     }
   },
   {
-    "__docId__": 59,
+    "__docId__": 61,
     "kind": "file",
     "name": "src/jsonMustaches.js",
     "content": "/**\n * JSONMustaches - A JSON parser for mustaches templates in JSON objects.\n *\n * @type Class\n * @constructor @arguments\n * @param {object} schema - Schema compliant JSON object\n * @use {{type@text@url}}\n */\nexport class JSONMustaches {\n  constructor(schema) {\n    this.schema = schema;\n    this.delimiter = '@';\n    this.allMustaches = /{{(.*?)}}/g;\n    this.singleMustache = /{{(.*?)}}/;\n\n    // Ensure we use Objects only for our schema\n    if (\n      !this.schema ||\n      (this.schema === Object(this.schema) &&\n        Object.prototype.toString.call(this.schema) === '[object Array]')\n    ) {\n      throw SyntaxError('You must pass in a valid JSON Schema');\n    } else {\n      if (!JSON.stringify(this.schema).match(this.allMustaches)) {\n        return this.schema;\n      }\n    }\n  }\n\n  /**\n   * @type function\n   * @param {string} value A string containing mustache templates\n   */\n  hydrate(value) {\n    let values = value.match(this.singleMustache)[1]; // get just whats inside the mustache\n    let [type, text, link = ''] = values.split(this.delimiter);\n\n    const isExternal = `target=${link.indexOf('/') === 0 ? '' : '_blank'}`;\n\n    const mustacheMap = {\n      html: text,\n      link: `<a class='code-link' href='${link}/' ${isExternal}/>${this.unwrap(text)}</a>`,\n      code: `<code>${text}</code>`,\n    };\n\n    return mustacheMap[type];\n  }\n\n  /**\n   * @type function\n   * Cycle through the JSON schema and replace mustaches as needed,\n   * then return the new JSON\n   */\n  cycle() {\n    for (const prop in this.schema) {\n      // Store the value of each object in our schema\n      const value = this.schema[prop];\n      // Store the main property name so we can hydrate that too\n      value.main_property_name = prop;\n\n      for (const key in value) {\n        const val = value[key].toString();\n        const mustaches = val.match(this.allMustaches);\n\n        if (mustaches) {\n          for (const mustache of mustaches) {\n            const hydratedHTML = value[key].replace(mustache, this.hydrate(mustache));\n\n            this.schema[prop][key] = hydratedHTML;\n          }\n        }\n      }\n    }\n\n    return this;\n  }\n\n  /**\n   * @type function\n   * @param {string} str Multiple word normalizing for anchors and URI's\n   */\n  unwrap(str) {\n    return str\n      .split('-')\n      .map((n, i) => {\n        if (i > 0) {\n          return n.charAt(0).toUpperCase() + n.slice(1);\n        }\n        return n;\n      })\n      .join('');\n  }\n}\n",
@@ -882,7 +930,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 60,
+    "__docId__": 62,
     "kind": "class",
     "name": "JSONMustaches",
     "memberof": "src/jsonMustaches.js",
@@ -931,7 +979,7 @@
     "interface": false
   },
   {
-    "__docId__": 61,
+    "__docId__": 63,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/jsonMustaches.js~JSONMustaches",
@@ -945,7 +993,7 @@
     "undocument": true
   },
   {
-    "__docId__": 62,
+    "__docId__": 64,
     "kind": "member",
     "name": "schema",
     "memberof": "src/jsonMustaches.js~JSONMustaches",
@@ -962,7 +1010,7 @@
     }
   },
   {
-    "__docId__": 63,
+    "__docId__": 65,
     "kind": "member",
     "name": "delimiter",
     "memberof": "src/jsonMustaches.js~JSONMustaches",
@@ -979,7 +1027,7 @@
     }
   },
   {
-    "__docId__": 64,
+    "__docId__": 66,
     "kind": "member",
     "name": "allMustaches",
     "memberof": "src/jsonMustaches.js~JSONMustaches",
@@ -996,7 +1044,7 @@
     }
   },
   {
-    "__docId__": 65,
+    "__docId__": 67,
     "kind": "member",
     "name": "singleMustache",
     "memberof": "src/jsonMustaches.js~JSONMustaches",
@@ -1013,7 +1061,7 @@
     }
   },
   {
-    "__docId__": 66,
+    "__docId__": 68,
     "kind": "method",
     "name": "hydrate",
     "memberof": "src/jsonMustaches.js~JSONMustaches",
@@ -1051,7 +1099,7 @@
     }
   },
   {
-    "__docId__": 67,
+    "__docId__": 69,
     "kind": "method",
     "name": "cycle",
     "memberof": "src/jsonMustaches.js~JSONMustaches",
@@ -1078,7 +1126,7 @@
     }
   },
   {
-    "__docId__": 68,
+    "__docId__": 70,
     "kind": "method",
     "name": "unwrap",
     "memberof": "src/jsonMustaches.js~JSONMustaches",
@@ -1116,7 +1164,7 @@
     }
   },
   {
-    "__docId__": 69,
+    "__docId__": 71,
     "kind": "file",
     "name": "src/querySelectorAllArray.js",
     "content": "/**\n * querySelectorAllArray\n * @param {string} el - DOM element class name\n * @return Array of class based elements\n * @throws TypeError\n * @example\n * querySelectorArray('.my-element')\n */\nexport function querySelectorAllArray(el) {\n  if (typeof el !== 'string') {\n    throw TypeError('el must be of type string');\n  }\n\n  if (el[0] !== '.') {\n    throw TypeError('el must include a period prepended to the selector');\n  }\n\n  return Array.from(document.querySelectorAll(el));\n}\n",
@@ -1127,7 +1175,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 70,
+    "__docId__": 72,
     "kind": "function",
     "name": "querySelectorAllArray",
     "memberof": "src/querySelectorAllArray.js",
@@ -1174,7 +1222,7 @@
     ]
   },
   {
-    "__docId__": 71,
+    "__docId__": 73,
     "kind": "file",
     "name": "src/quickSortArray.js",
     "content": "/**\n * quickSortArray\n * @param {array} arr - Array of values of a single type\n * @return Array\n * @throws TypeError\n * @example\n * quickSortArray([10, 7, 1, 4])\n * quickSortArray(['banana', 'orange', 'apple'])\n */\nexport function quickSortArray(arr) {\n  if (!Array.isArray(arr)) {\n    throw TypeError('You must pass in an array');\n  }\n  // Only want to sort on one type in a arr\n  const isValid = new Set(arr.map(item => typeof item)).size < 2;\n\n  if (!isValid) {\n    throw TypeError('You must pass in an array containing a single type');\n  }\n\n  // So more quick sorts can be added in the future\n  switch (typeof arr[0]) {\n    case 'number':\n      return arr.sort((a, b) => {\n        return a - b;\n      });\n\n    case 'string':\n    default:\n      return arr.sort();\n  }\n}\n",
@@ -1185,7 +1233,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 72,
+    "__docId__": 74,
     "kind": "function",
     "name": "quickSortArray",
     "memberof": "src/quickSortArray.js",
@@ -1232,7 +1280,7 @@
     ]
   },
   {
-    "__docId__": 73,
+    "__docId__": 75,
     "kind": "file",
     "name": "src/sortArrayOfObjects.js",
     "content": "/**\n * sortArrayOfObjects\n * @param {string} property - name of property to sort objects by\n * @param {array} arr - Array of objects to sort over\n * @param {boolean} desc - optional, default to descending order of objects\n * @return Array of objects, sorted by property\n * @throws TypeError\n * @example\n * sortArrayOfObjects('name', [{'name': 'Charles'}, {'name': 'Scott'}, {'name': 'Erik'}], true)\n */\nexport function sortArrayOfObjects(property = undefined, arr = undefined, desc = false) {\n  const isArray = Array.isArray(arr);\n  let arrTypes = undefined;\n\n  if (isArray && arr.length === 1) {\n    return arr;\n  }\n\n  if (!isArray) {\n    throw TypeError('You must pass in an array to sort');\n  } else {\n    arrTypes = Array.from(new Set(arr.map(obj => typeof obj)));\n  }\n\n  if (arrTypes.length > 1 || !arrTypes.includes('object')) {\n    throw TypeError('You must pass in an array of only objects');\n  }\n\n  if (typeof property !== 'string') {\n    throw TypeError('You must pass in a key as type string to sort your objects by');\n  }\n\n  const order = desc ? -1 : 1;\n\n  return arr.sort((a, b) => {\n    const x = a[property];\n    const y = b[property];\n\n    // Magical stuff.\n    return order * (x < y ? -1 : +(x > y));\n  });\n}",
@@ -1243,7 +1291,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 74,
+    "__docId__": 76,
     "kind": "function",
     "name": "sortArrayOfObjects",
     "memberof": "src/sortArrayOfObjects.js",
@@ -1319,7 +1367,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"js-essentials\",\n  \"version\": \"0.0.1\",\n  \"description\": \"Essential tools/helpers to use in any JS project.\",\n  \"main\": \"dist/index.js\",\n  \"repository\": \"git@github.com:staghouse/js-essentials.git\",\n  \"author\": \"Eric Lakatos <lakatos.eric@gmail.com>\",\n  \"license\": \"MIT\",\n  \"engines\": {\n    \"node\": \"^12.8.0\",\n    \"yarn\": \"^1.19.1\"\n  },\n  \"scripts\": {\n    \"bootstrap\": \"yarn install && yarn audit fix\",\n    \"test\": \"yarn lint && jest --watchAll --coverage --coverageDirectory='__coverage__'\",\n    \"test:full\": \"yarn test && yarn build:full\",\n    \"coverage\": \"codecov -t CODECOV_TOKEN\",\n    \"lint\": \"eslint --fix --ext .js ./\",\n    \"build\": \"pika build\",\n    \"build:full\": \"yarn build && yarn docs:build\",\n    \"docs:build\": \"rm -rf ./docs && esdoc\",\n    \"docs:open\": \"open ./docs/index.html\",\n    \"purge\": \"rm -rf node_modules\"\n  },\n  \"devDependencies\": {\n    \"@babel/cli\": \"^7.5.5\",\n    \"@babel/core\": \"^7.5.5\",\n    \"@babel/preset-env\": \"^7.5.5\",\n    \"@pika/pack\": \"^0.5.0\",\n    \"@pika/plugin-build-node\": \"^0.7.1\",\n    \"@pika/plugin-build-web\": \"^0.7.1\",\n    \"@pika/plugin-standard-pkg\": \"^0.7.1\",\n    \"babel-eslint\": \"^10.0.2\",\n    \"babel-jest\": \"^24.8.0\",\n    \"codecov\": \"^3.5.0\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-node\": \"^1.0.4\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^6.1.0\",\n    \"husky\": \"^3.0.4\",\n    \"jest\": \"^24.9.0\",\n    \"jsdom\": \"^15.2.1\"\n  },\n  \"type\": \"module\",\n  \"@pika/pack\": {\n    \"pipeline\": [\n      [\n        \"@pika/plugin-standard-pkg\",\n        {\n          \"exclude\": [\n            \"__schemas__/**/*\"\n          ]\n        }\n      ],\n      [\n        \"@pika/plugin-build-web\"\n      ],\n      [\n        \"@pika/plugin-build-node\"\n      ]\n    ]\n  }\n}\n",
+    "content": "{\n  \"name\": \"js-essentials\",\n  \"version\": \"0.0.1\",\n  \"description\": \"Essential tools/helpers to use in any JS project.\",\n  \"main\": \"pkg/dist-node/index.js\",\n  \"repository\": \"git@github.com:staghouse/js-essentials.git\",\n  \"author\": \"Eric Lakatos <lakatos.eric@gmail.com>\",\n  \"license\": \"MIT\",\n  \"engines\": {\n    \"node\": \"^12.8.0\",\n    \"yarn\": \"^1.19.1\"\n  },\n  \"scripts\": {\n    \"bootstrap\": \"yarn install && yarn audit fix\",\n    \"test\": \"yarn lint && jest --coverage --coverageDirectory='__coverage__'\",\n    \"test:watch\": \"yarn lint && jest --watchAll --coverage --coverageDirectory='__coverage__'\",\n    \"test:full\": \"yarn test && yarn build:full\",\n    \"coverage\": \"codecov -t CODECOV_TOKEN\",\n    \"lint\": \"eslint --fix --ext .js ./\",\n    \"build\": \"pika build\",\n    \"build:full\": \"yarn build && yarn docs:build\",\n    \"docs:build\": \"rm -rf ./docs && esdoc\",\n    \"docs:open\": \"open ./docs/index.html\",\n    \"purge\": \"rm -rf node_modules\"\n  },\n  \"devDependencies\": {\n    \"@babel/cli\": \"^7.5.5\",\n    \"@babel/core\": \"^7.5.5\",\n    \"@babel/preset-env\": \"^7.5.5\",\n    \"@pika/pack\": \"^0.5.0\",\n    \"@pika/plugin-build-node\": \"^0.7.1\",\n    \"@pika/plugin-build-web\": \"^0.7.1\",\n    \"@pika/plugin-standard-pkg\": \"^0.7.1\",\n    \"babel-eslint\": \"^10.0.2\",\n    \"babel-jest\": \"^24.8.0\",\n    \"codecov\": \"^3.5.0\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-node\": \"^1.0.4\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^6.1.0\",\n    \"husky\": \"^3.0.4\",\n    \"jest\": \"^24.9.0\",\n    \"jsdom\": \"^15.2.1\"\n  },\n  \"type\": \"module\",\n  \"@pika/pack\": {\n    \"pipeline\": [\n      [\n        \"@pika/plugin-standard-pkg\",\n        {\n          \"exclude\": [\n            \"__schemas__/**/*\"\n          ]\n        }\n      ],\n      [\n        \"@pika/plugin-build-web\"\n      ],\n      [\n        \"@pika/plugin-build-node\"\n      ]\n    ]\n  }\n}\n",
     "longname": "/Users/Eric/Developer/js-essentials/package.json",
     "name": "package.json",
     "static": true,

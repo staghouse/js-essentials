@@ -1,10 +1,10 @@
 /**
- * isFutureDate
+ * convertToDate
  * @param {number|string|Date} date - Date you want to cast
  * @return Date
  * @throws TypeError
  * @example
- * isFutureDate('2019-10-10', '2020-01-01')
+ * convertToDate(number|string|date)
  */
 export function convertToDate(date) {
   if (date instanceof Date) {
@@ -15,5 +15,5 @@ export function convertToDate(date) {
     return new Date(date);
   }
 
-  throw TypeError('You must pass in a primary comparison type of Date, String, or Int');
+  throw TypeError('You must pass in a primary argument of type Date, String, or Number');
 }

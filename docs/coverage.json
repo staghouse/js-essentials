@@ -1,8 +1,15 @@
 {
-  "coverage": "70.58%",
-  "expectCount": 17,
+  "coverage": "66.66%",
+  "expectCount": 18,
   "actualCount": 12,
   "files": {
+    "src/commonDenominators.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
+      ]
+    },
     "src/convertToDate.js": {
       "expectCount": 1,
       "actualCount": 1,

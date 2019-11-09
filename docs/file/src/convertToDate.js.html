@@ -30,6 +30,7 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/jsonMustaches.js~JSONMustaches.html">JSONMustaches</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-commonDenominators">commonDenominators</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-convertToDate">convertToDate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getActualMonth">getActualMonth</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getURLParams">getURLParams</a></span></span></li>
@@ -44,12 +45,12 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/convertToDate.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
- * isFutureDate
+ * convertToDate
  * @param {number|string|Date} date - Date you want to cast
  * @return Date
  * @throws TypeError
  * @example
- * isFutureDate(&apos;2019-10-10&apos;, &apos;2020-01-01&apos;)
+ * convertToDate(number|string|date)
  */
 export function convertToDate(date) {
   if (date instanceof Date) {
@@ -60,7 +61,7 @@ export function convertToDate(date) {
     return new Date(date);
   }
 
-  throw TypeError(&apos;You must pass in a primary comparison type of Date, String, or Int&apos;);
+  throw TypeError(&apos;You must pass in a primary argument of type Date, String, or Number&apos;);
 }
 </code></pre>
 
