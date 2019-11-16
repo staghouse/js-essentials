@@ -20,7 +20,7 @@
       }
     </style>
     <script type="module">
-	    import JSONMustaches from '/src/JSONMustaches.js';
+	    import { JSONMustaches } from '/pkg/dist-web/index.js';
       const schemaURL = '/__schemas__/test.schema.json';
 
       const _renderPage = schema => {
@@ -36,7 +36,7 @@
           .then(response => response.json())
           .then(json => {
             const jsonMustaches = new JSONMustaches(json);
-            jsonMustaches.cycle(); // basically an init for transforming mustaches
+            jsonMustaches._init(); // basically an init for transforming mustaches
 
             _renderPage(jsonMustaches.schema);
           });

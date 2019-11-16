@@ -1334,7 +1334,7 @@
   },
   {
     "kind": "index",
-    "content": "[![Build Status](https://travis-ci.org/staghouse/js-essentials.png?branch=master)](https://travis-ci.org/staghouse/js-essentials)\n[![codecov](https://codecov.io/gh/staghouse/js-essentials/branch/master/graph/badge.svg)](https://codecov.io/gh/staghouse/js-essentials)\n\n# JS Essentials\nA collection of JS tools to help you develop JS projects. See the ESDoc files for more information.\n",
+    "content": "[![Build Status](https://travis-ci.org/staghouse/js-essentials.png?branch=master)](https://travis-ci.org/staghouse/js-essentials)\n[![codecov](https://codecov.io/gh/staghouse/js-essentials/branch/master/graph/badge.svg)](https://codecov.io/gh/staghouse/js-essentials)\n\n# JS Essentials\nA collection of JS tools to help you develop JS projects.\n\nFor more information view the documentation on each helper here: https://staghouse.github.io/js-essentials/\n",
     "longname": "/Users/Eric/Developer/js-essentials/README.md",
     "name": "./README.md",
     "static": true,

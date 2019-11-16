@@ -6,14 +6,10 @@ const port = 3000;
 
 // Allow static files to load
 server.use('/__schemas__', express.static(path.resolve('__schemas__')));
-server.use('/src', express.static(path.resolve('src')));
+server.use('/pkg', express.static(path.resolve('pkg')));
 
 server.get('/', (req, res) => {
-  res.sendFile(path.resolve('index.html'));
-});
-
-server.get('/src/index.js', (req, res) => {
-  res.sendFile(path.resolve('src/index.js'));
+  res.sendFile(path.resolve('utils/index.html'));
 });
 
 server.listen(port, () =>
