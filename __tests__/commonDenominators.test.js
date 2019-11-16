@@ -1,4 +1,4 @@
-import { commonDenominators } from '../src/commonDenominators';
+import { commonDenominators } from '../src/index';
 
 describe('commonDenominators', () => {
   it('should take no arguments and return []', () => {

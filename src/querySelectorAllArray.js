@@ -6,7 +6,7 @@
  * @example
  * querySelectorArray('.my-element')
  */
-export function querySelectorAllArray(el) {
+export default function querySelectorAllArray(el) {
   if (typeof el !== 'string') {
     throw TypeError('el must be of type string');
   }

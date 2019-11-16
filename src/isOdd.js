@@ -5,7 +5,7 @@
  * @example
  * isOdd(3)
  */
-export function isOdd(number) {
+export default function isOdd(number) {
   if (!isFinite(number) || !!(number % 1)) {
     throw TypeError('Must provide a valid whole number');
   }

@@ -8,7 +8,7 @@
  * @example
  * sortArrayOfObjects('name', [{'name': 'Charles'}, {'name': 'Scott'}, {'name': 'Erik'}], true)
  */
-export function sortArrayOfObjects(property = undefined, arr = undefined, desc = false) {
+export default function sortArrayOfObjects(property = undefined, arr = undefined, desc = false) {
   const isArray = Array.isArray(arr);
   let arrTypes = undefined;
 

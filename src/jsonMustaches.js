@@ -6,7 +6,7 @@
  * @param {object} schema - Schema compliant JSON object
  * @use {{type@text@url}}
  */
-export class JSONMustaches {
+export default class JSONMustaches {
   constructor(schema) {
     this.schema = schema;
     this.delimiter = '@';
@@ -35,11 +35,11 @@ export class JSONMustaches {
     let values = value.match(this.singleMustache)[1]; // get just whats inside the mustache
     let [type, text, link = ''] = values.split(this.delimiter);
 
-    const isExternal = `target=${link.indexOf('/') === 0 ? '' : '_blank'}`;
+    const external = link.indexOf('/') === 0 ? '' : `target='_blank'`;
 
     const mustacheMap = {
       html: text,
-      link: `<a class='code-link' href='${link}/' ${isExternal}/>${this.unwrap(text)}</a>`,
+      link: `<a class='code-link' href='${link}/' ${external}/>${this.unwrap(text)}</a>`,
       code: `<code>${text}</code>`,
     };
 

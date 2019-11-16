@@ -6,7 +6,7 @@
  * @example
  * convertToDate(number|string|date)
  */
-export function convertToDate(date) {
+export default function convertToDate(date) {
   if (date instanceof Date) {
     return date;
   }
