@@ -6,7 +6,7 @@
  * @example
  * getURLParmas('http://www.placecage.com?height=100&width=200')
  */
-export function getURLParams(url = undefined) {
+export default function getURLParams(url = undefined) {
   const typeOfUrl = typeof url;
   const paramsObj = {};
   let params = undefined;

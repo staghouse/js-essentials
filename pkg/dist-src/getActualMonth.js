@@ -6,7 +6,7 @@
  * @example
  * getActualMonth(6)
  */
-export function getActualMonth(num = undefined) {
+export default function getActualMonth(num = undefined) {
   const number = Number(num);
 
   if (!isNaN(number)) {

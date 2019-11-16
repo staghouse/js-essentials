@@ -1,4 +1,4 @@
-export function commonDenominators(...args) {
+export default function commonDenominators(...args) {
   const numerators = args.filter(numerator => Number.isInteger(numerator) && numerator > 0);
   const denominators = [Math.min(...numerators)];
   let minimum = Math.ceil(denominators[0] / 2);

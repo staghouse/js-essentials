@@ -9,7 +9,7 @@
  * isFutureDate('2019-10-10', '2020-01-01')
  * isFutureDate(new Date('2019-10-10'), '2020-01-01')
  */
-export const isFutureDate = (when, against = new Date()) => {
+export default function isFutureDate(when, against = new Date()) {
   // Check on our types, we only want String and Date for comparison.
   const typesAreValid = (typeof when === 'string' || when instanceof Date) && (typeof against === 'string' || against instanceof Date);
 
@@ -56,4 +56,4 @@ export const isFutureDate = (when, against = new Date()) => {
 
 
   return then < now;
-};
+}

@@ -24,7 +24,7 @@ function isOdd(number) {
  * isFutureDate('2019-10-10', '2020-01-01')
  * isFutureDate(new Date('2019-10-10'), '2020-01-01')
  */
-const isFutureDate = (when, against = new Date()) => {
+function isFutureDate(when, against = new Date()) {
   // Check on our types, we only want String and Date for comparison.
   const typesAreValid = (typeof when === 'string' || when instanceof Date) && (typeof against === 'string' || against instanceof Date);
 
@@ -71,7 +71,7 @@ const isFutureDate = (when, against = new Date()) => {
 
 
   return then < now;
-};
+}
 
 /**
  * getURLParams
@@ -151,10 +151,10 @@ class JSONMustaches {
     let values = value.match(this.singleMustache)[1]; // get just whats inside the mustache
 
     let [type, text, link = ''] = values.split(this.delimiter);
-    const isExternal = `target=${link.indexOf('/') === 0 ? '' : '_blank'}`;
+    const external = link.indexOf('/') === 0 ? '' : `target='_blank'`;
     const mustacheMap = {
       html: text,
-      link: `<a class='code-link' href='${link}/' ${isExternal}/>${this.unwrap(text)}</a>`,
+      link: `<a class='code-link' href='${link}/' ${external}/>${this.unwrap(text)}</a>`,
       code: `<code>${text}</code>`
     };
     return mustacheMap[type];
@@ -341,25 +341,5 @@ function sortArrayOfObjects(property = undefined, arr = undefined, desc = false)
   });
 }
 
-/**
- * querySelectorAllArray
- * @param {string} el - DOM element class name
- * @return Array of class based elements
- * @throws TypeError
- * @example
- * querySelectorArray('.my-element')
- */
-function querySelectorAllArray(el) {
-  if (typeof el !== 'string') {
-    throw TypeError('el must be of type string');
-  }
-
-  if (el[0] !== '.') {
-    throw TypeError('el must include a period prepended to the selector');
-  }
-
-  return Array.from(document.querySelectorAll(el));
-}
-
-export { JSONMustaches, commonDenominators, convertToDate, getActualMonth, getURLParams, isFutureDate, isOdd, querySelectorAllArray, quickSortArray, sortArrayOfObjects };
+export { JSONMustaches, commonDenominators, convertToDate, getActualMonth, getURLParams, isFutureDate, isOdd, quickSortArray, sortArrayOfObjects };
 //# sourceMappingURL=index.js.map

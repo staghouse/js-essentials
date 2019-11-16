@@ -29,14 +29,13 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/jsonMustaches.js~JSONMustaches.html">JSONMustaches</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/JSONMustaches.js~JSONMustaches.html">JSONMustaches</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-commonDenominators">commonDenominators</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-convertToDate">convertToDate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getActualMonth">getActualMonth</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getURLParams">getURLParams</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFutureDate">isFutureDate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isOdd">isOdd</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-querySelectorAllArray">querySelectorAllArray</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-quickSortArray">quickSortArray</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sortArrayOfObjects">sortArrayOfObjects</a></span></span></li>
 </ul>
@@ -54,7 +53,7 @@
  * @example
  * sortArrayOfObjects(&apos;name&apos;, [{&apos;name&apos;: &apos;Charles&apos;}, {&apos;name&apos;: &apos;Scott&apos;}, {&apos;name&apos;: &apos;Erik&apos;}], true)
  */
-export function sortArrayOfObjects(property = undefined, arr = undefined, desc = false) {
+export default function sortArrayOfObjects(property = undefined, arr = undefined, desc = false) {
   const isArray = Array.isArray(arr);
   let arrTypes = undefined;
 
@@ -85,7 +84,8 @@ export function sortArrayOfObjects(property = undefined, arr = undefined, desc =
     // Magical stuff.
     return order * (x &lt; y ? -1 : +(x &gt; y));
   });
-}</code></pre>
+}
+</code></pre>
 
 </div>
 

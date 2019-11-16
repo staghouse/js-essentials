@@ -1,8 +1,8 @@
 window.esdocSearchIndex = [
   [
     "js-essentials/src/jsonmustaches.js~jsonmustaches",
-    "class/src/jsonMustaches.js~JSONMustaches.html",
-    "<span>JSONMustaches</span> <span class=\"search-result-import-path\">js-essentials/src/jsonMustaches.js</span>",
+    "class/src/JSONMustaches.js~JSONMustaches.html",
+    "<span>JSONMustaches</span> <span class=\"search-result-import-path\">js-essentials/src/JSONMustaches.js</span>",
     "class"
   ],
   [
@@ -39,12 +39,6 @@ window.esdocSearchIndex = [
     "js-essentials/src/isodd.js~isodd",
     "function/index.html#static-function-isOdd",
     "<span>isOdd</span> <span class=\"search-result-import-path\">js-essentials/src/isOdd.js</span>",
-    "function"
-  ],
-  [
-    "js-essentials/src/queryselectorallarray.js~queryselectorallarray",
-    "function/index.html#static-function-querySelectorAllArray",
-    "<span>querySelectorAllArray</span> <span class=\"search-result-import-path\">js-essentials/src/querySelectorAllArray.js</span>",
     "function"
   ],
   [
@@ -342,6 +336,60 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
+    "src/jsonmustaches.js",
+    "file/src/JSONMustaches.js.html",
+    "src/JSONMustaches.js",
+    "file"
+  ],
+  [
+    "src/jsonmustaches.js~jsonmustaches#allmustaches",
+    "class/src/JSONMustaches.js~JSONMustaches.html#instance-member-allMustaches",
+    "src/JSONMustaches.js~JSONMustaches#allMustaches",
+    "member"
+  ],
+  [
+    "src/jsonmustaches.js~jsonmustaches#constructor",
+    "class/src/JSONMustaches.js~JSONMustaches.html#instance-constructor-constructor",
+    "src/JSONMustaches.js~JSONMustaches#constructor",
+    "method"
+  ],
+  [
+    "src/jsonmustaches.js~jsonmustaches#cycle",
+    "class/src/JSONMustaches.js~JSONMustaches.html#instance-method-cycle",
+    "src/JSONMustaches.js~JSONMustaches#cycle",
+    "method"
+  ],
+  [
+    "src/jsonmustaches.js~jsonmustaches#delimiter",
+    "class/src/JSONMustaches.js~JSONMustaches.html#instance-member-delimiter",
+    "src/JSONMustaches.js~JSONMustaches#delimiter",
+    "member"
+  ],
+  [
+    "src/jsonmustaches.js~jsonmustaches#hydrate",
+    "class/src/JSONMustaches.js~JSONMustaches.html#instance-method-hydrate",
+    "src/JSONMustaches.js~JSONMustaches#hydrate",
+    "method"
+  ],
+  [
+    "src/jsonmustaches.js~jsonmustaches#schema",
+    "class/src/JSONMustaches.js~JSONMustaches.html#instance-member-schema",
+    "src/JSONMustaches.js~JSONMustaches#schema",
+    "member"
+  ],
+  [
+    "src/jsonmustaches.js~jsonmustaches#singlemustache",
+    "class/src/JSONMustaches.js~JSONMustaches.html#instance-member-singleMustache",
+    "src/JSONMustaches.js~JSONMustaches#singleMustache",
+    "member"
+  ],
+  [
+    "src/jsonmustaches.js~jsonmustaches#unwrap",
+    "class/src/JSONMustaches.js~JSONMustaches.html#instance-method-unwrap",
+    "src/JSONMustaches.js~JSONMustaches#unwrap",
+    "method"
+  ],
+  [
     "src/commondenominators.js",
     "file/src/commonDenominators.js.html",
     "src/commonDenominators.js",
@@ -381,66 +429,6 @@ window.esdocSearchIndex = [
     "src/isodd.js",
     "file/src/isOdd.js.html",
     "src/isOdd.js",
-    "file"
-  ],
-  [
-    "src/jsonmustaches.js",
-    "file/src/jsonMustaches.js.html",
-    "src/jsonMustaches.js",
-    "file"
-  ],
-  [
-    "src/jsonmustaches.js~jsonmustaches#allmustaches",
-    "class/src/jsonMustaches.js~JSONMustaches.html#instance-member-allMustaches",
-    "src/jsonMustaches.js~JSONMustaches#allMustaches",
-    "member"
-  ],
-  [
-    "src/jsonmustaches.js~jsonmustaches#constructor",
-    "class/src/jsonMustaches.js~JSONMustaches.html#instance-constructor-constructor",
-    "src/jsonMustaches.js~JSONMustaches#constructor",
-    "method"
-  ],
-  [
-    "src/jsonmustaches.js~jsonmustaches#cycle",
-    "class/src/jsonMustaches.js~JSONMustaches.html#instance-method-cycle",
-    "src/jsonMustaches.js~JSONMustaches#cycle",
-    "method"
-  ],
-  [
-    "src/jsonmustaches.js~jsonmustaches#delimiter",
-    "class/src/jsonMustaches.js~JSONMustaches.html#instance-member-delimiter",
-    "src/jsonMustaches.js~JSONMustaches#delimiter",
-    "member"
-  ],
-  [
-    "src/jsonmustaches.js~jsonmustaches#hydrate",
-    "class/src/jsonMustaches.js~JSONMustaches.html#instance-method-hydrate",
-    "src/jsonMustaches.js~JSONMustaches#hydrate",
-    "method"
-  ],
-  [
-    "src/jsonmustaches.js~jsonmustaches#schema",
-    "class/src/jsonMustaches.js~JSONMustaches.html#instance-member-schema",
-    "src/jsonMustaches.js~JSONMustaches#schema",
-    "member"
-  ],
-  [
-    "src/jsonmustaches.js~jsonmustaches#singlemustache",
-    "class/src/jsonMustaches.js~JSONMustaches.html#instance-member-singleMustache",
-    "src/jsonMustaches.js~JSONMustaches#singleMustache",
-    "member"
-  ],
-  [
-    "src/jsonmustaches.js~jsonmustaches#unwrap",
-    "class/src/jsonMustaches.js~JSONMustaches.html#instance-method-unwrap",
-    "src/jsonMustaches.js~JSONMustaches#unwrap",
-    "method"
-  ],
-  [
-    "src/queryselectorallarray.js",
-    "file/src/querySelectorAllArray.js.html",
-    "src/querySelectorAllArray.js",
     "file"
   ],
   [

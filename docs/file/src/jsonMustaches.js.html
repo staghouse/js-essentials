@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">src/jsonMustaches.js | js-essentials</title>
+  <title data-ice="title">src/JSONMustaches.js | js-essentials</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -29,21 +29,20 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/jsonMustaches.js~JSONMustaches.html">JSONMustaches</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/JSONMustaches.js~JSONMustaches.html">JSONMustaches</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-commonDenominators">commonDenominators</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-convertToDate">convertToDate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getActualMonth">getActualMonth</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getURLParams">getURLParams</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFutureDate">isFutureDate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isOdd">isOdd</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-querySelectorAllArray">querySelectorAllArray</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-quickSortArray">quickSortArray</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sortArrayOfObjects">sortArrayOfObjects</a></span></span></li>
 </ul>
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/jsonMustaches.js</h1>
+<div class="content" data-ice="content"><h1 data-ice="title">src/JSONMustaches.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
  * JSONMustaches - A JSON parser for mustaches templates in JSON objects.
  *
@@ -52,7 +51,7 @@
  * @param {object} schema - Schema compliant JSON object
  * @use {{type@text@url}}
  */
-export class JSONMustaches {
+export default class JSONMustaches {
   constructor(schema) {
     this.schema = schema;
     this.delimiter = &apos;@&apos;;
@@ -81,11 +80,11 @@ export class JSONMustaches {
     let values = value.match(this.singleMustache)[1]; // get just whats inside the mustache
     let [type, text, link = &apos;&apos;] = values.split(this.delimiter);
 
-    const isExternal = `target=${link.indexOf(&apos;/&apos;) === 0 ? &apos;&apos; : &apos;_blank&apos;}`;
+    const external = link.indexOf(&apos;/&apos;) === 0 ? &apos;&apos; : `target=&apos;_blank&apos;`;
 
     const mustacheMap = {
       html: text,
-      link: `&lt;a class=&apos;code-link&apos; href=&apos;${link}/&apos; ${isExternal}/&gt;${this.unwrap(text)}&lt;/a&gt;`,
+      link: `&lt;a class=&apos;code-link&apos; href=&apos;${link}/&apos; ${external}/&gt;${this.unwrap(text)}&lt;/a&gt;`,
       code: `&lt;code&gt;${text}&lt;/code&gt;`,
     };
 
