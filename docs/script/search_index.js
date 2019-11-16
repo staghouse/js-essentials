@@ -342,6 +342,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/jsonmustaches.js~jsonmustaches#_init",
+    "class/src/JSONMustaches.js~JSONMustaches.html#instance-method-_init",
+    "src/JSONMustaches.js~JSONMustaches#_init",
+    "method"
+  ],
+  [
     "src/jsonmustaches.js~jsonmustaches#allmustaches",
     "class/src/JSONMustaches.js~JSONMustaches.html#instance-member-allMustaches",
     "src/JSONMustaches.js~JSONMustaches#allMustaches",
@@ -354,9 +360,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/jsonmustaches.js~jsonmustaches#cycle",
-    "class/src/JSONMustaches.js~JSONMustaches.html#instance-method-cycle",
-    "src/JSONMustaches.js~JSONMustaches#cycle",
+    "src/jsonmustaches.js~jsonmustaches#convert",
+    "class/src/JSONMustaches.js~JSONMustaches.html#instance-method-convert",
+    "src/JSONMustaches.js~JSONMustaches#convert",
     "method"
   ],
   [
@@ -366,16 +372,22 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/jsonmustaches.js~jsonmustaches#hydrate",
-    "class/src/JSONMustaches.js~JSONMustaches.html#instance-method-hydrate",
-    "src/JSONMustaches.js~JSONMustaches#hydrate",
-    "method"
+    "src/jsonmustaches.js~jsonmustaches#hasmustaches",
+    "class/src/JSONMustaches.js~JSONMustaches.html#instance-member-hasMustaches",
+    "src/JSONMustaches.js~JSONMustaches#hasMustaches",
+    "member"
   ],
   [
     "src/jsonmustaches.js~jsonmustaches#schema",
     "class/src/JSONMustaches.js~JSONMustaches.html#instance-member-schema",
     "src/JSONMustaches.js~JSONMustaches#schema",
     "member"
+  ],
+  [
+    "src/jsonmustaches.js~jsonmustaches#search",
+    "class/src/JSONMustaches.js~JSONMustaches.html#instance-method-search",
+    "src/JSONMustaches.js~JSONMustaches#search",
+    "method"
   ],
   [
     "src/jsonmustaches.js~jsonmustaches#singlemustache",
