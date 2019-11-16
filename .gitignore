@@ -23,6 +23,3 @@ node_modules/
 
 # Code coverage
 __coverage__/
-
-# Build folders
-pkg/

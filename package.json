@@ -1,8 +1,8 @@
 {
   "name": "js-essentials",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Essential tools/helpers to use in any JS project.",
-  "main": "pkg/dist-node/index.js",
+  "main": "pkg/dist-src/index.js",
   "repository": "git@github.com:staghouse/js-essentials.git",
   "author": "Eric Lakatos <lakatos.eric@gmail.com>",
   "license": "MIT",
