@@ -3,19 +3,6 @@
   "expectCount": 19,
   "actualCount": 11,
   "files": {
-    "src/JSONMustaches.js": {
-      "expectCount": 11,
-      "actualCount": 4,
-      "undocumentLines": [
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-        19
-      ]
-    },
     "src/commonDenominators.js": {
       "expectCount": 1,
       "actualCount": 0,
@@ -47,6 +34,19 @@
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
+    },
+    "src/jsonMustaches.js": {
+      "expectCount": 11,
+      "actualCount": 4,
+      "undocumentLines": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        19
+      ]
     },
     "src/quickSortArray.js": {
       "expectCount": 1,

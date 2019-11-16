@@ -346,9 +346,9 @@
                   "line": 5,
                   "column": 20
                 },
-                "identifierName": "JSONMustaches"
+                "identifierName": "jsonMustaches"
               },
-              "name": "JSONMustaches"
+              "name": "jsonMustaches"
             }
           }
         ],
@@ -367,10 +367,10 @@
             }
           },
           "extra": {
-            "rawValue": "./JSONMustaches",
-            "raw": "'./JSONMustaches'"
+            "rawValue": "./jsonMustaches",
+            "raw": "'./jsonMustaches'"
           },
-          "value": "./JSONMustaches"
+          "value": "./jsonMustaches"
         }
       },
       {
@@ -888,9 +888,9 @@
                   "line": 16,
                   "column": 15
                 },
-                "identifierName": "JSONMustaches"
+                "identifierName": "jsonMustaches"
               },
-              "name": "JSONMustaches"
+              "name": "jsonMustaches"
             },
             "exported": {
               "type": "Identifier",
@@ -905,9 +905,9 @@
                   "line": 16,
                   "column": 15
                 },
-                "identifierName": "JSONMustaches"
+                "identifierName": "jsonMustaches"
               },
-              "name": "JSONMustaches"
+              "name": "jsonMustaches"
             }
           },
           {
@@ -1686,7 +1686,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "JSONMustaches",
+      "value": "jsonMustaches",
       "start": 167,
       "end": 180,
       "loc": {
@@ -1739,7 +1739,7 @@
         "binop": null,
         "updateContext": null
       },
-      "value": "./JSONMustaches",
+      "value": "./jsonMustaches",
       "start": 186,
       "end": 203,
       "loc": {
@@ -2584,7 +2584,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "JSONMustaches",
+      "value": "jsonMustaches",
       "start": 479,
       "end": 492,
       "loc": {

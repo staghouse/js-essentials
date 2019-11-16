@@ -6,7 +6,7 @@
  * @param {object} schema - Schema compliant JSON object
  * @use {{type@text@url}}
  */
-export default class JSONMustaches {
+export default class jsonMustaches {
   constructor(schema) {
     this.schema = schema;
     this.delimiter = '@';

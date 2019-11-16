@@ -69,9 +69,9 @@
                 "line": 9,
                 "column": 34
               },
-              "identifierName": "JSONMustaches"
+              "identifierName": "jsonMustaches"
             },
-            "name": "JSONMustaches",
+            "name": "jsonMustaches",
             "leadingComments": null
           },
           "superClass": null,
@@ -6508,7 +6508,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "JSONMustaches",
+      "value": "jsonMustaches",
       "start": 231,
       "end": 244,
       "loc": {

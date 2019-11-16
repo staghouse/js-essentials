@@ -566,284 +566,6 @@
   {
     "__docId__": 48,
     "kind": "file",
-    "name": "src/JSONMustaches.js",
-    "content": "/**\n * JSONMustaches - A JSON parser for mustaches templates in JSON objects.\n *\n * @type Class\n * @constructor @arguments\n * @param {object} schema - Schema compliant JSON object\n * @use {{type@text@url}}\n */\nexport default class JSONMustaches {\n  constructor(schema) {\n    this.schema = schema;\n    this.delimiter = '@';\n    this.allMustaches = /{{(.*?)}}/g;\n    this.singleMustache = /{{(.*?)}}/;\n    this.hasMustaches = true; // Let us assume\n  }\n\n  // Basic checking for valid types and syntax\n  _init() {\n    if (!this.schema) {\n      throw SyntaxError('You must pass in a JSON Schema');\n    }\n\n    if (\n      Object.keys(this.schema).length <= 0 ||\n      Object.prototype.toString.call(this.schema) !== '[object Object]'\n    ) {\n      throw SyntaxError('You must pass in a valid JSON Schema Object with keys');\n    }\n\n    if (!JSON.stringify(this.schema).match(this.allMustaches)) {\n      this.hasMustaches = true;\n      return this.schema;\n    } else {\n      this.search();\n    }\n\n    return this;\n  }\n\n  /**\n   * @type function\n   * @param {string} value A string containing mustache templates\n   */\n  convert(value) {\n    // Get just whats inside the mustache\n    const values = value.match(this.singleMustache)[1];\n    // Destructure whats inside the mustaches via the delimiter\n    const [type, text, link = ''] = values.split(this.delimiter);\n    // If we have a link, check if its an external link or not\n    const isTargetBlank = link.indexOf('/') === 0 ? '' : `target='_blank'`;\n\n    const mustacheMap = {\n      html: text,\n      link: `<a href='${link}/' ${isTargetBlank}/>${this.unwrap(text)}</a>`,\n      code: `<code>${text}</code>`,\n    };\n\n    const newValue = mustacheMap[type];\n\n    if (!newValue) {\n      throw SyntaxError(\n        `Invalid mustache template types. Available types are ${Object.keys(mustacheMap).join(\n          ', '\n        )}`\n      );\n    }\n\n    return mustacheMap[type];\n  }\n\n  /**\n   * @type function\n   * Cycle through the JSON schema and replace mustaches as needed,\n   * then return the new JSON\n   */\n  search() {\n    for (const prop in this.schema) {\n      // Store the value of each object in our schema\n      const value = this.schema[prop];\n      // Store the main property name so we can hydrate that too\n      value.propName = prop;\n\n      for (const key in value) {\n        const val = value[key].toString();\n        const mustaches = val.match(this.allMustaches);\n\n        if (mustaches) {\n          for (const mustache of mustaches) {\n            const hydratedHTML = value[key].replace(mustache, this.convert(mustache));\n\n            this.schema[prop][key] = hydratedHTML;\n          }\n        }\n      }\n    }\n  }\n\n  /**\n   * @type function\n   * @param {string} str Multiple word normalizing for anchors and URI's\n   */\n  unwrap(str) {\n    return str\n      .split('-')\n      .map((n, i) => {\n        if (i > 0) {\n          return n.charAt(0).toUpperCase() + n.slice(1);\n        }\n        return n;\n      })\n      .join('');\n  }\n}\n",
-    "static": true,
-    "longname": "/Users/Eric/Developer/js-essentials/src/JSONMustaches.js",
-    "access": "public",
-    "description": null,
-    "lineNumber": 1
-  },
-  {
-    "__docId__": 49,
-    "kind": "class",
-    "name": "JSONMustaches",
-    "memberof": "src/JSONMustaches.js",
-    "static": true,
-    "longname": "src/JSONMustaches.js~JSONMustaches",
-    "access": "public",
-    "export": true,
-    "importPath": "js-essentials/src/JSONMustaches.js",
-    "importStyle": "JSONMustaches",
-    "description": "JSONMustaches - A JSON parser for mustaches templates in JSON objects.",
-    "lineNumber": 9,
-    "unknown": [
-      {
-        "tagName": "@constructor",
-        "tagValue": ""
-      },
-      {
-        "tagName": "@arguments\n",
-        "tagValue": ""
-      },
-      {
-        "tagName": "@use",
-        "tagValue": "{{type@text@url}}"
-      }
-    ],
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "object"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "schema",
-        "description": "Schema compliant JSON object"
-      }
-    ],
-    "type": {
-      "nullable": null,
-      "types": [
-        "*"
-      ],
-      "spread": false,
-      "description": null
-    },
-    "interface": false
-  },
-  {
-    "__docId__": 50,
-    "kind": "constructor",
-    "name": "constructor",
-    "memberof": "src/JSONMustaches.js~JSONMustaches",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/JSONMustaches.js~JSONMustaches#constructor",
-    "access": "public",
-    "description": null,
-    "lineNumber": 10,
-    "undocument": true
-  },
-  {
-    "__docId__": 51,
-    "kind": "member",
-    "name": "schema",
-    "memberof": "src/JSONMustaches.js~JSONMustaches",
-    "static": false,
-    "longname": "src/JSONMustaches.js~JSONMustaches#schema",
-    "access": "public",
-    "description": null,
-    "lineNumber": 11,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 52,
-    "kind": "member",
-    "name": "delimiter",
-    "memberof": "src/JSONMustaches.js~JSONMustaches",
-    "static": false,
-    "longname": "src/JSONMustaches.js~JSONMustaches#delimiter",
-    "access": "public",
-    "description": null,
-    "lineNumber": 12,
-    "undocument": true,
-    "type": {
-      "types": [
-        "string"
-      ]
-    }
-  },
-  {
-    "__docId__": 53,
-    "kind": "member",
-    "name": "allMustaches",
-    "memberof": "src/JSONMustaches.js~JSONMustaches",
-    "static": false,
-    "longname": "src/JSONMustaches.js~JSONMustaches#allMustaches",
-    "access": "public",
-    "description": null,
-    "lineNumber": 13,
-    "undocument": true,
-    "type": {
-      "types": [
-        "undefined"
-      ]
-    }
-  },
-  {
-    "__docId__": 54,
-    "kind": "member",
-    "name": "singleMustache",
-    "memberof": "src/JSONMustaches.js~JSONMustaches",
-    "static": false,
-    "longname": "src/JSONMustaches.js~JSONMustaches#singleMustache",
-    "access": "public",
-    "description": null,
-    "lineNumber": 14,
-    "undocument": true,
-    "type": {
-      "types": [
-        "undefined"
-      ]
-    }
-  },
-  {
-    "__docId__": 55,
-    "kind": "member",
-    "name": "hasMustaches",
-    "memberof": "src/JSONMustaches.js~JSONMustaches",
-    "static": false,
-    "longname": "src/JSONMustaches.js~JSONMustaches#hasMustaches",
-    "access": "public",
-    "description": null,
-    "lineNumber": 15,
-    "undocument": true,
-    "type": {
-      "types": [
-        "boolean"
-      ]
-    }
-  },
-  {
-    "__docId__": 56,
-    "kind": "method",
-    "name": "_init",
-    "memberof": "src/JSONMustaches.js~JSONMustaches",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/JSONMustaches.js~JSONMustaches#_init",
-    "access": "private",
-    "description": null,
-    "lineNumber": 19,
-    "undocument": true,
-    "params": [],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 58,
-    "kind": "method",
-    "name": "convert",
-    "memberof": "src/JSONMustaches.js~JSONMustaches",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/JSONMustaches.js~JSONMustaches#convert",
-    "access": "public",
-    "description": "",
-    "lineNumber": 45,
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "string"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "value",
-        "description": "A string containing mustache templates"
-      }
-    ],
-    "type": {
-      "nullable": null,
-      "types": [
-        "*"
-      ],
-      "spread": false,
-      "description": null
-    },
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 59,
-    "kind": "method",
-    "name": "search",
-    "memberof": "src/JSONMustaches.js~JSONMustaches",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/JSONMustaches.js~JSONMustaches#search",
-    "access": "public",
-    "description": "",
-    "lineNumber": 77,
-    "type": {
-      "nullable": null,
-      "types": [
-        "*"
-      ],
-      "spread": false,
-      "description": null
-    },
-    "params": [],
-    "return": null
-  },
-  {
-    "__docId__": 60,
-    "kind": "method",
-    "name": "unwrap",
-    "memberof": "src/JSONMustaches.js~JSONMustaches",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/JSONMustaches.js~JSONMustaches#unwrap",
-    "access": "public",
-    "description": "",
-    "lineNumber": 103,
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "string"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "str",
-        "description": "Multiple word normalizing for anchors and URI's"
-      }
-    ],
-    "type": {
-      "nullable": null,
-      "types": [
-        "*"
-      ],
-      "spread": false,
-      "description": null
-    },
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 61,
-    "kind": "file",
     "name": "src/commonDenominators.js",
     "content": "export default function commonDenominators(...args){\n  const numerators = args.filter(numerator => Number.isInteger(numerator) && numerator > 0);\n  const denominators = [Math.min(...numerators)];\n  let minimum = Math.ceil(denominators[0] / 2);\n\n  if (!numerators.length) {\n    return [];\n  }\n  if (minimum < 2) {\n    return [1];\n  }\n\n  while (minimum > 0) {\n    if (denominators[0] % minimum === 0) {\n      denominators.push(minimum);\n    }\n    minimum--;\n  }\n\n  denominators.reverse();\n\n  if (numerators.length === 1) {\n    return [...denominators];\n  }\n\n  numerators.splice(1, numerators.length - 1).map(numerator => {\n    let denominator = denominators.length - 1;\n\n    while (denominator >= 0) {\n      if (numerator % denominators[denominator] !== 0) {\n        denominators.splice(denominator, 1);\n      }\n      denominator--;\n    }\n  });\n\n  return denominators;\n}\n",
     "static": true,
@@ -853,7 +575,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 62,
+    "__docId__": 49,
     "kind": "function",
     "name": "commonDenominators",
     "memberof": "src/commonDenominators.js",
@@ -884,7 +606,7 @@
     }
   },
   {
-    "__docId__": 63,
+    "__docId__": 50,
     "kind": "file",
     "name": "src/convertToDate.js",
     "content": "/**\n * convertToDate\n * @param {number|string|Date} date - Date you want to cast\n * @return Date\n * @throws TypeError\n * @example\n * convertToDate(number|string|date)\n */\nexport default function convertToDate(date) {\n  if (date instanceof Date) {\n    return date;\n  }\n\n  if (typeof date === 'string' || typeof date === 'number') {\n    return new Date(date);\n  }\n\n  throw TypeError('You must pass in a primary argument of type Date, String, or Number');\n}\n",
@@ -895,7 +617,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 64,
+    "__docId__": 51,
     "kind": "function",
     "name": "convertToDate",
     "memberof": "src/convertToDate.js",
@@ -944,7 +666,7 @@
     ]
   },
   {
-    "__docId__": 65,
+    "__docId__": 52,
     "kind": "file",
     "name": "src/getActualMonth.js",
     "content": "/**\n * getActualMonth\n * @param {number} num - number of the month from Date()\n * @return String of month\n * @throws TypeError\n * @example\n * getActualMonth(6)\n */\nexport default function getActualMonth(num = undefined) {\n  const number = Number(num);\n\n  if (!isNaN(number)) {\n    const months = [\n      'January',\n      'February',\n      'March',\n      'April',\n      'May',\n      'June',\n      'July',\n      'August',\n      'September',\n      'October',\n      'November',\n      'December',\n    ];\n    return months[number];\n  } else {\n    throw TypeError('number must be of type string or number');\n  }\n}\n",
@@ -955,7 +677,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 66,
+    "__docId__": 53,
     "kind": "function",
     "name": "getActualMonth",
     "memberof": "src/getActualMonth.js",
@@ -1002,7 +724,7 @@
     ]
   },
   {
-    "__docId__": 67,
+    "__docId__": 54,
     "kind": "file",
     "name": "src/getURLParams.js",
     "content": "/**\n * getURLParams\n * @param {number} url - string or URL instance\n * @return object with key/val\n * @throws TypeError\n * @example\n * getURLParmas('http://www.placecage.com?height=100&width=200')\n */\nexport default function getURLParams(url = undefined) {\n  const typeOfUrl = typeof url;\n  const paramsObj = {};\n  let params = undefined;\n\n  if (typeOfUrl !== 'undefined' && (typeOfUrl === 'string' || url instanceof URL)) {\n    url = new URL(url);\n\n    params = new URLSearchParams(url.search);\n\n    params.forEach(function(value, key) {\n      paramsObj[key] = value;\n    });\n\n    return paramsObj;\n  } else {\n    throw TypeError('url must be of type String or URL');\n  }\n}\n",
@@ -1013,7 +735,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 68,
+    "__docId__": 55,
     "kind": "function",
     "name": "getURLParams",
     "memberof": "src/getURLParams.js",
@@ -1060,10 +782,10 @@
     ]
   },
   {
-    "__docId__": 69,
+    "__docId__": 56,
     "kind": "file",
     "name": "src/index.js",
-    "content": "import isOdd from \"./isOdd\";\nimport isFutureDate from './isFutureDate';\nimport getURLParams from './getURLParams';\nimport convertToDate from './convertToDate';\nimport JSONMustaches from './JSONMustaches';\nimport getActualMonth from './getActualMonth';\nimport quickSortArray from './quickSortArray';\nimport commonDenominators from './commonDenominators';\nimport sortArrayOfObjects from './sortArrayOfObjects';\n\nexport {\n  isOdd,\n  isFutureDate,\n  getURLParams,\n  convertToDate,\n  JSONMustaches,\n  getActualMonth,\n  quickSortArray,\n  commonDenominators,\n  sortArrayOfObjects\n}\n",
+    "content": "import isOdd from \"./isOdd\";\nimport isFutureDate from './isFutureDate';\nimport getURLParams from './getURLParams';\nimport convertToDate from './convertToDate';\nimport jsonMustaches from './jsonMustaches';\nimport getActualMonth from './getActualMonth';\nimport quickSortArray from './quickSortArray';\nimport commonDenominators from './commonDenominators';\nimport sortArrayOfObjects from './sortArrayOfObjects';\n\nexport {\n  isOdd,\n  isFutureDate,\n  getURLParams,\n  convertToDate,\n  jsonMustaches,\n  getActualMonth,\n  quickSortArray,\n  commonDenominators,\n  sortArrayOfObjects\n}\n",
     "static": true,
     "longname": "/Users/Eric/Developer/js-essentials/src/index.js",
     "access": "public",
@@ -1071,7 +793,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 70,
+    "__docId__": 57,
     "kind": "file",
     "name": "src/isFutureDate.js",
     "content": "/**\n * isFutureDate\n * @param {String|Date} when - when to compare against now\n * @param {String|Date} against - when to compare against the first argument\n * @return Boolean\n * @throws TypeError\n * @throws SyntaxError\n * @example\n * isFutureDate('2019-10-10', '2020-01-01')\n * isFutureDate(new Date('2019-10-10'), '2020-01-01')\n */\n\nexport default function isFutureDate(when, against = new Date()) {\n  // Check on our types, we only want String and Date for comparison.\n  const typesAreValid =\n    (typeof when === 'string' || when instanceof Date) &&\n    (typeof against === 'string' || against instanceof Date);\n  if (!typesAreValid) {\n    throw TypeError('You must pass in at leasy one primary argument of type Date or String');\n  }\n\n  // Its important to remember that when we pass in just a String date\n  // that we wont get a time. So we set this up to do checks later.\n  let now = new Date(when);\n  let then = new Date(against);\n\n  /**\n   * Check if valid Date. String with improper formats return `Invalid Date`\n   * which is literal non-sense. Its not an Error of any kind, Number, String, Date or\n   * truthy undefined. Just a typeof Object which no public keys.\n   * In fact, the prototype returns undefined but when chcking for it,\n   * we get not comparison validation at all\n   */\n  if (!isFinite(now) || !isFinite(then)) {\n    throw SyntaxError('You must pass in a valid date time with a type of Date');\n  }\n\n  // Check if simply today is not the future.\n  const isToday = now.toDateString() === then.toDateString();\n  if (isToday) {\n    return false;\n  }\n\n  // Store UTC miliseconds.\n  if (typeof when === 'string') {\n    now = Date.parse(when);\n  } else {\n    now = when.getTime();\n  }\n\n  // Store UTC miliseconds.\n  if (typeof against === 'string') {\n    then = Date.parse(against);\n  } else {\n    then = against.getTime();\n  }\n\n  // Compare the miliseconds. It's the only way to be sure.\n  return then < now;\n}\n",
@@ -1082,7 +804,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 71,
+    "__docId__": 58,
     "kind": "function",
     "name": "isFutureDate",
     "memberof": "src/isFutureDate.js",
@@ -1147,7 +869,7 @@
     ]
   },
   {
-    "__docId__": 72,
+    "__docId__": 59,
     "kind": "file",
     "name": "src/isOdd.js",
     "content": "/**\n * isOdd\n * @param {number} number - Value to check if odd\n * @return Boolean\n * @example\n * isOdd(3)\n */\nexport default function isOdd(number) {\n  if (!isFinite(number) || !!(number % 1)) {\n    throw TypeError('Must provide a valid whole number');\n  }\n\n  return (Math.abs(number) ^ 1) === 2;\n}\n",
@@ -1158,7 +880,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 73,
+    "__docId__": 60,
     "kind": "function",
     "name": "isOdd",
     "memberof": "src/isOdd.js",
@@ -1194,6 +916,284 @@
       ],
       "spread": false,
       "description": "Boolean"
+    }
+  },
+  {
+    "__docId__": 61,
+    "kind": "file",
+    "name": "src/jsonMustaches.js",
+    "content": "/**\n * JSONMustaches - A JSON parser for mustaches templates in JSON objects.\n *\n * @type Class\n * @constructor @arguments\n * @param {object} schema - Schema compliant JSON object\n * @use {{type@text@url}}\n */\nexport default class jsonMustaches {\n  constructor(schema) {\n    this.schema = schema;\n    this.delimiter = '@';\n    this.allMustaches = /{{(.*?)}}/g;\n    this.singleMustache = /{{(.*?)}}/;\n    this.hasMustaches = true; // Let us assume\n  }\n\n  // Basic checking for valid types and syntax\n  _init() {\n    if (!this.schema) {\n      throw SyntaxError('You must pass in a JSON Schema');\n    }\n\n    if (\n      Object.keys(this.schema).length <= 0 ||\n      Object.prototype.toString.call(this.schema) !== '[object Object]'\n    ) {\n      throw SyntaxError('You must pass in a valid JSON Schema Object with keys');\n    }\n\n    if (!JSON.stringify(this.schema).match(this.allMustaches)) {\n      this.hasMustaches = true;\n      return this.schema;\n    } else {\n      this.search();\n    }\n\n    return this;\n  }\n\n  /**\n   * @type function\n   * @param {string} value A string containing mustache templates\n   */\n  convert(value) {\n    // Get just whats inside the mustache\n    const values = value.match(this.singleMustache)[1];\n    // Destructure whats inside the mustaches via the delimiter\n    const [type, text, link = ''] = values.split(this.delimiter);\n    // If we have a link, check if its an external link or not\n    const isTargetBlank = link.indexOf('/') === 0 ? '' : `target='_blank'`;\n\n    const mustacheMap = {\n      html: text,\n      link: `<a href='${link}/' ${isTargetBlank}/>${this.unwrap(text)}</a>`,\n      code: `<code>${text}</code>`,\n    };\n\n    const newValue = mustacheMap[type];\n\n    if (!newValue) {\n      throw SyntaxError(\n        `Invalid mustache template types. Available types are ${Object.keys(mustacheMap).join(\n          ', '\n        )}`\n      );\n    }\n\n    return mustacheMap[type];\n  }\n\n  /**\n   * @type function\n   * Cycle through the JSON schema and replace mustaches as needed,\n   * then return the new JSON\n   */\n  search() {\n    for (const prop in this.schema) {\n      // Store the value of each object in our schema\n      const value = this.schema[prop];\n      // Store the main property name so we can hydrate that too\n      value.propName = prop;\n\n      for (const key in value) {\n        const val = value[key].toString();\n        const mustaches = val.match(this.allMustaches);\n\n        if (mustaches) {\n          for (const mustache of mustaches) {\n            const hydratedHTML = value[key].replace(mustache, this.convert(mustache));\n\n            this.schema[prop][key] = hydratedHTML;\n          }\n        }\n      }\n    }\n  }\n\n  /**\n   * @type function\n   * @param {string} str Multiple word normalizing for anchors and URI's\n   */\n  unwrap(str) {\n    return str\n      .split('-')\n      .map((n, i) => {\n        if (i > 0) {\n          return n.charAt(0).toUpperCase() + n.slice(1);\n        }\n        return n;\n      })\n      .join('');\n  }\n}\n",
+    "static": true,
+    "longname": "/Users/Eric/Developer/js-essentials/src/jsonMustaches.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 62,
+    "kind": "class",
+    "name": "jsonMustaches",
+    "memberof": "src/jsonMustaches.js",
+    "static": true,
+    "longname": "src/jsonMustaches.js~jsonMustaches",
+    "access": "public",
+    "export": true,
+    "importPath": "js-essentials/src/jsonMustaches.js",
+    "importStyle": "jsonMustaches",
+    "description": "JSONMustaches - A JSON parser for mustaches templates in JSON objects.",
+    "lineNumber": 9,
+    "unknown": [
+      {
+        "tagName": "@constructor",
+        "tagValue": ""
+      },
+      {
+        "tagName": "@arguments\n",
+        "tagValue": ""
+      },
+      {
+        "tagName": "@use",
+        "tagValue": "{{type@text@url}}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "schema",
+        "description": "Schema compliant JSON object"
+      }
+    ],
+    "type": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "interface": false
+  },
+  {
+    "__docId__": 63,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/jsonMustaches.js~jsonMustaches",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/jsonMustaches.js~jsonMustaches#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true
+  },
+  {
+    "__docId__": 64,
+    "kind": "member",
+    "name": "schema",
+    "memberof": "src/jsonMustaches.js~jsonMustaches",
+    "static": false,
+    "longname": "src/jsonMustaches.js~jsonMustaches#schema",
+    "access": "public",
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 65,
+    "kind": "member",
+    "name": "delimiter",
+    "memberof": "src/jsonMustaches.js~jsonMustaches",
+    "static": false,
+    "longname": "src/jsonMustaches.js~jsonMustaches#delimiter",
+    "access": "public",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 66,
+    "kind": "member",
+    "name": "allMustaches",
+    "memberof": "src/jsonMustaches.js~jsonMustaches",
+    "static": false,
+    "longname": "src/jsonMustaches.js~jsonMustaches#allMustaches",
+    "access": "public",
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "type": {
+      "types": [
+        "undefined"
+      ]
+    }
+  },
+  {
+    "__docId__": 67,
+    "kind": "member",
+    "name": "singleMustache",
+    "memberof": "src/jsonMustaches.js~jsonMustaches",
+    "static": false,
+    "longname": "src/jsonMustaches.js~jsonMustaches#singleMustache",
+    "access": "public",
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "undefined"
+      ]
+    }
+  },
+  {
+    "__docId__": 68,
+    "kind": "member",
+    "name": "hasMustaches",
+    "memberof": "src/jsonMustaches.js~jsonMustaches",
+    "static": false,
+    "longname": "src/jsonMustaches.js~jsonMustaches#hasMustaches",
+    "access": "public",
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "type": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 69,
+    "kind": "method",
+    "name": "_init",
+    "memberof": "src/jsonMustaches.js~jsonMustaches",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/jsonMustaches.js~jsonMustaches#_init",
+    "access": "private",
+    "description": null,
+    "lineNumber": 19,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 71,
+    "kind": "method",
+    "name": "convert",
+    "memberof": "src/jsonMustaches.js~jsonMustaches",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/jsonMustaches.js~jsonMustaches#convert",
+    "access": "public",
+    "description": "",
+    "lineNumber": 45,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "A string containing mustache templates"
+      }
+    ],
+    "type": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 72,
+    "kind": "method",
+    "name": "search",
+    "memberof": "src/jsonMustaches.js~jsonMustaches",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/jsonMustaches.js~jsonMustaches#search",
+    "access": "public",
+    "description": "",
+    "lineNumber": 77,
+    "type": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 73,
+    "kind": "method",
+    "name": "unwrap",
+    "memberof": "src/jsonMustaches.js~jsonMustaches",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/jsonMustaches.js~jsonMustaches#unwrap",
+    "access": "public",
+    "description": "",
+    "lineNumber": 103,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "str",
+        "description": "Multiple word normalizing for anchors and URI's"
+      }
+    ],
+    "type": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": null
+    },
+    "return": {
+      "types": [
+        "*"
+      ]
     }
   },
   {
@@ -1342,7 +1342,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"js-essentials\",\n  \"version\": \"0.0.6\",\n  \"description\": \"Essential tools/helpers to use in any JS project.\",\n  \"main\": \"pkg/dist-src/index.js\",\n  \"repository\": \"git@github.com:staghouse/js-essentials.git\",\n  \"author\": \"Eric Lakatos <lakatos.eric@gmail.com>\",\n  \"license\": \"MIT\",\n  \"engines\": {\n    \"node\": \"^12.8.0\",\n    \"yarn\": \"^1.19.1\"\n  },\n  \"scripts\": {\n    \"bootstrap\": \"yarn install && yarn audit fix\",\n    \"serve\": \"node --experimental-modules server.js\",\n    \"test\": \"yarn lint && jest --coverage --coverageDirectory='__coverage__'\",\n    \"test:watch\": \"yarn lint && jest --watchAll --coverage --coverageDirectory='__coverage__'\",\n    \"test:full\": \"yarn test && yarn build:full\",\n    \"coverage\": \"codecov -t CODECOV_TOKEN\",\n    \"lint\": \"eslint --fix --ext .js ./\",\n    \"build\": \"pika build\",\n    \"build:full\": \"yarn build && yarn docs:build\",\n    \"docs:build\": \"rm -rf ./docs && esdoc\",\n    \"docs:open\": \"open ./docs/index.html\",\n    \"purge\": \"rm -rf node_modules\"\n  },\n  \"devDependencies\": {\n    \"@babel/cli\": \"^7.5.5\",\n    \"@babel/core\": \"^7.5.5\",\n    \"@babel/polyfill\": \"^7.7.0\",\n    \"@babel/preset-env\": \"^7.5.5\",\n    \"@pika/pack\": \"^0.5.0\",\n    \"@pika/plugin-build-node\": \"^0.7.1\",\n    \"@pika/plugin-build-web\": \"^0.7.1\",\n    \"@pika/plugin-standard-pkg\": \"^0.7.1\",\n    \"babel-eslint\": \"^10.0.2\",\n    \"babel-jest\": \"^24.8.0\",\n    \"codecov\": \"^3.5.0\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-node\": \"^1.0.4\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^6.1.0\",\n    \"express\": \"^4.17.1\",\n    \"husky\": \"^3.0.4\",\n    \"jest\": \"^24.9.0\",\n    \"jsdom\": \"^15.2.1\",\n    \"path\": \"^0.12.7\"\n  },\n  \"type\": \"module\",\n  \"@pika/pack\": {\n    \"pipeline\": [\n      [\n        \"@pika/plugin-standard-pkg\",\n        {\n          \"exclude\": [\n            \"__schemas__/**/*\"\n          ]\n        }\n      ],\n      [\n        \"@pika/plugin-build-web\"\n      ],\n      [\n        \"@pika/plugin-build-node\"\n      ]\n    ]\n  }\n}\n",
+    "content": "{\n  \"name\": \"js-essentials\",\n  \"version\": \"0.0.6\",\n  \"description\": \"Essential tools/helpers to use in any JS project.\",\n  \"main\": \"pkg/dist-src/index.js\",\n  \"repository\": \"git@github.com:staghouse/js-essentials.git\",\n  \"author\": \"Eric Lakatos <lakatos.eric@gmail.com>\",\n  \"license\": \"MIT\",\n  \"engines\": {\n    \"node\": \"^12.8.0\",\n    \"npm\": \"^6.13.0\"\n  },\n  \"scripts\": {\n    \"bootstrap\": \"npm run install && npm run audit fix\",\n    \"serve\": \"node --experimental-modules server.js\",\n    \"test\": \"npm run lint && jest --coverage --coverageDirectory='__coverage__'\",\n    \"test:watch\": \"npm run lint && jest --watchAll --coverage --coverageDirectory='__coverage__'\",\n    \"test:full\": \"npm run test && npm run build:full\",\n    \"coverage\": \"codecov -t CODECOV_TOKEN\",\n    \"lint\": \"eslint --fix --ext .js ./\",\n    \"build\": \"pika build\",\n    \"build:full\": \"npm run build && npm run docs:build\",\n    \"docs:build\": \"rm -rf ./docs && esdoc\",\n    \"docs:open\": \"open ./docs/index.html\",\n    \"purge\": \"rm -rf node_modules\"\n  },\n  \"devDependencies\": {\n    \"@babel/cli\": \"^7.5.5\",\n    \"@babel/core\": \"^7.5.5\",\n    \"@babel/polyfill\": \"^7.7.0\",\n    \"@babel/preset-env\": \"^7.5.5\",\n    \"@pika/pack\": \"^0.5.0\",\n    \"@pika/plugin-build-node\": \"^0.7.1\",\n    \"@pika/plugin-build-web\": \"^0.7.1\",\n    \"@pika/plugin-standard-pkg\": \"^0.7.1\",\n    \"babel-eslint\": \"^10.0.2\",\n    \"babel-jest\": \"^24.8.0\",\n    \"codecov\": \"^3.5.0\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-node\": \"^1.0.4\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^6.1.0\",\n    \"express\": \"^4.17.1\",\n    \"husky\": \"^3.0.4\",\n    \"jest\": \"^24.9.0\",\n    \"jsdom\": \"^15.2.1\",\n    \"path\": \"^0.12.7\"\n  },\n  \"type\": \"module\",\n  \"@pika/pack\": {\n    \"pipeline\": [\n      [\n        \"@pika/plugin-standard-pkg\",\n        {\n          \"exclude\": [\n            \"__schemas__/**/*\"\n          ]\n        }\n      ],\n      [\n        \"@pika/plugin-build-web\"\n      ],\n      [\n        \"@pika/plugin-build-node\"\n      ]\n    ]\n  }\n}\n",
     "longname": "/Users/Eric/Developer/js-essentials/package.json",
     "name": "package.json",
     "static": true,

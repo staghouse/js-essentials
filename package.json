@@ -8,18 +8,18 @@
   "license": "MIT",
   "engines": {
     "node": "^12.8.0",
-    "yarn": "^1.19.1"
+    "npm": "^6.13.0"
   },
   "scripts": {
-    "bootstrap": "yarn install && yarn audit fix",
+    "bootstrap": "npm run install && npm run audit fix",
     "serve": "node --experimental-modules server.js",
-    "test": "yarn lint && jest --coverage --coverageDirectory='__coverage__'",
-    "test:watch": "yarn lint && jest --watchAll --coverage --coverageDirectory='__coverage__'",
-    "test:full": "yarn test && yarn build:full",
+    "test": "npm run lint && jest --coverage --coverageDirectory='__coverage__'",
+    "test:watch": "npm run lint && jest --watchAll --coverage --coverageDirectory='__coverage__'",
+    "test:full": "npm run test && npm run build:full",
     "coverage": "codecov -t CODECOV_TOKEN",
     "lint": "eslint --fix --ext .js ./",
     "build": "pika build",
-    "build:full": "yarn build && yarn docs:build",
+    "build:full": "npm run build && npm run docs:build",
     "docs:build": "rm -rf ./docs && esdoc",
     "docs:open": "open ./docs/index.html",
     "purge": "rm -rf node_modules"

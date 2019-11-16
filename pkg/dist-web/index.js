@@ -126,7 +126,7 @@ function convertToDate(date) {
  * @param {object} schema - Schema compliant JSON object
  * @use {{type@text@url}}
  */
-class JSONMustaches {
+class jsonMustaches {
   constructor(schema) {
     this.schema = schema;
     this.delimiter = '@';
@@ -360,5 +360,5 @@ function sortArrayOfObjects(property = undefined, arr = undefined, desc = false)
   });
 }
 
-export { JSONMustaches, commonDenominators, convertToDate, getActualMonth, getURLParams, isFutureDate, isOdd, quickSortArray, sortArrayOfObjects };
+export { commonDenominators, convertToDate, getActualMonth, getURLParams, isFutureDate, isOdd, jsonMustaches, quickSortArray, sortArrayOfObjects };
 //# sourceMappingURL=index.js.map
