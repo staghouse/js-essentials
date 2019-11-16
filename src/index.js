@@ -7,7 +7,6 @@ import getActualMonth from './getActualMonth';
 import quickSortArray from './quickSortArray';
 import commonDenominators from './commonDenominators';
 import sortArrayOfObjects from './sortArrayOfObjects';
-import querySelectorAllArray from './querySelectorAllArray';
 
 export {
   isOdd,
@@ -18,6 +17,5 @@ export {
   getActualMonth,
   quickSortArray,
   commonDenominators,
-  sortArrayOfObjects,
-  querySelectorAllArray
+  sortArrayOfObjects
 }

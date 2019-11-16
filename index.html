@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Renderer for JSONMustaches.js visual testing</title>
+    <style type="text/css">
+      pre {
+        line-height: 1.5em;
+      }
+
+      code {
+        background-color: salmon;
+      }
+
+      .test-div {
+        background-color: lightgreen;
+        display: inline;
+      }
+    </style>
+    <script type="module">
+	    import JSONMustaches from '/src/JSONMustaches.js';
+      const schemaURL = '/__schemas__/test.schema.json';
+
+      const _renderPage = schema => {
+        for (const key in schema) {
+          const value = schema[key];
+
+          document.querySelector('#root').innerHTML = JSON.stringify(schema, undefined, 2);
+        }
+      };
+
+      const _init = () => {
+        fetch(schemaURL)
+          .then(response => response.json())
+          .then(json => {
+            const jsonMustaches = new JSONMustaches(json);
+            jsonMustaches.cycle(); // basically an init for transforming mustaches
+
+            _renderPage(jsonMustaches.schema);
+          });
+      };
+
+      document.addEventListener('DOMContentLoaded', _init);
+    </script>
+  </head>
+  <body>
+    <pre id="root"></pre>
+  </body>
+</html>

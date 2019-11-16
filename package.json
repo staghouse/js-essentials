@@ -1,6 +1,6 @@
 {
   "name": "js-essentials",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Essential tools/helpers to use in any JS project.",
   "main": "pkg/dist-src/index.js",
   "repository": "git@github.com:staghouse/js-essentials.git",
@@ -12,6 +12,7 @@
   },
   "scripts": {
     "bootstrap": "yarn install && yarn audit fix",
+    "serve": "node --experimental-modules server.js",
     "test": "yarn lint && jest --coverage --coverageDirectory='__coverage__'",
     "test:watch": "yarn lint && jest --watchAll --coverage --coverageDirectory='__coverage__'",
     "test:full": "yarn test && yarn build:full",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
+    "@babel/polyfill": "^7.7.0",
     "@babel/preset-env": "^7.5.5",
     "@pika/pack": "^0.5.0",
     "@pika/plugin-build-node": "^0.7.1",
@@ -38,9 +40,11 @@
     "esdoc-node": "^1.0.4",
     "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^6.1.0",
+    "express": "^4.17.1",
     "husky": "^3.0.4",
     "jest": "^24.9.0",
-    "jsdom": "^15.2.1"
+    "jsdom": "^15.2.1",
+    "path": "^0.12.7"
   },
   "type": "module",
   "@pika/pack": {
