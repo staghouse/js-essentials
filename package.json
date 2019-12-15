@@ -33,6 +33,7 @@
     "@pika/plugin-standard-pkg": "^0.8.1",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
+    "canvas": "^2.6.1",
     "codecov": "^3.6.1",
     "eslint": "^6.7.2",
     "express": "^4.17.1",
@@ -59,8 +60,5 @@
         "@pika/plugin-build-node"
       ]
     ]
-  },
-  "dependencies": {
-    "canvas": "^2.6.1"
   }
 }
