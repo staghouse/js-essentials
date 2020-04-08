@@ -45,7 +45,6 @@
     "jsdom": "^16.2.2",
     "path": "^0.12.7"
   },
-  "type": "module",
   "@pika/pack": {
     "pipeline": [
       [

@@ -2,6 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var commonDenominators = _interopDefault(require('common-denominators'));
+
 /**
  * isOdd
  * @param {number} number - Value to check if odd
@@ -230,6 +234,34 @@ class jsonMustaches {
 }
 
 /**
+ * getDOMSiblings
+ * @param {DOM Node} element - DOM element to find siblings for
+ * @return Array
+ */
+function getDOMSiblings(element) {
+  if (!element) {
+    throw SyntaxError('You must pass in a single argument');
+  }
+
+  if (typeof element !== 'object' || element.nodeType !== 1) {
+    throw TypeError('You must pass in a single DOM Node');
+  }
+
+  let sibling = element.parentNode.firstChild;
+  const siblings = [];
+
+  for (null; sibling; sibling = sibling.nextSibling) {
+    if (sibling.nodeType !== 1 || sibling === element) {
+      continue;
+    }
+
+    siblings.push(sibling);
+  }
+
+  return siblings;
+}
+
+/**
  * getActualMonth
  * @param {number} num - number of the month from Date()
  * @return String of month
@@ -282,47 +314,6 @@ function quickSortArray(arr) {
   }
 }
 
-function commonDenominators(...args) {
-  const numerators = args.filter(numerator => Number.isInteger(numerator) && numerator > 0);
-  const denominators = [Math.min(...numerators)];
-  let minimum = Math.ceil(denominators[0] / 2);
-
-  if (!numerators.length) {
-    return [];
-  }
-
-  if (minimum < 2) {
-    return [1];
-  }
-
-  while (minimum > 0) {
-    if (denominators[0] % minimum === 0) {
-      denominators.push(minimum);
-    }
-
-    minimum--;
-  }
-
-  denominators.reverse();
-
-  if (numerators.length === 1) {
-    return [...denominators];
-  }
-
-  numerators.splice(1, numerators.length - 1).map(numerator => {
-    let denominator = denominators.length - 1;
-
-    while (denominator >= 0) {
-      if (numerator % denominators[denominator] !== 0) {
-        denominators.splice(denominator, 1);
-      }
-
-      denominator--;
-    }
-  });
-  return denominators;
-}
-
 /**
  * sortArrayOfObjects
  * @param {string} property - name of property to sort objects by
@@ -367,6 +358,7 @@ function sortArrayOfObjects(property = undefined, arr = undefined, desc = false)
 exports.commonDenominators = commonDenominators;
 exports.convertToDate = convertToDate;
 exports.getActualMonth = getActualMonth;
+exports.getDOMSiblings = getDOMSiblings;
 exports.getURLParams = getURLParams;
 exports.isFutureDate = isFutureDate;
 exports.isOdd = isOdd;
